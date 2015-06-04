@@ -83,3 +83,4 @@ public class CandleSetting {
     int                     avgPeriod;
     double                  factor;    
 }
+//Test 123
