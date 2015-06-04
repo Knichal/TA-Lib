@@ -84,3 +84,4 @@ public class CandleSetting {
     double                  factor;    
 }
 //Test 123
+//New branch test
