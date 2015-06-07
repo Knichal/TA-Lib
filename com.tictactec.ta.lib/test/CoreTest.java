@@ -49,7 +49,15 @@ public class CoreTest
     107.87D };
   public static final double FLT_EPSILON = 1.192092896E-7D;
   public static final double TA_REAL_MIN = -3.0E37D;
-  
+  /**
+   * Funkcja wykorzystuje funkcje z Core.java
+   * @see #CoreTest(String)
+   * @see com.tictactec.ta.lib.Core#CoreTest(String)
+   * @see com.tictactec.ta.lib.Core#CoreTest(String)
+   * @see CoreTest#CoreTest(String)
+   * @see InputData#InputData(InputData)
+   * @see #InputData(InputData)
+   */
   public void test_MACD()
   {
     double[] macd = new double[close.length];
@@ -66,7 +74,12 @@ public class CoreTest
     this.lookback = this.lib.emaLookback(26);
     this.retCode = this.lib.ema(0, close.length - 1, close, 26, this.outBegIdx, this.outNbElement, ema26);
   }
-  
+  /**
+   * Konstruktor przyjmujacy jako parametr nazwe testu i wywolujacy konstruktor TestCase z tym samym parametrem,
+   * w funkcji nastepuje tez inicjalizacja tablic i obiektow.
+   * 
+   * @param testName String
+   */
   public CoreTest(String testName)
   {
     super(testName);
@@ -79,7 +92,12 @@ public class CoreTest
     this.outBegIdx = new MInteger();
     this.outNbElement = new MInteger();
   }
-  
+  /**
+   * Funkcja wypelnia tablice input oraz inputInt kolejnym wartosciami calkowitymi zaczynajac od 0
+   * tablice output i outputInt wypelniane sa wartosciami -999999
+   * zmienne outBegIdx, outNbElement, lookback dostaja wartosc -1
+   * zmienna retCode przechowuje RetCode.InternalError
+   */
   protected void setUp()
   {
     for (int i = 0; i < this.input.length; i++)
@@ -97,13 +115,19 @@ public class CoreTest
     this.retCode = RetCode.InternalError;
     this.lookback = -1;
   }
-  
+  /**
+   * Funkcja wykorzystuje dwie asercje:
+   * Gdy retCode jest rozne od RetCode.Succes lub lookback jest rozne od outBegIdx.value nastapi przerwanie programu.
+   */
   protected void tearDown()
   {
     assertEquals(this.retCode.toString(), RetCode.Success.toString());
     assertEquals(this.lookback, this.outBegIdx.value);
   }
-  
+  /**
+   * Funkcja tworzy obiekt typu TestSuite podajac w argumencie dla konstruktora plik binarny CoreTest.class
+   * @return obiekt typu TestSuite
+   */
   public static Test suite()
   {
     TestSuite suite = new TestSuite(CoreTest.class);
