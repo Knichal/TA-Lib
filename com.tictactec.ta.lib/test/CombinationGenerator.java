@@ -6,13 +6,13 @@ import java.util.List;
 public class CombinationGenerator
 {
 	/**
-	 * Konstruktor domyœlny
+	 * Konstruktor domyslny
 	 */
   public CombinationGenerator() {}
   /**
-   * Rekurencyjna funkcja generuj¹ca wszystkie kombinacje mieszania obiektów
+   * Rekurencyjna funkcja generuj¹ca wszystkie kombinacje mieszania obiektow
    * @param parms tablica typu OBject
-   * @return lista obiektów Object
+   * @return lista obiektow Object
    */
   public List<Object[]> getAllCombinations(Object[] parms)
   {
@@ -38,9 +38,9 @@ public class CombinationGenerator
     return ret;
   }
   /**
-   * Funkcja dodaje do listy ret obiekty listy children(je¿eli children jest ró¿ne od null) oraz obiekt obj
-   * @param ret lista obiektów typu Object[]
-   * @param children lista obiektów typu Object[]
+   * Funkcja dodaje do listy ret obiekty listy children(jezeli children jest ró¿ne od null) oraz obiekt obj
+   * @param ret lista obiektow typu Object[]
+   * @param children lista obiektow typu Object[]
    * @param obj
    */
   void process(List<Object[]> ret, List<Object[]> children, Object obj)

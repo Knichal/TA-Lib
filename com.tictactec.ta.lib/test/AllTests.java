@@ -7,11 +7,11 @@ import junit.textui.TestRunner;
 public class AllTests
 {
 	/**
-	 * Konstruktor domyœlny
+	 * Konstruktor domyslny
 	 */
   public AllTests() {}
   /**
-   * Wywo³uje statycznie metodê run(), jako parametr przekazuje wynik dzia³ania metody statycznej suite()
+   * Wywoluje statycznie metode run(), jako parametr przekazuje wynik dzialania metody statycznej suite()
    * @param args nie s¹ wykorzystywane
    */
   public static void main(String[] args)
@@ -20,7 +20,7 @@ public class AllTests
   }
   /**
    * Tworzy nowy obiekt typu TestSuite z argument "Test for TA.Lib.Test",
-   * nastêpnie na tym obiekcie wykonuje metodê addTestSuite(), która za agrument przyjmuje skompilowany plik .class
+   * nastepnie na tym obiekcie wykonuje metode addTestSuite(), ktora za agrument przyjmuje skompilowany plik .class
    * @return Utworzony lokalnie obiekt suite
    */
   public static Test suite()

@@ -10,9 +10,10 @@ public class InputData
   float[] floatData;
   int[] intData;
   /**
-   * 
+   * Konstruktor z dwoma parametrami
+   * tworzy tablice o rozmiarze podanym w parametrze size
    * @param name
-   * @param size
+   * @param size okresla wielkosc tablic
    */
   public InputData(String name, int size)
   {
@@ -23,7 +24,7 @@ public class InputData
   }
   /**
    * konstruktor kopiujacy
-   * @param that
+   * @param that 
    */
   public InputData(InputData that)
   {
@@ -33,7 +34,7 @@ public class InputData
     System.arraycopy(that.intData, 0, this.intData, 0, this.intData.length);
   }
   /**
-   * 
+   * Funkcja zwraca zawartosc zmiennej name
    * @return name
    */
   public String getName()
@@ -41,31 +42,48 @@ public class InputData
     return this.name;
   }
   /**
-   * 
+   * Funkcja zwraca rozmiar tablicy doubleData
    * @return size
    */
   public int size()
   {
     return this.doubleData.length;
   }
-  
+  /**
+   * Funkcja umieszcza dane podane jako parametry dd, fd, id do tablic w miejsce podane jako parametr index
+   * @param index
+   * @param dd
+   * @param fd
+   * @param id
+   */
   public void setData(int index, double dd, float fd, int id)
   {
     this.doubleData[index] = dd;
     this.floatData[index] = fd;
     this.intData[index] = id;
   }
-  
+  /**
+   * Funkcja zwraca tablice doubleData
+   * @return tablica double[]
+   */
   public double[] getDoubleData()
   {
     return this.doubleData;
   }
-  
+
+  /**
+   * Funkcja zwraca tablice floatData
+   * @return tablica float[]
+   */
   public float[] getFloatData()
   {
     return this.floatData;
   }
-  
+
+  /**
+   * Funkcja zwraca tablice intData
+   * @return tablica int[]
+   */
   public int[] getIntData()
   {
     return this.intData;
