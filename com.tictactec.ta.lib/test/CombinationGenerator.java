@@ -5,8 +5,15 @@ import java.util.List;
 
 public class CombinationGenerator
 {
+	/**
+	 * Konstruktor domyœlny
+	 */
   public CombinationGenerator() {}
-  
+  /**
+   * Rekurencyjna funkcja generuj¹ca wszystkie kombinacje mieszania obiektów
+   * @param parms tablica typu OBject
+   * @return lista obiektów Object
+   */
   public List<Object[]> getAllCombinations(Object[] parms)
   {
     List<Object[]> children = null;
@@ -30,7 +37,12 @@ public class CombinationGenerator
     }
     return ret;
   }
-  
+  /**
+   * Funkcja dodaje do listy ret obiekty listy children(je¿eli children jest ró¿ne od null) oraz obiekt obj
+   * @param ret lista obiektów typu Object[]
+   * @param children lista obiektów typu Object[]
+   * @param obj
+   */
   void process(List<Object[]> ret, List<Object[]> children, Object obj)
   {
     if (children == null)

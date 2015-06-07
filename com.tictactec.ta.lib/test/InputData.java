@@ -1,12 +1,19 @@
 package com.tictactec.ta.lib.test;
-
+/**
+ * Tak bardzo mi sie nie chce
+ *
+ */
 public class InputData
 {
   String name;
   double[] doubleData;
   float[] floatData;
   int[] intData;
-  
+  /**
+   * 
+   * @param name
+   * @param size
+   */
   public InputData(String name, int size)
   {
     this.name = name;
@@ -14,7 +21,10 @@ public class InputData
     this.floatData = new float[size];
     this.intData = new int[size];
   }
-  
+  /**
+   * konstruktor kopiujacy
+   * @param that
+   */
   public InputData(InputData that)
   {
     this(that.name, that.size());
@@ -22,12 +32,18 @@ public class InputData
     System.arraycopy(that.floatData, 0, this.floatData, 0, this.floatData.length);
     System.arraycopy(that.intData, 0, this.intData, 0, this.intData.length);
   }
-  
+  /**
+   * 
+   * @return name
+   */
   public String getName()
   {
     return this.name;
   }
-  
+  /**
+   * 
+   * @return size
+   */
   public int size()
   {
     return this.doubleData.length;
