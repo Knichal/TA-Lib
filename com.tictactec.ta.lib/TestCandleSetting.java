@@ -22,15 +22,10 @@ public class TestCandleSetting {
 	
 	@Test
 	public void testCandle() {
-
-			
-			
-	
 		candleSetting.CopyFrom(candleSetting);
-
-	
-				
-				
+		assertNotNull(candleSetting);
+		
+		
 	}
 }
 
