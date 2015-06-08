@@ -9,13 +9,19 @@ public class TestAbstract
 {
   Core talib;
   TestData testData;
-  
+  /**
+   * Konstruktor wykonuje konstruktor klasy nadrzednej z parametrem typu string oraz tworzy obiekt talib typu Core przez konstruktor bezparametrowy
+   * @param name parametr dla konstruktora klasy nadrzednej
+   */
   public TestAbstract(String name)
   {
     super(name);
     this.talib = new Core();
   }
-  
+  /**
+   * Funkcja tworzy obiekty testData typu TestData przy uzyciu konstruktora domyslnego
+   * @throws Exception
+   */
   protected void setUp()
     throws Exception
   {
@@ -25,7 +31,10 @@ public class TestAbstract
   protected void tearDown()
     throws Exception
   {}
-  
+  /**
+   * Funkcja wywoluje metode forEach z parametrem klasy anonimowej TestAbstractClosure, z obiektu CoreMetaInfo bez przypisania referencji
+   * @throws Exception
+   */
   public void testAbstract()
     throws Exception
   {
