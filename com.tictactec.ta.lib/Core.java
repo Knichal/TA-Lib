@@ -62,6 +62,16 @@ public class Core {
    private Compatibility compatibility;
    
    /** Creates a new instance of Core */
+   /**
+    * Konstruktor domyslny klasy Core.
+    * Do pola unstablePeriod przypisuje tablice intow o rozmiarze równym liczbie
+    * okreslajacej kolejnosc elementu All typu Enum w klasie FuncUnstId.
+    * Do pola compatibility przypisuje element Enum obiektu Compatibility.
+    * Do pola candleSettings przypisuje tablice CandleSetting o rozmiarze równym liczbie
+    * okreslajacej kolejnosc elementu AllCandleSettings typu Enum w klasie CandleSetting type.
+    * Petla for przypisujaca do kolejnych elementow tablicy candleSettings obiekt CandleSetting,
+    * ktory za parametr przyjmuje wartosc tablicy TA_CandleDefaultSettings o podanym indeksie
+    */
    public Core() {
       unstablePeriod = new int[com.tictactec.ta.lib.FuncUnstId.All
          .ordinal()];
