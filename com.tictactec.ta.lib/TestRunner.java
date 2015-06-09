@@ -19,7 +19,7 @@ public class TestRunner {
 		Result result2 = JUnitCore.runClasses(TestCandleSettingType.class);
 		for (Failure f : result2.getFailures()) {
 			System.out.println(f.toString());
-		}
+			}
 		System.out.println(result2.wasSuccessful());
 		
 		
@@ -39,8 +39,7 @@ public class TestRunner {
 		System.out.println(result4.wasSuccessful());
 		
 		
-		
-		Result result5 = JUnitCore.runClasses(TestFuncUnstld.class);
+		Result result5 = JUnitCore.runClasses(TestCoreAnnotated.class);
 		for (Failure f : result5.getFailures()) {
 			System.out.println(f.toString());
 		}
@@ -48,11 +47,19 @@ public class TestRunner {
 		
 		
 		
-		Result result6 = JUnitCore.runClasses(TestMAType.class);
+		Result result6 = JUnitCore.runClasses(TestFuncUnstld.class);
 		for (Failure f : result6.getFailures()) {
 			System.out.println(f.toString());
 		}
 		System.out.println(result6.wasSuccessful());
+		
+		
+		
+		Result result7 = JUnitCore.runClasses(TestMAType.class);
+		for (Failure f : result7.getFailures()) {
+			System.out.println(f.toString());
+		}
+		System.out.println(result7.wasSuccessful());
 		
 		
 	}

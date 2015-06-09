@@ -15,12 +15,11 @@ public class TestCompatibility {
 		if (compatibility.Default.equals(compatibility.Default)) {
 		}
 	}
-	
-	
+
 	@Test
 	public void test2() {
 		if (compatibility.Metastock.equals(compatibility.Metastock)) {
 		}
 	}
-
+	
 }

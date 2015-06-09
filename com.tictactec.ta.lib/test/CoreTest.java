@@ -49,7 +49,12 @@ public class CoreTest
     107.87D };
   public static final double FLT_EPSILON = 1.192092896E-7D;
   public static final double TA_REAL_MIN = -3.0E37D;
-  
+  /**
+   * Funkcja wykorzystuje metody z Core.java
+   * 
+   * @see com.tictactec.ta.lib.Core#macdLookback(int,int,int)
+   * @see com.tictactec.ta.lib.Core#emaLookback(int)
+   */
   public void test_MACD()
   {
     double[] macd = new double[close.length];
@@ -66,7 +71,12 @@ public class CoreTest
     this.lookback = this.lib.emaLookback(26);
     this.retCode = this.lib.ema(0, close.length - 1, close, 26, this.outBegIdx, this.outNbElement, ema26);
   }
-  
+  /**
+   * Konstruktor przyjmujacy jako parametr nazwe testu i wywolujacy konstruktor TestCase z tym samym parametrem,
+   * w funkcji nastepuje tez inicjalizacja tablic i obiektow.
+   * 
+   * @param testName String
+   */
   public CoreTest(String testName)
   {
     super(testName);
@@ -79,7 +89,12 @@ public class CoreTest
     this.outBegIdx = new MInteger();
     this.outNbElement = new MInteger();
   }
-  
+  /**
+   * Funkcja wypelnia tablice input oraz inputInt kolejnym wartosciami calkowitymi zaczynajac od 0
+   * tablice output i outputInt wypelniane sa wartosciami -999999
+   * zmienne outBegIdx, outNbElement, lookback dostaja wartosc -1
+   * zmienna retCode przechowuje RetCode.InternalError
+   */
   protected void setUp()
   {
     for (int i = 0; i < this.input.length; i++)
@@ -97,52 +112,89 @@ public class CoreTest
     this.retCode = RetCode.InternalError;
     this.lookback = -1;
   }
-  
+  /**
+   * Funkcja wykorzystuje dwie asercje:
+   * Gdy retCode jest rozne od RetCode.Succes lub lookback jest rozne od outBegIdx.value nastapi przerwanie programu.
+   */
   protected void tearDown()
   {
     assertEquals(this.retCode.toString(), RetCode.Success.toString());
     assertEquals(this.lookback, this.outBegIdx.value);
   }
-  
+  /**
+   * Funkcja tworzy obiekt typu TestSuite podajac w argumencie dla konstruktora plik binarny CoreTest.class
+   * @return obiekt typu TestSuite
+   */
   public static Test suite()
   {
     TestSuite suite = new TestSuite(CoreTest.class);
     
     return suite;
   }
-  
+  /**
+   * Do pola lookback funkcja przypisuje wartosc zwracana przez metode mfiLookback
+   * Do pola retCode funkcja przypisuje wartosc zwracana przez metode mfi
+   */
   public void testMFI()
   {
     this.lookback = this.lib.mfiLookback(2);
     this.retCode = this.lib.mfi(0, this.input.length - 1, this.input, this.input, this.input, this.input, 2, this.outBegIdx, this.outNbElement, this.output);
   }
-  
+
+  /**
+   * Do pola lookback funkcja przypisuje wartosc zwracana przez metode htTrendModeLookback
+   * Do pola retCode funkcja przypisuje wartosc zwracana przez metode htTrendMode
+   */
   public void testHT()
   {
     this.lookback = this.lib.htTrendModeLookback();
     this.retCode = this.lib.htTrendMode(0, this.input.length - 1, this.input, this.outBegIdx, this.outNbElement, this.outputInt);
   }
-  
+
+  /**
+   * Do pola lookback funkcja przypisuje wartosc zwracana przez metode movingAverageLookback
+   * Do pola retCode funkcja przypisuje wartosc zwracana przez metode movingAverage
+   */
   public void testMA_MAMA()
   {
     this.lookback = this.lib.movingAverageLookback(10, MAType.Mama);
     this.retCode = this.lib.movingAverage(0, this.input.length - 1, this.input, 10, MAType.Mama, this.outBegIdx, this.outNbElement, this.output);
   }
-  
+
+  /**
+   * Do pola lookback funkcja przypisuje wartosc zwracana przez metode movingAverageLookback
+   * Do pola retCode funkcja przypisuje wartosc zwracana przez metode movingAverage
+   * Program zostanie zatrzymany jestli wartosc outBegIdx.value jest rozna od 9.
+   */
   public void testMA_SMA()
   {
     this.lookback = this.lib.movingAverageLookback(10, MAType.Sma);
     this.retCode = this.lib.movingAverage(0, this.input.length - 1, this.input, 10, MAType.Sma, this.outBegIdx, this.outNbElement, this.output);
     assertEquals(this.outBegIdx.value, 9);
   }
-  
+
+  /**
+   * Do pola lookback funkcja przypisuje wartosc zwracana przez metode cmoLookback
+   * Do pola retCode funkcja przypisuje wartosc zwracana przez metode cmo
+   * Program zostanie zatrzymany jesli wartosc output[0] jest rozna od 100.0D
+   */
   public void testCMO()
   {
     this.lookback = this.lib.cmoLookback(10);
     this.retCode = this.lib.cmo(0, this.input.length - 1, this.input, 10, this.outBegIdx, this.outNbElement, this.output);
     assertEquals(Double.valueOf(100.0D), Double.valueOf(this.output[0]));
   }
-  
+
+  /**
+   * W funkcji zostaje przygotowana tablica input, nastepnie uzyta zostaje metoda max z Core.java
+   * W funkcji znajduje sie 5 asercji:
+   * retCode, RetCode.Success
+   * outBegIdx.value, 1
+   * output[0], 2.0D
+   * output[1], 1.5D
+   * 
+   * Do zmiennej lookback zostaje przypisana zwracana wartosc przez funkcje maxLookback(2) z Core.java
+   */
   public void testSimpleCall()
   {
     this.input[0] = 2.0D;
@@ -163,7 +215,19 @@ public class CoreTest
     
     this.lookback = this.lib.maxLookback(2);
   }
-  
+  /**
+   * W funkcji utworzona zostaje tablica inputRandFltEpsilon 100-elementowa wypelniona losowo wartosciami 1.192092896E-7D lub -1.192092896E-7D
+   * tablica output 100-elementowa zostaje wypelniona wartoscia -3.0E37D
+   * Z Core.java zostaje uzyta metoda cmoLookback z parametrem rownym minimalnej wartosci typu int
+   * Z Core.java zostaje uzyta metoda cmo dla przygotowanych tablic
+   * Asercja dla nastepujacych danych:
+   * lookback, outBegIdx.value
+   * output[0], 0.0D
+   * output[1], 0.0D
+   * output[85], 0.0D
+   * output[86], -3.0E37D
+   * 
+   */
   public void testCMO2()
   {
     double[] inputRandFltEpsilon = new double[100];

@@ -11,19 +11,20 @@ import com.tictactec.ta.lib.FuncUnstId;
 import com.tictactec.ta.lib.MAType;
 import com.tictactec.ta.lib.MInteger;
 import com.tictactec.ta.lib.RetCode;
+import com.tictactec.ta.lib.meta.CoreMetaData;
 
 public class TestCore{
 
-	static Core core;
-	static FuncUnstId funcunstld;
-	static Compatibility compatibility;
+	static protected Core core;
+	static protected FuncUnstId funcunstld;
+	static protected Compatibility compatibility;
 	
-	private RetCode retCode;
-    private Core lib;
-    private int lookback;
-    private double input[];
-    private double output[];
-    private MInteger outNbElement;
+	protected RetCode retCode;
+	protected Core lib;
+	protected int lookback;
+	protected double input[];
+	protected double output[];
+	protected MInteger outNbElement;
 
 	
 	@BeforeClass
@@ -59,60 +60,12 @@ public class TestCore{
 			
 			double[] outReal = new double[1];
 			
-			
-			
 		RetCode rc = core.sma(0, 104, inputsinReal, 105, outBegIdx, outNBElement, outReal);
-		System.out.println(rc);
-		System.out.println(outBegIdx.value);
-		System.out.println(outNBElement.value);
-		
 		
 		assertArrayEquals(expecteds, outReal, 0);
 				
-				
 	}
 	
-	
-	@Test
-	public void testSMA2() {
-
-			double[] inputsinReal= new double[]  {
-					4.54,	1.25,	0.72,	12.69,	2.09,	4.20,	4.51,
-					12.93,	10.04,	9.84,	6.89,	12.44,	4.85,	1.35,
-					1.56,	0.76,	10.75,	6.65,	3.71,	7.8,	2.02,
-					7.36,	10.23,	0.15,	2.56,	10.78,  2.98,	3.45,
-					4.53,	0.56,	6.54,	2.79,	11.87,	1.27,	12.09,
-					7.72,	9.60,	12.78,	7.91,	10.47,	9.07,	3.66,
-					6.12,	6.94,	2.55,	5.01,	1.04,	3.83,	6.86,
-					9.95,	2.58,	11.94,	0.52,	5.64,	7.78,	5.00,
-					9.54,	8.96,	3.57,	8.09,	3.25,	8.75,	6.70,
-					11.49,	7.88,	0.31,	4.99,	0.80,	3.81,	12.66,
-					12.78,	10.91,	0.17,	1.41,	3.38,	11.64,	0.41,
-					9.51,	0.60,	1.59,	11.00,	0.96,   3.23,	9.77,
-					10.13,	2.47,	1.47,	11.16,	9.19,	4.99,	11.94,
-					10.82,	8.67,	9.23,	12.57,	5.85,	4.06,	12.20,
-					5.55,	6.26,	2.69,	4.13,	1.45,	4.97,	1.90
-			};
-			
-			double[] expecteds = new double[] { 6.148380952380955 };
-			
-			MInteger outBegIdx = new MInteger();
-			MInteger outNBElement = new MInteger();
-			
-			double[] outReal = new double[1];
-			
-			
-			
-		RetCode rr = core.sma(0, 104, inputsinReal, 105, outBegIdx, outNBElement, outReal);
-		System.out.println(rr);
-		System.out.println(outBegIdx.value);
-		System.out.println(outNBElement.value);
-		
-		
-		assertArrayEquals(expecteds,outReal, 0);
-				
-				
-	}
 
 	@Test
 	public void testSMA3() {
@@ -128,15 +81,8 @@ public class TestCore{
 			
 			double[] outReal = new double[1];
 			
-		int rr = core.smaLookback(1);
-
-		System.out.println(rr);
-		System.out.println(outBegIdx.value); 
-		System.out.println(outNBElement.value);
-		
-		
+		int rr = core.smaLookback(1);	
 		assertArrayEquals(expecteds, inputsinReal, 0);
-				
 				
 	}
 	
@@ -625,9 +571,6 @@ public class TestCore{
 				
 				
 			RetCode ra = core.TA_INT_EMA(0, lookback, inputsinReal, 2, lookback, outBegIdx, outNBElement, inputsinReal);
-			System.out.println(ra);
-			System.out.println(outBegIdx.value);
-			System.out.println(outNBElement.value);
 			
 			
 			assertArrayEquals(expecteds, outReal, 0);
@@ -656,7 +599,6 @@ public class TestCore{
 			 
 			funcunstld = FuncUnstId.Adx;
 			RetCode aa = core.SetUnstablePeriod(funcunstld, 0);
-
 			 
 			}
 		 
@@ -666,6 +608,9 @@ public class TestCore{
 			core.SetCompatibility(compatibility);			
 						
 			}
+		 
+		 
+		 
 		 
 		 
 }
