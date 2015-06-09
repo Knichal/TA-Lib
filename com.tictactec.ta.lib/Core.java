@@ -51,7 +51,10 @@
 package com.tictactec.ta.lib;
 
 public class Core {
-   
+   /**
+    * Prywatne pola klasy Core. Dwa z nich to tablice - jedna to tablica int, druga - tablica obiektow CandleSetting.
+    * Trzecie pole prywatne to obiekt Compatibility
+    */
    private int[] unstablePeriod;
    
    private CandleSetting[] candleSettings;
