@@ -207,6 +207,7 @@ public class Core {
      * i-ty element tablicy TA_CandleDefaultSettings. W przeciwnym wypadku na elemencie tablicy candleSettings o indeksie
      * rownym liczbie porzadkowej pola settingType wywoluje metode CopyFrom, ktora za parametr przyjmuje element tablicy
      * TA_CandleDefaultSettings o indeksie rownym liczbie porzadkowej pola settingType
+     *
      * @param przyjmuje obiekt ustawien
      * @return zwraca kod sukcesu lub kod blednego parametru
      */
@@ -232,7 +233,8 @@ public class Core {
      * przekazanego w parametrze jest niemniejsza od liczby porzadkowej pola All klasy FuncUnstId. Jesli tak, to zwraca
      * kod blednego parametru. W przeciwnym wypadku ustawia w tablicy unstablePeriod o indeksie rownym liczbie porzadkowej
      * obiektu FuncUnstId wartosc przekazana w parametrze i zwraca kod sukcesu.
-     * @param obiekt typu FuncUnstId
+     *
+     * @param obiekt  typu FuncUnstId
      * @param zmienna typu int
      * @return zwraca kod sukcesu lub kod blednego parametru.
      */
@@ -247,6 +249,7 @@ public class Core {
     /**
      * Metoda zwracajaca wartosc elementu tablicy unstablePeriod o indeksie
      * rownym liczbie porzadkowej przekazanego parametru
+     *
      * @param obiekt typu FuncUnstId
      * @return zwraca wartosc liczbowa typu int
      */
@@ -256,6 +259,7 @@ public class Core {
 
     /**
      * Setter ustawiajacy wartosc pola compatibility na wartosc przekazana w parametrze
+     *
      * @param compatibility
      */
     public void SetCompatibility(Compatibility compatibility) {
@@ -264,6 +268,7 @@ public class Core {
 
     /**
      * Funkcja zwracajaca wartosc pola compatibility
+     *
      * @return
      */
     public Compatibility getCompatibility() {
@@ -273,10 +278,33 @@ public class Core {
     /****
      * START GENCODE SECTION 1 - DO NOT DELETE THIS LINE
      ****/
+
+    /**
+     * Funkcja zwracajaca wartosc 0
+     *
+     * @return 0
+     */
     public int acosLookback() {
         return 0;
     }
 
+    /**
+     * Funkcja przyjmujaca ponizsze parametry. Sprawdza, czy pierwszy parametr jest mniejszy od zera. Jesli tak, to zwraca
+     * kod informujacy, ze indeks poczatkowy jest poza zakresem.
+     * Sprawdza, czy indeks koncowy jest mniejszy od 0 lub jest mniejszy od poczatkowego. Jesli tak to zwraca kod informujacy,
+     * ze indeks koncowy jest poza zakresem.
+     * Petla for przypisuje wszystkim elementom tablicy outReal o indeksie outIdx wartosci funkcji arcus cosinus i-tego
+     * tablicy inReal. Po wyjsciu z petli do pola value obiektu outNBElement przypisuje wartosc zmiennej outIdx.
+     * Do pola value obiektu outBegIdx przupisuje wartosc zmiennej startIdx. Zwraca kod sukcesu.
+     *
+     * @param startIdx
+     * @param endIdx
+     * @param inReal
+     * @param outBegIdx
+     * @param outNBElement
+     * @param outReal
+     * @return
+     */
     public RetCode acos(int startIdx,
                         int endIdx,
                         double inReal[],
