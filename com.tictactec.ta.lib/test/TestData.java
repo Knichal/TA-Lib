@@ -21,7 +21,15 @@ public class TestData
   public static final double TA_REAL_MAX = 3.0E37D;
   public static final double TA_INTEGER_DEFAULT = -2.147483648E9D;
   public static final double TA_REAL_DEFAULT = -4.0E37D;
-  
+  /** 
+   * Konstruktor domyslny <p>
+   * przygotowuje tablice, <p> 
+   * dla kazdego elementu <b>inputNegData</b> wywolana zostaje metoda <b>setData(int,int,int,int)</b> z parametrami i, -i, -i, -i gdzie i to indeks danego elementu <p>
+   * dla kazdego elementu <b>inputZeroData</b> wywolana zostaje metoda <b>setData(int,double,float,int)</b> z parametrami i, 0.0D, 0.0F, 0 gdzie i to indeks danego elementu <p>
+   * dla kazdego elementu <b>inputRandomData</b> wywolana jest metoda <b>setData(int,double,float,int)</b> z parametrami i,rand,rand gdzie i to indeks danego elementu, rand liczba pseudolosowa z zakresu 0 - 1/97.234D <p>
+   * dla kazdego elementu <b>inputRandFltEpsilon</b> wywolana jest metoda <b>setData(int,double,float)</b> z parametrami i,data*sign,data*sign gdzie i to indeks danego elementu, data to 1.192092896E-7D, sign to 1 lub -1 (wybierane pseudolosowo) <p>
+   * dla kazdego elementu <b>inputRandDblEpsilon</b> wywolana jest metoda <b>setData(int,float,int)</b> z parametrami i,data,sign gdzie i to indeks danego elementu, data to 2.220446049250313E-16D, sign to 1 lub -1 (wybierane pseudolosowo) <p>
+   */
   TestData()
   {
     this.allInputData = new ArrayList();
@@ -42,7 +50,7 @@ public class TestData
       this.inputZeroData.setData(i, 0.0D, 0.0F, 0);
     }
     for (int i = 0; i < this.inputRandomData.size(); i++)
-    {
+    { 
       double rand = Math.random() / 97.234D;
       this.inputRandomData.setData(i, rand, (float)rand, (int)rand);
     }
@@ -53,6 +61,7 @@ public class TestData
       this.inputRandFltEpsilon.setData(i, data, (float)data, 
         sign != 0 ? -2147483647 : Integer.MAX_VALUE);
     }
+    
     for (int i = 0; i < this.inputRandDblEpsilon.size(); i++)
     {
       int sign = (int)Math.random() % 2;
@@ -60,7 +69,10 @@ public class TestData
       this.inputRandDblEpsilon.setData(i, data, (float)data, sign != 0 ? 1 : -1);
     }
   }
-  
+  /**
+   * Funkcja zwraca liste allInputData
+   * @return lista obiektow InputData
+   */
   public List<InputData> getAllInputData()
   {
     return this.allInputData;

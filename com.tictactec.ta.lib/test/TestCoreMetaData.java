@@ -22,8 +22,14 @@ import java.util.Set;
 
 public class TestCoreMetaData
 {
+	/**
+	 * Konstruktor domyslny, pusty
+	 */
   public TestCoreMetaData() {}
-  
+  /**
+   * Funkcja glowna 
+   * @param args - niewykorzystywane parametry
+   */
   public static void main(String[] args)
   {
     TaGrpService grpServ = new TaGrpService()
