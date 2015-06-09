@@ -244,14 +244,28 @@ public class Core {
         return RetCode.Success;
     }
 
+    /**
+     * Metoda zwracajaca wartosc elementu tablicy unstablePeriod o indeksie
+     * rownym liczbie porzadkowej przekazanego parametru
+     * @param obiekt typu FuncUnstId
+     * @return zwraca wartosc liczbowa typu int
+     */
     public int GetUnstablePeriod(FuncUnstId id) {
         return unstablePeriod[id.ordinal()];
     }
 
+    /**
+     * Setter ustawiajacy wartosc pola compatibility na wartosc przekazana w parametrze
+     * @param compatibility
+     */
     public void SetCompatibility(Compatibility compatibility) {
         this.compatibility = compatibility;
     }
 
+    /**
+     * Funkcja zwracajaca wartosc pola compatibility
+     * @return
+     */
     public Compatibility getCompatibility() {
         return compatibility;
     }
