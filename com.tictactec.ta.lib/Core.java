@@ -227,6 +227,15 @@ public class Core {
         return RetCode.Success;
     }
 
+    /**
+     * Funkcja ustawiajaca niestabilny okres zwrotu. Przyjmuje ponizsze parametry. Sprawdza, czy liczba porzadkowa obiektu
+     * przekazanego w parametrze jest niemniejsza od liczby porzadkowej pola All klasy FuncUnstId. Jesli tak, to zwraca
+     * kod blednego parametru. W przeciwnym wypadku ustawia w tablicy unstablePeriod o indeksie rownym liczbie porzadkowej
+     * obiektu FuncUnstId wartosc przekazana w parametrze i zwraca kod sukcesu.
+     * @param obiekt typu FuncUnstId
+     * @param zmienna typu int
+     * @return zwraca kod sukcesu lub kod blednego parametru.
+     */
     public RetCode SetUnstablePeriod(FuncUnstId id, int period) {
         if (id.ordinal() >= FuncUnstId.All
                 .ordinal())
