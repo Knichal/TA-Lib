@@ -46,9 +46,11 @@
  */
 
 package com.tictactec.ta.lib.meta;
-
 /**
- * @deprecated in favor of interfaces TaFuncService and taGrpService
+ * Klasa jest przestarza³a na rzecz interfejsów TAFuncService i TaGrpService.
+ * @deprecated
+ * @author Komentarz - Maciej Knichal
+ *
  */
 public interface TaFuncClosure
 {
