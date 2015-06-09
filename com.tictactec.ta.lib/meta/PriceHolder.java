@@ -45,19 +45,16 @@
  */
 
 package com.tictactec.ta.lib.meta;
-
-
 /**
- * PriceHolder is responsible for holding prices, which are composed by OHLCVI, i.e:
+ * PriceHolder jest odpowiedzialny za zachowanie cen(notowañ cenowych) które sk³adaja sie w OHLCVI, np.:
  * open, high, low, close, volume and open interest.
- * 
- * <p>Indicators which take prices as input, only take subsets of OHLCVI components and one could think
- * that PriceHolder could be used for such purpose. <i>This class is not intended to hold prices passed to indicators.</i>
- * 
- * <p>In order to avoid this kind of confusion, PriceHolder cannot be initialized with null arrays.
- * PriceHoder also checks if all arrays passed to constructor have the same length.
- * 
- * @author Richard Gomes
+ *
+ * WskaŸniki matematyczne korzystaj¹ce z cen na wejœciu, bior¹ tylko podzbiór komponentu OHLCVI.
+ * Mog³oby siê wydawaæ, ¿e ta klasa mo¿e byæ wykorzystana w tym celu. Jednak nie jest ona przeznaczona do trzymania cen dla wskaŸników.
+ * By to wyt³umaczyc: Tablice zawarte w PriceHolder nie mog¹ byc inicjalizowane wartoœci¹ null. Oraz wszystkie tablice musz¹ miec t¹ sam¹ d³ugoœæ.
+ *
+ * @author Komentarz - Maciej Knichal
+ *
  */
 public class PriceHolder {
 
@@ -68,19 +65,16 @@ public class PriceHolder {
     private double[] v;
     private double[] i;
     public final int length;
-    
     /**
-     * Stores all data point arrays in a PriceHolder instance
-     *  
-     * @param o represent the open data points and is expected to be <b>double[]</b> assignment compatible.
-     * @param h represent the high data points and is expected to be <b>double[]</b> assignment compatible.
-     * @param l represent the low data points and is expected to be <b>double[]</b> assignment compatible.
-     * @param c represent the close data points and is expected to be <b>double[]</b> assignment compatible.
-     * @param v represent the volume data points and is expected to be <b>double[]</b> assignment compatible.
-     * @param i represent the open interest data points and is expected to be <b>double[]</b> assignment compatible.
-     * 
-     * @throws NullPointerException if any arrays is null
-     * @throws IllegalArgumentException if sizes of arrays dont match
+     * Konstruktor klasy. Przechowuje wszystkie dane punktów w tablicach.
+     * @param O Reprezentuje tzw. open data points.
+     * @param H Reprezentuje tzw. high data points.
+     * @param L Reprezentuje tzw. low data points.
+     * @param C Reprezentuje tzw. close data points.
+     * @param V Reprezentuje tzw. volume data points.
+     * @param I Reprezentuje tzw. open interest data points.
+     * @throws NullPointerException Jesli tablica jest pusta.
+     * @throws IllegalArgumentException Jesli tablice sa roznej dlugosci.
      */
     public PriceHolder(double[] o, double[] h, double[] l, double[] c, double[] v, double[] i) 
             throws NullPointerException, IllegalArgumentException {
@@ -106,19 +100,17 @@ public class PriceHolder {
         this.v = v;
         this.i = i;
     }
-    
     /**
-     * This method is deprecated. Use public field "length" instead.
+     * Metoda ta jest przestarza³a. U¿yj publicznej zmiennej "length".
      * @deprecated
      * @return length
      */
     public int getSize() {
         return length;
     }
-    
     /**
-     * @return an Object[] which contais <b>all<b> data point arrays OHLCVI.
-     * @see PriceInputParameter overrides this method
+     * Metoda ta przekszta³ca OHLCVI w tablicê ze wszystkimi punktami.
+     * @return Object[] zawieraj¹cy wszystkie punktu OHLCVI.
      */
     public Object[] toArrays() {
         Object objs[] = new Object[6];
@@ -131,40 +123,34 @@ public class PriceHolder {
         objs[n++] = i;
         return objs;
     }
-
     /**
-     * 
-     * @return the Open component
+     *  Metoda ta zwraca tablice open.
+     * @return double[] z wartosciami Open.
      */
     public double[] getO() { return o; }
-    
     /**
-     * 
-     * @return the High component
+     * Metoda ta zwraca tablece high.
+     * @return double[] z wartosciami High.
      */
     public double[] getH() { return h; }
-    
     /**
-     * 
-     * @return the Low component
+     * Metoda ta zwraca tablece low.
+     * @return double[] z wartosciami Low.
      */
     public double[] getL() { return l; }
-    
     /**
-     * 
-     * @return the Close component
+     * Metoda ta zwraca tablece Close.
+     * @return double[] z wartosciami Close.
      */
     public double[] getC() { return c; }
-    
     /**
-     * 
-     * @return the Volume component
+     * Metoda ta zwraca tablece Volume.
+     * @return double[] z wartosciami Volume.
      */
     public double[] getV() { return v; }
-    
     /**
-     * 
-     * @return the Open Interest component
+     * Metoda ta zwraca tablece OpenInterest.
+     * @return double[] z wartosciami OpenInterest.
      */
     public double[] getI() { return i; }
     
