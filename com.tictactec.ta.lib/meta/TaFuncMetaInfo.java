@@ -53,9 +53,12 @@ import java.lang.reflect.Method;
 import com.tictactec.ta.lib.Core;
 import com.tictactec.ta.lib.MInteger;
 import com.tictactec.ta.lib.RetCode;
-
 /**
- * @deprecated in favor of CoreMetaData class
+ * Klasa ta jest przestarza³a na rzecz klasy CoreMetaData.
+ * Wiêkszoœc funkcji z tej klasy jest zaimplementowana w klasie CoreMetaData.
+ * @deprecated
+ * @author Komentarz - Maciej Knichal
+ *
  */
 public class TaFuncMetaInfo extends TaFuncSignature
 {
