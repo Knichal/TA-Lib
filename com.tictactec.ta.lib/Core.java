@@ -117,15 +117,15 @@ public class Core {
      * pole RealBody klasy RangeType, oraz dwie stale - 10 oraz 1.0, bedace kolejno srednim okresem zwrotu oraz wspolczynnikiem.
      * - CandleSetting przyjmujacy za parametr wartosc pola BodyDoji klasy CandleSettingType,
      * pole HighLow klasy RangeType, oraz dwie stale - 10 oraz 0.1, bedace kolejno srednim okresem zwrotu oraz wspolczynnikiem.
-     *  - CandleSetting przyjmujacy za parametr wartosc pola ShadowLong klasy CandleSettingType,
+     * - CandleSetting przyjmujacy za parametr wartosc pola ShadowLong klasy CandleSettingType,
      * pole RealBody klasy RangeType, oraz dwie stale - 0 oraz 1.0, bedace kolejno srednim okresem zwrotu oraz wspolczynnikiem.
-     *  - CandleSetting przyjmujacy za parametr wartosc pola ShadowVeryLong klasy CandleSettingType,
+     * - CandleSetting przyjmujacy za parametr wartosc pola ShadowVeryLong klasy CandleSettingType,
      * pole RealBody klasy RangeType, oraz dwie stale - 10 oraz 1.0, bedace kolejno srednim okresem zwrotu oraz wspolczynnikiem.
-     *  - CandleSetting przyjmujacy za parametr wartosc pola ShadowShort klasy CandleSettingType,
+     * - CandleSetting przyjmujacy za parametr wartosc pola ShadowShort klasy CandleSettingType,
      * pole Shadows klasy RangeType, oraz dwie stale - 10 oraz 1.0, bedace kolejno srednim okresem zwrotu oraz wspolczynnikiem.
      * - CandleSetting przyjmujacy za parametr wartosc pola ShadowVeryShort klasy CandleSettingType,
      * pole HighLow klasy RangeType, oraz dwie stale - 10 oraz 0.1, bedace kolejno srednim okresem zwrotu oraz wspolczynnikiem.
-     *  - CandleSetting przyjmujacy za parametr wartosc pola Near klasy CandleSettingType,
+     * - CandleSetting przyjmujacy za parametr wartosc pola Near klasy CandleSettingType,
      * pole HighLow klasy RangeType, oraz dwie stale - 5 oraz 0.2, bedace kolejno srednim okresem zwrotu oraz wspolczynnikiem.
      * - CandleSetting przyjmujacy za parametr wartosc pola Far klasy CandleSettingType,
      * pole HighLow klasy RangeType, oraz dwie stale - 5 oraz 0.6, bedace kolejno srednim okresem zwrotu oraz wspolczynnikiem.
@@ -197,6 +197,19 @@ public class Core {
             new CandleSetting(CandleSettingType.Equal,
                     RangeType.HighLow, 5, 0.05)};
 
+    /**
+     * Metoda przywracajace domyslne ustawienia CandleSettingType.
+     * Sprawdza, czy liczba porzadkowa obiektu settingType jest wieksza od liczby porzadkowej
+     * pola AllCandleSettings klasy CandleSettingType. Jesli tak to zwraca kod bledu.
+     * W przeciwnym wypadku sprawdza, czy obiekt z parametru jest rowny polu AllCandleSettings
+     * z klasy CandleSettingType. Jesli tak, to na elementach tablicy candleSettings od indeksu 0 do indeksu rownego
+     * liczbie porzadkowej pola AllCandle Setting wywoluje metode CopyFrom, ktorej argumentem jest
+     * i-ty element tablicy TA_CandleDefaultSettings. W przeciwnym wypadku na elemencie tablicy candleSettings o indeksie
+     * rownym liczbie porzadkowej pola settingType wywoluje metode CopyFrom, ktora za parametr przyjmuje element tablicy
+     * TA_CandleDefaultSettings o indeksie rownym liczbie porzadkowej pola settingType
+     * @param przyjmuje obiekt ustawien
+     * @return zwraca kod sukcesu lub kod blednego parametru
+     */
     public RetCode RestoreCandleDefaultSettings(
             CandleSettingType settingType) {
         int i;
