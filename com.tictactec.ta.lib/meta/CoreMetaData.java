@@ -74,24 +74,17 @@ import com.tictactec.ta.lib.meta.annotation.RealList;
 import com.tictactec.ta.lib.meta.annotation.RealRange;
 
 /**
- * CoreMetaData provides low level RTTI (Run Time Type Information) for TA functions. It also provides methods
- * for those willing to call a certain TA function using late binding techniques. These two functionalities let you
- * call TA functions dinamically. Even if more TA functions are added by the time, your application code will be able
- * to call all added functions by querying TA-Lib package about:
- * 
- * <li>TA functions available;
- * <li>function groups the TA functions belong to;
- * <li>input arguments of TA functions and also their run time type information;
- * <li>output arguments of TA functions and also their run time type information;
- * <li>optional input arguments of TA functions and also their run time type information;
+ * CoreMetaData jest klas¹, która dostarcza RTTI (http://pl.wikipedia.org/wiki/RTTI) dla klas. Ponadto przekazuje metody dla tych klas, które chc¹ wywo³ac funkcjê u¿ywaj¹c Late Binding Techniques.
+ * Te dwie funkcjonalnoœci pozwalaj¹ na wywo³ywanie funkcji dynamicznie. Nawet jeŸli zostan¹ dodane nowe funkcje do bibliooteki TA-LIB, twój kod aplikacji bêdzie móg³ wywo³ac wszystkie dodane funkcje, pytaj¹c pakiet TA-Lib o:
  *
- * CoreMetaData is mostly intended for API developers and mimic as accurately as possible the functionality exposed by
- * <i>ta_abstract.h</i> "C" header file.
-
- * @see com.tictactec.ta.lib.meta.helpers.SimpleHelper is a simple API level helper class based on CoreMetaData
- * @see com.tictactec.ta.lib.meta.CoreMetaDataCompatibility for a "C" style interface, mostly intended for those traslating "C" code to Java.
- * 
- * @author Richard Gomes
+ * <li>dostêpne funkcje.
+ * <li>dostêpne grupy funkcji.
+ * <li>argumenty wejœciowe funkcji oraz RTTI.
+ * <li>argumenty wyjœciowa funkcji oraz RTTI.
+ * <li>opcjonalne argumentu wejsciowe funkcji oraz RTTI.
+ *
+ * @author KOMENTARZ: Maciej Knicha³
+ *
  */
 public class CoreMetaData implements Comparable<CoreMetaData> {
     
@@ -128,11 +121,18 @@ public class CoreMetaData implements Comparable<CoreMetaData> {
             }
         }
     }
-
+    /**
+     * Metoda ta porównuje CoreMetaData miêdzy sob¹.
+     * @param arg Obiekt CoreMetaData do porównania.
+     * @return Zwraca liczbe reprezentuj¹ca porównanie.
+     */
     public int compareTo(CoreMetaData arg) {
         return this.name.compareTo(arg.name);
     }
-
+    /**
+     * Metoda ta pobiera wszystkie dostêpne funkcje i zwraca je w postaci obiektu Map<String, CoreMetaData>.
+     * @return Zwraca spis wszystkich funkcji.
+     */
     static private Map<String, CoreMetaData> getAllFuncs() {
         synchronized (coreClass) {
             if (taFuncMap == null) {
@@ -141,7 +141,10 @@ public class CoreMetaData implements Comparable<CoreMetaData> {
         }
         return taFuncMap;
     }
-
+    /**
+     * Metoda ta pobiera wszystkie grupy funkcji i zwraca je w postaci obiektu Map<String, Set<CoreMetaData>>.
+     * @return Zwraca spis wszystkich grup funkcji.
+     */
     static private Map<String, Set<CoreMetaData> > getAllGrps() {
         synchronized (coreClass) {
             if (taGrpMap == null) {
@@ -150,7 +153,10 @@ public class CoreMetaData implements Comparable<CoreMetaData> {
         }
         return taGrpMap;
     }
-
+    /**
+     * Metoda ta pobiera wszystkie metody Lookback i zwraca je w postaci obiektu Map<String, Method>.
+     * @return Zwraca listê metod Lookback.
+     */
     static private Map<String, Method> getLookbackMethodMap() {
         Map<String, Method> map = new HashMap<String, Method>();
         Method[] ms = coreClass.getDeclaredMethods();
@@ -162,7 +168,10 @@ public class CoreMetaData implements Comparable<CoreMetaData> {
         }
         return map;
     }
-
+    /**
+     * Metoda ta pobiere Informacje na temat funkcji w blibliotece TA i zwraca je w postaci obiektu Map<String, CoreMetaData>.
+     * @return Zwraca liste informacji na temat funkcji w bibliotece TA.
+     */
     static private Map<String, CoreMetaData> getTaFuncMetaInfoMap() {
         Map<String, CoreMetaData> result = new TreeMap<String, CoreMetaData>();
         Method[] ms = coreClass.getDeclaredMethods();
@@ -187,7 +196,10 @@ public class CoreMetaData implements Comparable<CoreMetaData> {
         }
         return result;
     }
-
+    /**
+     * Metoda ta pobiera Informacje na temat grup w bibliotece TA i zwraca je w postaci obiektu Map<String, Set<CoreMetaData>>.
+     * @return Zwraca listê informacji na temat grup w bibliotece TA.
+     */
     static private Map<String, Set<CoreMetaData> > getTaGrpMetaInfoMap() {
         if (taFuncMap==null) getAllFuncs();
         Map<String, Set<CoreMetaData> > result = new TreeMap<String, Set<CoreMetaData> >();
@@ -203,13 +215,23 @@ public class CoreMetaData implements Comparable<CoreMetaData> {
         }
         return result;
     }
-    
+    /**
+     * Metoda ta pobiera informacje na temat Metody TA.
+     * @param method Metoda z biblioteki TA.
+     * @return Opis funkcji.
+     * @throws IncompleteAnnotationException.
+     */
     static private FuncInfo getFuncInfo(Method method) throws IncompleteAnnotationException {
         FuncInfo annotation = method.getAnnotation(FuncInfo.class);
         if (annotation != null) return annotation;
         throw new IncompleteAnnotationException(FuncInfo.class, "Method " + method.getName());
     }
-
+    /**
+     * Metoda ta zwraca uchwyt do funkcji.
+     * @param name Nazwa funkcji.
+     * @return Zwraca Obiekt CoreMetaData jako uchwyt do funkcji.
+     * @throws NoSuchMethodException Wtedy, kiedy nie znajdzie nazwy funkcji w zbiorze wszystkich funkcji.
+     */
     static CoreMetaData getFuncHandle(final String name) throws NoSuchMethodException {
         CoreMetaData mi = getAllFuncs().get(name.toUpperCase());
         if (mi == null) throw new NoSuchMethodException(name.toUpperCase());
@@ -221,28 +243,30 @@ public class CoreMetaData implements Comparable<CoreMetaData> {
     }
 
     /**
-     * Returns the instance which describes a TA function. This is a
-     * convenience method that simply adopts the standard "getInstance"
-     * convention. This method simply calls getFuncHandle.
+     * Zwraca instancjê, która opisuje metode TA. Mo¿na j¹ opisaæ jako "Uchwyt do Metody" .
      * 
-     * @param name
-     * @return an instance of CoreMetaData
-     * @throws NoSuchMethodException
+     * @param name Jest to nazwa funkcji.
+     * @return Zwraca instancjê obiektu CoreMetaData.
+     * @throws NoSuchMethodException Wtedy, kiedy nie znajdzie nazwy funkcji w zbiorze wszystkich funkcji.
      */
     static public CoreMetaData getInstance(final String name) throws NoSuchMethodException {
         return getFuncHandle(name);
     }
 
     /**
-     * Returns an annotation which describes this TA function.
-     * 
-     * @return an @interface FuncInfo
-     * @throws IncompleteAnnotationException
+     * Zwraca adnotacjê, która opisuje funkcjê TA.
+     * @return Interfejs FuncInfo.
+     * @throws IncompleteAnnotationException.
      */
     public FuncInfo getFuncInfo() throws IncompleteAnnotationException {
         return getFuncInfo(function);
     }
-
+    /**
+     * Metoda ta pobiera informacje na temat parametru.
+     * @param paramIndex Indeks parametru.
+     * @param paramAnnotation Typ parametru.
+     * @return informacje na temat parametru jako obiekt Annotation.
+     */
     private Annotation getParameterInfo(final int paramIndex, Class<? extends Object> paramAnnotation) {
         if (paramIndex < 0)
             throw new IllegalArgumentException(INDEX_OUT_OF_BOUNDS);
@@ -276,93 +300,76 @@ public class CoreMetaData implements Comparable<CoreMetaData> {
     }
 
     /**
-     * Returns an annotation which describes the n-th input parameter requested, if any.
-     * 
-     * @param paramIndex is the n-th input parameter
-     * @return an @interface InputParameterInfo
-     * @throws IllegalArgumentException
+     * Metoda ta zwraca adnotacje, która opisuje n-ty parametr wejsciowy.
+     * @param paramIndex Indeks parametru.
+     * @return adnotacje opisujaca n-ty parametr wejsciowy.
+     * @throws IllegalArgumentException.
      */
     public InputParameterInfo getInputParameterInfo(final int paramIndex) throws IllegalArgumentException {
         return (InputParameterInfo) getParameterInfo(paramIndex, InputParameterInfo.class);
     }
-
     /**
-     * Returns an annotation which describes the n-th output parameter requested, if any.
-     * 
-     * @param paramIndex is the n-th output parameter
-     * @return an @interface OutputParameterInfo
-     * @throws IllegalArgumentException
+     * Metoda ta zwraca adnotacjê, która opisuje n-ty parametr wyjœciowy.
+     * @param paramIndex Indeks parametru.
+     * @return adnotacje opisuj¹ca n-ty parametr wyjœciowy.
+     * @throws IllegalArgumentException.
      */
     public OutputParameterInfo getOutputParameterInfo(final int paramIndex) throws IllegalArgumentException {
         return (OutputParameterInfo) getParameterInfo(paramIndex, OutputParameterInfo.class);
     }
-
     /**
-     * Returns an annotation which describes the n-th optional input parameter requested, if any.
-     * 
-     * @param paramIndex is the n-th optional input parameter
-     * @return an @interface OptInputParameterInfo
-     * @throws IllegalArgumentException
+     * Metoda ta zwraca adnotacje, która opisuje n-ty opcjonalny parametr wejsciowy.
+     * @param paramIndex Indeks parametru.
+     * @return adnotacje opisuj¹ca n-ty opcjonalny parametr wejœciowy.
+     * @throws IllegalArgumentException.
      */
     public OptInputParameterInfo getOptInputParameterInfo(final int paramIndex) throws IllegalArgumentException {
         return (OptInputParameterInfo) getParameterInfo(paramIndex, OptInputParameterInfo.class);
     }
-
     /**
-     * Returns an annotation describing an optional input parameter which type
-     * is expected to be an IntegerList
-     * 
-     * @param paramIndex is the n-th optional input parameter
-     * @return an @interface IntegerList
-     * @throws IllegalArgumentException
+     * Metoda ta zwraca adnotacje, która opisuje n-ty opcjonalny parametr wejœciowy który powinien byæ typu IntegerList.
+     * @param paramIndex Indeks parametru.
+     * @return interfejs IntegerList.
+     * @throws IllegalArgumentException.
      */
     public IntegerList getOptInputIntegerList(final int paramIndex) throws IllegalArgumentException {
         return (IntegerList) getParameterInfo(paramIndex, OptInputParameterInfo.class, IntegerList.class);
     }
-
     /**
-     * Returns an annotation describing an optional input parameter which type
-     * is expected to be an IntegerRange
-     * 
-     * @param paramIndex is the n-th optional input parameter
-     * @return an @interface IntegerRange
-     * @throws IllegalArgumentException
+     * Metoda ta zwraca adnotacje, która opisuje n-ty opcjonalny parametr wejœciowy który powinien byæ typu IntegerRange.
+     * @param paramIndex Indeks parametru.
+     * @return Interfejs IntegerRange.
+     * @throws IllegalArgumentException.
      */
     public IntegerRange getOptInputIntegerRange(final int paramIndex) throws IllegalArgumentException {
         return (IntegerRange) getParameterInfo(paramIndex, OptInputParameterInfo.class, IntegerRange.class);
     }
 
     /**
-     * Returns an annotation describing an optional input parameter which type
-     * is expected to be an RealList
-     * 
-     * @param paramIndex is the n-th optional input parameter
-     * @return an @interface RealList
-     * @throws IllegalArgumentException
+     * Metoda ta zwraca adnotacje, która opisuje n-ty opcjonalny parametr wejœciowy który powinien byæ typu RealList.
+     * @param paramIndex Indeks parametru.
+     * @return Interfejs RealList.
+     * @throws IllegalArgumentException.
      */
     public RealList getOptInputRealList(final int paramIndex) throws IllegalArgumentException {
         return (RealList) getParameterInfo(paramIndex, OptInputParameterInfo.class, RealList.class);
     }
 
     /**
-     * Returns an annotation describing an optional input parameter which type
-     * is expected to be an RealRange
-     * 
-     * @param paramIndex is the n-th optional input parameter
-     * @return an @interface RealRange
-     * @throws IllegalArgumentException
+     * Metoda ta zwraca adnotacje, która opisuje n-ty opcjonalny parametr wejœciowy który powinien byæ typu RealRange.
+     * @param paramIndex Indeks parametru.
+     * @return Interfejs RealRange.
+     * @throws IllegalArgumentException.
      */
     public RealRange getOptInputRealRange(final int paramIndex) throws IllegalArgumentException {
         return (RealRange) getParameterInfo(paramIndex, OptInputParameterInfo.class, RealRange.class);
     }
-
     /**
-     * Assigns an <b>int</b> value to an optional input parameter
-     * which is expected to be assignment compatible to <b>int</b>.
-     * 
-     * @param paramIndex is the n-th optional input parameter
-     * @param value is the <b>int</b> value
-     * @throws IllegalArgumentException
+     * Metoda ta ustawia now¹ wartoœc typu int dla n-tego opcjonalny parametr wejœciowy. Oczekuje siê kompatybilnoœci n-tego parametru z int.
+     * @param paramIndex Indeks parametru.
+     * @param value Wartoœc do ustawienia.
+     * @throws IllegalArgumentException.
+     * @throws InternalError.
      */
     public void setOptInputParamInteger(final int paramIndex, final int value) throws IllegalArgumentException {
         OptInputParameterInfo param = getOptInputParameterInfo(paramIndex);
@@ -386,14 +393,12 @@ public class CoreMetaData implements Comparable<CoreMetaData> {
         } 
         throw new InternalError(CONTACT_DEVELOPERS);
     }
-
     /**
-     * Assigns an <b>int</b> value obtained from a <b>String</b> to an optional input parameter
-     * which is expected to be assignment compatible to <b>int</b>.
-     * 
-     * @param paramIndex is the n-th optional input parameter
-     * @param string is the <b>String</b> which must hold an <b>int</b> value
-     * @throws IllegalArgumentException
+     * Metoda ta ustawia now¹ wartoœc typu int, pobran¹ z obiektu typu String dla n-tego opcjonalnego parametru wejœciowego. Oczekuje siê kompatybilnoœci n-tego parametru z int.
+     * @param paramIndex indeks parametru.
+     * @param string wartoœc która zostanie zmieniona na int.
+     * @throws IllegalArgumentException.
+     * @throws InternalError.
      */
     public void setOptInputParamInteger(final int paramIndex, final String string) throws IllegalArgumentException {
         try {
@@ -410,7 +415,7 @@ public class CoreMetaData implements Comparable<CoreMetaData> {
             // Currently, all IntegerList instances implicitly depend on MAType class
             // but it may change some day.
             
-            MAType[] fields = MAType.values();
+            MAType[] fields = M AType.values();
             for (MAType value : fields) {
                 if (value.name().toUpperCase().equals(string.toUpperCase())) {
                     if (callOptInputParams==null) callOptInputParams = new Object[getFuncInfo().nbOptInput()];
@@ -421,14 +426,12 @@ public class CoreMetaData implements Comparable<CoreMetaData> {
             throw new InternalError(CONTACT_DEVELOPERS);
         }
     }
-
     /**
-     * Assigns an <b>double</b> value to an optional input parameter
-     * which is expected to be assignment compatible to <b>double</b>.
-     * 
-     * @param paramIndex is the n-th optional input parameter
-     * @param value is the <b>double</b> value
-     * @throws IllegalArgumentException
+     * Metoda ta ustawia now¹ wartoœc typu double dla n-tego opcjonalnego parametru wejœciowego. Oczekuje siê kompatyblinoœci n-tego parametru z double.
+     * @param paramIndex Indeks parametru.
+     * @param value Nowa wartoœc.
+     * @throws IllegalArgumentException.
+     * @throws InternalError.
      */
     public void setOptInputParamReal(final int paramIndex, final double value) throws IllegalArgumentException {
         OptInputParameterInfo param = getOptInputParameterInfo(paramIndex);
@@ -451,14 +454,12 @@ public class CoreMetaData implements Comparable<CoreMetaData> {
         }
         throw new InternalError(CONTACT_DEVELOPERS);
     }
-
     /**
-     * Assigns an <b>double</b> value obtained from a <b>String</b> to an optional input parameter
-     * which is expected to be assignment compatible to <b>double</b>.
-     * 
-     * @param paramIndex is the n-th optional input parameter
-     * @param string is the <b>String</b> which must hold an <b>double</b> value
-     * @throws IllegalArgumentException
+     * Metoda ta ustawia now¹ wartoœc typu double pobran¹ z obiektu typu String dla n-tego opcjonalnego paarametru wejœciowego. Oczekuje siê kompatyblinoœci n-tego parametru z double.
+     * @param paramIndex Indeks parametru.
+     * @param string Nowa wartoœc double pobrana z obiektu typu String.
+     * @throws IllegalArgumentException.
+     * @throws InternalError.
      */
     public void setOptInputParamReal(final int paramIndex, final String string) throws IllegalArgumentException {
         try {
@@ -481,15 +482,13 @@ public class CoreMetaData implements Comparable<CoreMetaData> {
             throw new InternalError(CONTACT_DEVELOPERS);
         }
     }
-
     /**
-     * Assigns an Object which is expected to be assignment compatible of <b>double[]</b> to
-     * an input parameter which is expected to be assignment compatible of <b>double[]</b>.
-     * 
-     * @param paramIndex is the n-th input parameter
-     * @param array is an Object expected to be assignment compatible to <b>double[]</b>
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * Metoda ta ustawia now¹ tablice double[] dla n-tego parametru wejœciowego. Oczekuje siê kompatybilnoœci n-tego parametru wejœciowego z typem double[].
+     * @param paramIndex Indeks parametru.
+     * @param Array lista nowych wartosci postaci double[].
+     * @throws IllegalArgumentException Jeœli tablica nie jest typu double[].
+     * @throws NullPointerException Jesli lista jest pusta.
+     * @throws InternalError Jeœli n-ty parametr nie jest typu Real.
      */
     public void setInputParamReal(final int paramIndex, final Object array) throws IllegalArgumentException, NullPointerException {
         if (array==null) throw new NullPointerException(ARRAY_IS_NULL);
@@ -499,15 +498,14 @@ public class CoreMetaData implements Comparable<CoreMetaData> {
         if (callInputParams==null) callInputParams = new Object[getFuncInfo().nbInput()];
         callInputParams[paramIndex] = array;
     }
-
     /**
-     * Assigns an Object which is expected to be assignment compatible of <b>int[]</b> to
-     * an input parameter which is expected to be assignment compatible of <b>int[]</b>.
-     * 
-     * @param paramIndex is the n-th input parameter
-     * @param array is an Object expected to be assignment compatible to <b>int[]</b>
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     *
+     * Metoda ta ustawia now¹ tablice int[] dla n-tego parametru wejœciowego. Oczekuje siê kompatybilnoœci n-tego parametru wejœciowego z typem int[].
+     * @param paramIndex Indeks parametru.
+     * @param Array lista nowych wartosci postaci int[].
+     * @throws IllegalArgumentException Jeœli tablica nie jest typu int[].
+     * @throws NullPointerException Jesli lista jest pusta.
+     * @throws InternalError Jeœli n-ty parametr nie jest typu Integer.
      */
     public void setInputParamInteger(final int paramIndex, final Object array) throws IllegalArgumentException, NullPointerException {
         if (array==null) throw new NullPointerException(ARRAY_IS_NULL);
@@ -517,22 +515,18 @@ public class CoreMetaData implements Comparable<CoreMetaData> {
         if (callInputParams==null) callInputParams = new Object[getFuncInfo().nbInput()];
         callInputParams[paramIndex] = array;
     }
-
     /**
-     * Assigns Objects which are expected to be assignment compatible of <b>double[]</b> to
-     * an input parameter which is expected to be assignment compatible of <b>PriceInputParameter</b>.
-     * 
-     * <p>You only need to pass those parameters strictly needed by the n-th input parameter of a certain TA function.
-     * 
-     * @param paramIndex is the n-th input parameter
-     * @param open represents the open prices. This Object expected to be assignment compatible to <b>double[]</b>
-     * @param high represents the high prices. This Object expected to be assignment compatible to <b>double[]</b>
-     * @param low represents the low prices. This Object expected to be assignment compatible to <b>double[]</b>
-     * @param close represents the close prices. This Object expected to be assignment compatible to <b>double[]</b>
-     * @param volume represents the volume. This Object expected to be assignment compatible to <b>double[]</b>
-     * @param openInterest represents the open interest. This Object expected to be assignment compatible to <b>double[]</b>
+     * Metoda ta ustawia now¹ tablice double[] dla n-tego parametru wejœciowego. Oczekuje siê kompatybilnoœci n-tego parametru wejœciowego z typem PriceInputParameter.
+     * @param paramIndex Indeks n-tego parametru.
+     * @param open Reprezentacja Open Prices w postaci double[].
+     * @param high Reprezentacja High Prices w postaci double[].
+     * @param low Reprezentacja Low Prices w postaci double[].
+     * @param close Reprezentacja Close Prices w postaci double[].
+     * @param volume Reprezentacje volume w postaci double[].
+     * @param openInterest Reprezentacja OpenInterest w postaci double[].
      * @throws IllegalArgumentException
      * @throws NullPointerException
+     * @throws InternalError Jeœli n-ty parametr nie jest typu InputPrice.
      */
     public void setInputParamPrice(final int paramIndex,
                 final double[] open, final double[] high, final double[] low, final double[] close,
@@ -543,15 +537,13 @@ public class CoreMetaData implements Comparable<CoreMetaData> {
         if (callInputParams==null) callInputParams = new Object[getFuncInfo().nbInput()];
         callInputParams[paramIndex] = new PriceInputParameter(param.flags(), open, high, low, close, volume, openInterest);
     }
-
     /**
-     * Assigns an Object which are expected to be assignment compatible of <b>PriceInputParameter</b> to
-     * an input parameter which is expected to be assignment compatible of <b>PriceInputParameter</b>.
-     * 
-     * @param paramIndex is the n-th input parameter
-     * @param array is an Object expected to be assignment compatible to <b>PriceInputParameter</b>
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * Metoda ta ustawia nowy PriceInputParameter na n-ty parametr wejœciowy. Wymagane jest aby n-ty parametr wejœciowy by³ typu PriceInputParameter.
+     * @param paramIndex Indekst n-tego parametru wejsciowego.
+     * @param array Jest Obiektem od którego wymaga siê kompatybilnoœci z PriceInputParameter.
+     * @throws IllegalArgumentException Tablica nie jest obiektem PriceInputParameter.
+     * @throws NullPointerException Jeœli tablica jest pusta.
+     * @throws InternalError Parametr ma niezgodny typ z InputPrice.
      */
     public void setInputParamPrice(final int paramIndex, final Object array) throws IllegalArgumentException, NullPointerException {
         if (array==null) throw new NullPointerException(ARRAY_IS_NULL);
@@ -561,16 +553,15 @@ public class CoreMetaData implements Comparable<CoreMetaData> {
         if (callInputParams==null) callInputParams = new Object[getFuncInfo().nbInput()];
         callInputParams[paramIndex] = array;
     }
-
     /**
-     * Assigns an Object which are expected to be assignment compatible of <b>double[]</b> to
-     * an output parameter which is expected to be assignment compatible of <b>double[]</b>.
-     * 
-     * @param paramIndex is the n-th output parameter
-     * @param array is an Object expected to be assignment compatible to <b>double[]</b>
+     * Metoda ta przypisuje tablice double[] do n-tego parametru wyjsciowego. N-ty parametr wyjœciowy powinien zachowaæ kompatybilnoœæ z double[].
+     * @param paramIndex Indeks n-tego parametru.
+     * @param array Tablica double[].
      * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws NullPointerException Jeœli tablica jest pusta.
      * @throws ClassCastException
+     * @throws IllegalArgumentException Jeœli tablica nie jest typem double[].
+     * @throws InternalError Jeœli n-ty parametr wyjœciowy nie jest typu OutputReal.
      */
     public void setOutputParamReal(final int paramIndex, Object array) throws IllegalArgumentException, NullPointerException, ClassCastException {
         if (array==null) throw new NullPointerException(ARRAY_IS_NULL);
@@ -580,16 +571,16 @@ public class CoreMetaData implements Comparable<CoreMetaData> {
         if (callOutputParams==null) callOutputParams = new Object[getFuncInfo().nbOutput()];
         callOutputParams[paramIndex] = array;
     }
-
     /**
-     * Assigns an Object which are expected to be assignment compatible of <b>int[]</b> to
-     * an output parameter which is expected to be assignment compatible of <b>int[]</b>.
-     * 
-     * @param paramIndex is the n-th output parameter
-     * @param array is an Object expected to be assignment compatible to <b>int[]</b>
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
-     * @throws ClassCastException
+     *
+     * Metoda ta przypisuje tablice int[] do n-tego parametru wyjœciowego. N-ty parametr wyjœciowy powinien zachowaæ kompatybilnoœc z int[].
+     * @param paramIndex indeks n-tego parametru.
+     * @param array Tablica int[].
+     * @throws IllegalArgumentException.
+     * @throws NullPointerException Jeœli tablica jest pusta.
+     * @throws ClassCastException.
+     * @throws IllegalArgumentException Jeœli tablica nie jest typem int[].
+     * @throws InternalError Jeœli n-ty parametr wyjœciowy nie jest typu OutputInteger.
      */
     public void setOutputParamInteger(final int paramIndex, Object array) throws IllegalArgumentException, NullPointerException, ClassCastException {
         if (array==null) throw new NullPointerException(ARRAY_IS_NULL);
@@ -599,12 +590,9 @@ public class CoreMetaData implements Comparable<CoreMetaData> {
         if (callOutputParams==null) callOutputParams = new Object[getFuncInfo().nbOutput()];
         callOutputParams[paramIndex] = array;
     }
-
     /**
-     * For each defined TA function executes the <b>TaFuncService.execute()</b> interface method of the implementation
-     * class passed ar argument. 
-     * 
-     * @param service is a <b>TaFuncService</b> implementation class
+     * Pêtla forEach po funkcjach TA wykonuje co zosta³o zaimplementowane w argumencie, który jest Interfejsem.
+     * @param service jest Klas¹ implementuj¹c¹ interfejs TaFuncService
      * @throws Exception
      */
     static public void forEachFunc(TaFuncService service) throws Exception {
@@ -612,12 +600,9 @@ public class CoreMetaData implements Comparable<CoreMetaData> {
             service.execute(mi);
         }
     }
-
     /**
-     * For each defined group of TA functions executes the <b>TaFuncService.execute()</b> interface method of the implementation
-     * class passed ar argument.
-     * 
-     * @param service
+     * Pêtla ForEach która po grupach funkcji TA wykonuje co zosta³o zaimplementowane w argumencie, który jest Interfejsem.
+     * @param service jest Klasa implementuj¹ca interfejs TaGrpService
      * @throws Exception
      */
     static public void forEachGrp(TaGrpService service) throws Exception {
@@ -625,7 +610,10 @@ public class CoreMetaData implements Comparable<CoreMetaData> {
             service.execute(group, taGrpMap.get(group));
         }
     }
-
+    /**
+     * Metoda ta pobiera tablicê opcjonalnych parametrów wejœciowych.
+     * @return Zwraca tablice opcjonalnych parametrów wejœciowych
+     */
     private Object[] getOptInputParameters() {
         int size = getFuncInfo().nbOptInput();
         if (callOptInputParams==null) callOptInputParams = new Object[size];
@@ -652,15 +640,12 @@ public class CoreMetaData implements Comparable<CoreMetaData> {
         }
         return callOptInputParams;
     }
-    
-
     /**
-     * Returns the lookback.
-     * 
-     * <p> Lookback is the number of input data points to be consumed in order to calculate the first output data point. This value
-     * is affected by the optional input arguments passed to this TA function.
-     *  
-     * @return the lookback number of input points to be consumed before the first output data point is produced.
+     * Metoda ta zwraca LookBack.
+     *
+     * Lookback jest liczb¹ punktów danych wejœciowych, które mog¹ byæ u¿yte aby wyliczyæ pierszy punkt danych wyjœciowych.
+     * Wartoœœ ta zale¿y od wejœciowych argumentów opcjonalnych przekazanych do funkcji.
+     * @return Lookback
      * @throws IllegalArgumentException
      * @throws IllegalAccessException
      * @throws InvocationTargetException
@@ -669,20 +654,16 @@ public class CoreMetaData implements Comparable<CoreMetaData> {
         Object[] params = getOptInputParameters();
         return (Integer) lookback.invoke(taCore, params);
     }
-    
-    
     /**
-     * Executes the calculations defined by this TA function.
-     * 
-     * <p> You need to provide input arguments where this TA function will obtain data from and output arguments where this
-     * TA function will write output data to.
-     * 
-     * @see com.tictactec.ta.lib.meta.helpers.SimpleHelper class for an example of use.
-     * 
-     * @param startIndex is the initial position of input data to be considered for TA function calculations
-     * @param endIndex is the final position of input data to be considered for TA function calculations
-     * @param outBegIdx is returned by this method and represents the initial position of output data returned by this TA function
-     * @param outNbElement is returned by this method and represents the quantity of output data returned by this TA function
+     * Wykonanie obliczeñ zdefiniowanych przez funkcjê TA.
+     * Nale¿y podac argumenty wejœciowe z których funkcja bêdzie pobiera³a dane oraz argumenty wyjœciowe do których zostan¹ zapisane obliczenia.
+     *
+     * @see com.tictactec.ta.lib.meta.helpers.SimpleHelper Spójrz na klasê, aby zobaczyæ przyk³ady u¿ycia.
+     *
+     * @param startIndex To pocz¹tkowe po³o¿enie danych wejœciowych, które nale¿y uwzglêdnic w obliczeniach funkcji TA.
+     * @param endIndex To koñcowe po³o¿enie danych wejœciowych które nale¿y uwzglêdnic w obliczeniach funkcji TA.
+     * @param outBegIdx  Indeks wyjœciowy jest zwracany przez metode i reprezentuje pocz¹tkow¹ pozycjê danych wyjœciowych zwracan¹ przez funkcjê.
+     * @param outNbElement Jest zwracany przez metode i reprezentuje iloœc danych wyjœciowych zwróconych przez funkcjê.
      * @throws IllegalArgumentException
      * @throws IllegalAccessException
      * @throws InvocationTargetException
