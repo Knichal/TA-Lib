@@ -88,6 +88,7 @@ public class Core {
      * liczby porzadkowej pola AllCandleSettings klasy CandleSettingType typu Enum. W przypadku spe³nienia warunku zwraca
      * wartosc pola BadParam typu wyliczeniowego RetCode. W przeciwnym wypadku do pol tablicy candleSettings o indeksie rownym
      * liczbie porzadkowej pola settingType przypisuje wartosci przekazane w konstruktorze i zwraca wartosc pola Success z klasy Retcode
+     *
      * @param Obiekt  typu CandleSettingType
      * @param Obiekt  typu RangeType
      * @param zmienna typu int
@@ -106,6 +107,31 @@ public class Core {
         return RetCode.Success;
     }
 
+    /**
+     * Finalna i prywawna tablica typu CandleSetting zainicjalizowana obiektami:
+     * - CandleSetting przyjmujacy za parametr wartosc pola BodyLong klasy CandleSettingType,
+     * pole RealBody klasy RangeType, oraz dwie stale - 10 oraz 1.0, bedace kolejno srednim okresem zwrotu oraz wspolczynnikiem.
+     * - CandleSetting przyjmujacy za parametr wartosc pola BodyVeryLong klasy CandleSettingType,
+     * pole RealBody klasy RangeType, oraz dwie stale - 10 oraz 3.0, bedace kolejno srednim okresem zwrotu oraz wspolczynnikiem.
+     * - CandleSetting przyjmujacy za parametr wartosc pola BodyShort klasy CandleSettingType,
+     * pole RealBody klasy RangeType, oraz dwie stale - 10 oraz 1.0, bedace kolejno srednim okresem zwrotu oraz wspolczynnikiem.
+     * - CandleSetting przyjmujacy za parametr wartosc pola BodyDoji klasy CandleSettingType,
+     * pole HighLow klasy RangeType, oraz dwie stale - 10 oraz 0.1, bedace kolejno srednim okresem zwrotu oraz wspolczynnikiem.
+     *  - CandleSetting przyjmujacy za parametr wartosc pola ShadowLong klasy CandleSettingType,
+     * pole RealBody klasy RangeType, oraz dwie stale - 0 oraz 1.0, bedace kolejno srednim okresem zwrotu oraz wspolczynnikiem.
+     *  - CandleSetting przyjmujacy za parametr wartosc pola ShadowVeryLong klasy CandleSettingType,
+     * pole RealBody klasy RangeType, oraz dwie stale - 10 oraz 1.0, bedace kolejno srednim okresem zwrotu oraz wspolczynnikiem.
+     *  - CandleSetting przyjmujacy za parametr wartosc pola ShadowShort klasy CandleSettingType,
+     * pole Shadows klasy RangeType, oraz dwie stale - 10 oraz 1.0, bedace kolejno srednim okresem zwrotu oraz wspolczynnikiem.
+     * - CandleSetting przyjmujacy za parametr wartosc pola ShadowVeryShort klasy CandleSettingType,
+     * pole HighLow klasy RangeType, oraz dwie stale - 10 oraz 0.1, bedace kolejno srednim okresem zwrotu oraz wspolczynnikiem.
+     *  - CandleSetting przyjmujacy za parametr wartosc pola Near klasy CandleSettingType,
+     * pole HighLow klasy RangeType, oraz dwie stale - 5 oraz 0.2, bedace kolejno srednim okresem zwrotu oraz wspolczynnikiem.
+     * - CandleSetting przyjmujacy za parametr wartosc pola Far klasy CandleSettingType,
+     * pole HighLow klasy RangeType, oraz dwie stale - 5 oraz 0.6, bedace kolejno srednim okresem zwrotu oraz wspolczynnikiem.
+     * - CandleSetting przyjmujacy za parametr wartosc pola Equal klasy CandleSettingType,
+     * pole HighLow klasy RangeType, oraz dwie stale - 5 oraz 0.05, bedace kolejno srednim okresem zwrotu oraz wspolczynnikiem.
+     */
     final private CandleSetting TA_CandleDefaultSettings[] = {
       /*
       * real body is long when it's longer than the average of the 10
