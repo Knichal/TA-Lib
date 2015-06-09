@@ -50,6 +50,10 @@ package com.tictactec.ta.lib;
  * Used instead of auto-boxing because it provides a "mutable" Integer 
  * object.
  */
+
+/**
+ * Publiczna klasa zawierajaca jedno pole typu int
+ */
  public class MInteger
  {
     public int value;           

@@ -46,7 +46,9 @@
 
 package com.tictactec.ta.lib;
 
-
+/**
+ * Klasa zawierajaca typ wyliczeniowy RangeType
+ */
 public enum RangeType
 { 
     RealBody,
