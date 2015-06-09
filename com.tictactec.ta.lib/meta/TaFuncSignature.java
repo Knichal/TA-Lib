@@ -46,9 +46,12 @@
  */
 
 package com.tictactec.ta.lib.meta;
-
 /**
- * @deprecated in favor of CoreMetaData
+ * Klasa ta jest przestarza³a na rzecz klasy CoreMetaData.
+ * Wiêkszoœc funkcjie z tej klasy jest zaimplementowana w klasie CoreMetaData.
+ * @deprecated
+ * @author Komentarz - Maciej Knichal
+ *
  */
 public class TaFuncSignature implements Comparable
 {
