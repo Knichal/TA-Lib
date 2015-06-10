@@ -1,4 +1,4 @@
-package AndrzejMatysiak;
+package strawinska.magda;
 
 import static org.junit.Assert.*;
 
@@ -11,231 +11,30 @@ import com.tictactec.ta.lib.FuncUnstId;
 import com.tictactec.ta.lib.MAType;
 import com.tictactec.ta.lib.MInteger;
 import com.tictactec.ta.lib.RetCode;
+import com.tictactec.ta.lib.meta.CoreMetaData;
 
-public class TestCore {
+public class TestCore{
+
+	static protected Core core;
+	static protected FuncUnstId funcunstld;
+	static protected Compatibility compatibility;
 	
-	static Core core;
+	protected RetCode retCode;
+	protected Core lib;
 	protected int lookback;
+	protected double input[];
+	protected double output[];
+	protected MInteger outNbElement;
+
 	
 	@BeforeClass
-	public static void BeforeClass(){
+	public static void beforeClass() {
 		core = new Core();
 	}
 	
 	@Test
-	public void testFloor1() {
+	public void testSMA() {
 
-			double[] inputsinReal= new double[]  {
-					4.54,
-			};
-			double[] expecteds = new double[] { 4.54 };
-			MInteger outBegIdx = new MInteger();
-			MInteger outNBElement = new MInteger();
-			double[] outReal = new double[1];
-			RetCode rc = core.floor(0, lookback, inputsinReal, outBegIdx, outNBElement, outReal);
-	}
-	
-	@Test
-	public void testFloor2() {
-
-		float[] inputsinReal= new float[]  {
-				4
-		};
-		double[] expecteds = new double[] { 4 };
-		MInteger outBegIdx = new MInteger();
-		MInteger outNBElement = new MInteger();
-		double[] outReal = new double[1];
-			
-		RetCode rc = core.floor(0, lookback, inputsinReal, outBegIdx, outNBElement, outReal);	
-		assertArrayEquals(expecteds, outReal, 0);
-	}
-	
-	@Test
-	public void testLog10D(){
-		double[] inputsinReal = new double[]  {
-				4.54
-		};
-		MInteger outBegIdx = new MInteger();
-		MInteger outNBElement = new MInteger();
-		double[] outReal = new double[1];
-		double[] expecteds = new double[] { 0.6570558528571039 };
-		
-		RetCode rc = core.log10(0, lookback, inputsinReal, outBegIdx, outNBElement, outReal);
-		assertArrayEquals(expecteds, outReal, 0);
-	}
-	
-	@Test
-	public void testLog10F(){
-		
-		float[] inputsinReal = new float[]  {
-				4
-		};
-		MInteger outBegIdx = new MInteger();
-		MInteger outNBElement = new MInteger();
-		double[] outReal = new double[1];
-		double[] expecteds = new double[] { 0.6020599913279624 };
-		
-		RetCode rc = core.log10(0, lookback, inputsinReal, outBegIdx, outNBElement, outReal);
-		assertArrayEquals(expecteds, outReal, 0);
-	}
-	
-	@Test
-	public void testSarLookback(){
-		int expecteds = 1;
-		double optInAcceleration = 10;
-		double optInMaximum = 100;
-		
-		int actual = core.sarLookback(optInAcceleration, optInMaximum);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testSin1(){
-		double[] inputsinReal = new double[]  {
-				0.9962
-		};
-		MInteger outBegIdx = new MInteger();
-		MInteger outNBElement = new MInteger();
-		double[] outReal = new double[1];
-		double[] expecteds = new double[] { 0.8394117655736391 };
-		
-		RetCode rc = core.sin(0, lookback, inputsinReal, outBegIdx, outNBElement, outReal);
-		assertArrayEquals(expecteds, outReal, 0);
-	}
-	
-	@Test
-	public void testSin2(){
-		float[] inputsinReal = new float[]  {
-				1
-		};
-		MInteger outBegIdx = new MInteger();
-		MInteger outNBElement = new MInteger();
-		double[] outReal = new double[1];
-		double[] expecteds = new double[] { 0.8414709848078965 };
-		
-		RetCode rc = core.sin(0, lookback, inputsinReal, outBegIdx, outNBElement, outReal);
-		assertArrayEquals(expecteds, outReal, 0);
-	}
-	
-	@Test
-	public void testSinH1(){
-		double[] inputsinReal = new double[]  {
-				1,22
-		};
-		MInteger outBegIdx = new MInteger();
-		MInteger outNBElement = new MInteger();
-		double[] outReal = new double[1];
-		double[] expecteds = new double[] { 1.1752011936438014 };
-		
-		RetCode rc = core.sinh(0, lookback, inputsinReal, outBegIdx, outNBElement, outReal);
-		assertArrayEquals(expecteds, outReal, 0);
-	}
-	
-	@Test
-	public void testSinH2(){
-		float[] inputsinReal = new float[]  {
-				1
-		};
-		MInteger outBegIdx = new MInteger();
-		MInteger outNBElement = new MInteger();
-		double[] outReal = new double[1];
-		double[] expecteds = new double[] { 0.8414709848078965 };
-		
-		RetCode rc = core.sin(0, lookback, inputsinReal, outBegIdx, outNBElement, outReal);
-		assertArrayEquals(expecteds, outReal, 0);
-	}
-	
-	@Test
-	public void testSqrt1(){
-		double[] inputsinReal = new double[]  {
-				5,66
-		};
-		MInteger outBegIdx = new MInteger();
-		MInteger outNBElement = new MInteger();
-		double[] outReal = new double[1];
-		double[] expecteds = new double[] { 2.23606797749979 };
-		
-		RetCode rc = core.sqrt(0, lookback, inputsinReal, outBegIdx, outNBElement, outReal);
-		assertArrayEquals(expecteds, outReal, 0);
-	}
-	
-	@Test
-	public void testSqrt2(){
-		float[] inputsinReal = new float[]  {
-				4
-		};
-		MInteger outBegIdx = new MInteger();
-		MInteger outNBElement = new MInteger();
-		double[] outReal = new double[1];
-		double[] expecteds = new double[] { 2.0 };
-		
-		RetCode rc = core.sqrt(0, lookback, inputsinReal, outBegIdx, outNBElement, outReal);
-		assertArrayEquals(expecteds, outReal, 0);
-	}
-	
-	@Test
-	public void testStdDevLookback(){
-		int expecteds = 9;
-		int optInTimePeriod = 10;
-		double optInNbDev = 100;
-		int actual = core.stdDevLookback(optInTimePeriod, optInNbDev);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testTan1(){
-		double[] inReal = new double[]  {
-				4.43
-		};
-		MInteger outBegIdx = new MInteger();
-		MInteger outNBElement = new MInteger();
-		double[] outReal = new double[1];
-		double[] expecteds = new double[] { 3.446580763443108 };
-		RetCode rc = core.tan(0, lookback, inReal, outBegIdx, outNBElement, outReal);
-		assertArrayEquals(expecteds, outReal, 0);
-	}
-	
-	@Test
-	public void testTan2(){
-		float[] inReal = new float[]  {
-				4
-		};
-		MInteger outBegIdx = new MInteger();
-		MInteger outNBElement = new MInteger();
-		double[] outReal = new double[1];
-		double[] expecteds = new double[] { 1.1578212823495777 };
-		RetCode rc = core.tan(0, lookback, inReal, outBegIdx, outNBElement, outReal);
-		assertArrayEquals(expecteds, outReal, 0);
-	}
-	
-	@Test
-	public void testTanH1(){
-		double[] inReal = new double[]  {
-				4.43
-		};
-		MInteger outBegIdx = new MInteger();
-		MInteger outNBElement = new MInteger();
-		double[] outReal = new double[1];
-		double[] expecteds = new double[] { 0.9997161301684341 };
-		RetCode rc = core.tanh(0, lookback, inReal, outBegIdx, outNBElement, outReal);
-		assertArrayEquals(expecteds, outReal, 0);
-	}
-	
-	@Test
-	public void testTanH2(){
-		float[] inReal = new float[]  {
-				4
-		};
-		MInteger outBegIdx = new MInteger();
-		MInteger outNBElement = new MInteger();
-		double[] outReal = new double[1];
-		double[] expecteds = new double[] { 0.999329299739067 };
-		RetCode rc = core.tanh(0, lookback, inReal, outBegIdx, outNBElement, outReal);
-		assertArrayEquals(expecteds, outReal, 0);
-	}
-	
-	@Test
-	public void testSMA1() {
 			double[] inputsinReal= new double[]  {
 					4.54,	1.25,	0.72,	12.69,	2.09,	4.20,	4.51,
 					12.93,	10.04,	9.84,	6.89,	12.44,	4.85,	1.35,
@@ -253,476 +52,565 @@ public class TestCore {
 					10.82,	8.67,	9.23,	12.57,	5.85,	4.06,	12.20,
 					5.55,	6.26,	2.69,	4.13,	1.45,	4.97,	1.90
 			};
+			
 			double[] expecteds = new double[] { 6.148380952380955 };
+			
 			MInteger outBegIdx = new MInteger();
 			MInteger outNBElement = new MInteger();
+			
 			double[] outReal = new double[1];
 			
 		RetCode rc = core.sma(0, 104, inputsinReal, 105, outBegIdx, outNBElement, outReal);
+		
 		assertArrayEquals(expecteds, outReal, 0);
+				
 	}
 	
+
 	@Test
-	public void testSMA2() {
-			float[] inputsinReal= new float[]  {
-					4,	1,	0,	12,	2,	4,	4,
-					12,	10,	9,	6,	12,	4,	1,
-					1,	0,	10,	6,	3,	7,	2,
-					7,	10,	0,	2,	10, 2,	3,
-					4,	0,	6,	2,	11,	1,	12,
-					7,	9,	12,	7,	10,	9,	3,
-					6,	6,	2,	5,	1,	3,	6,
-					9,	2,	11,	0,	5,	7,	5,
-					9,	8,	3,	8,	3,	8,	6,
-					11,	7,	0,	4,	0,	3,	12,
-					12,	10,	0,	1,	3,	11,	0,
-					9,	0,	1,	11,	0,  3,	9,
-					10,	2,	1,	11,	9,	4,	11,
-					10,	8,	9,	12,	5,	4,	12,
-					5,	6,	2,	4,	1,	4,	1
+	public void testSMA3() {
+
+			double[] inputsinReal= new double[]  {
+					4.54
 			};
-			double[] expecteds = new double[] { 5.6 };
+			
+			double[] expecteds = new double[] { 4.54 };
+			
 			MInteger outBegIdx = new MInteger();
 			MInteger outNBElement = new MInteger();
+			
 			double[] outReal = new double[1];
 			
-		RetCode rc = core.sma(0, 104, inputsinReal, 105, outBegIdx, outNBElement, outReal);
-		assertArrayEquals(expecteds, outReal, 0);
-	}
-	
-	@Test
-	public void testVarianceLookback(){
-		int expecteds = 9;
-		int optInTimePeriod = 10;
-		double optInNbDev = 100;
-		int actual = core.varianceLookback(optInTimePeriod, optInNbDev);
-		assertEquals(expecteds, actual);
+		int rr = core.smaLookback(1);	
+		assertArrayEquals(expecteds, inputsinReal, 0);
+				
 	}
 	
 	 @Test
-	   public void testMovingAverageVariablePeriodLookback(){
-	    int expecteds = 4;
-	    int optInMaxPeriod = 100;
-	    int optInMinPeriod = 5;
-	    MAType optInMAType = null;
-	    int actual = core.movingAverageLookback(lookback, optInMAType);
-	    
-	   }
+		public void testCdlHikkakeLookback() {
+			int expecteds = 5;
+			int actual = core.cdlHikkakeLookback();
+			assertEquals(expecteds, actual);
+		}
+		 
+		@Test
+		public void testSmaLookback() {
+			int optInTimePeriod = 10;
+			int expecteds = 9;
+			int n = core.smaLookback(optInTimePeriod);
+			assertEquals(expecteds, n);
+			int optInTimePeriod1 = Integer.MIN_VALUE;
+			int actual1 = core.smaLookback(optInTimePeriod1);
+			assertEquals(29, actual1);
+			int optInTimePeriod2 = 1;
+			int actual2 = core.smaLookback(optInTimePeriod2);
+			assertEquals(-1, actual2);
+		}
 	
-	@Test
-	public void testCdl3InsideLookback(){
-		int expecteds = 12;
-		int actual = core.cdl3InsideLookback();
-		assertEquals(expecteds, actual);
-	}
+		 @Test
+			public void testAcosLookback() {
+				int expecteds = 0;
+				int actual = core.acosLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testAddLookback() {
+				int expecteds = 0;
+				int actual = core.addLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testAdLookback() {
+				int expecteds = 0;
+				int actual = core.adLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testMinMaxLookback() {
+				int expecteds = -1;
+				int actual = core.minMaxLookback(expecteds);
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testMinMaxIndexLookback() {
+				int expecteds = -1;
+				int actual = core.minMaxIndexLookback(expecteds);
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testSumLookback() {
+				int expecteds = -1;
+				int actual = core.sumLookback(expecteds);
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testTrimaLookback() {
+				int expecteds = -1;
+				int actual = core.trimaLookback(expecteds);
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testTsfLookback() {
+				int expecteds = -1;
+				int actual = core.tsfLookback(expecteds);
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testWillLookback() {
+				int expecteds = -1;
+				int actual = core.willRLookback(expecteds);
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testWmaLookback() {
+				int expecteds = -1;
+				int actual = core.wmaLookback(expecteds);
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testAroonLookback() {
+				int expecteds = -1;
+				int actual = core.aroonLookback(expecteds);
+				assertEquals(expecteds, actual);
+			}
 	
-	@Test
-	public void testCdlCounterAttackLookback(){
-		int expecteds = 11;
-		int actual = core.cdlCounterAttackLookback();
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCdlDojiStarLookback(){
-		int expecteds = 11;
-		int actual = core.cdlDojiStarLookback();
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCdlGapSideSideWhiteLookback(){
-		int expecteds = 7;
-		int actual = core.cdlGapSideSideWhiteLookback();
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCdlHaramiLookback(){
-		int expecteds = 11;
-		int actual = core.cdlHaramiLookback();
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCdlHaramiCrossLookback(){
-		int expecteds = 11;
-		int actual = core.cdlHaramiCrossLookback();
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCdlHomingPigeonLookback(){
-		int expecteds = 11;
-		int actual = core.cdlHomingPigeonLookback();
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCdlIdentical3CrowsLookback(){
-		int expecteds = 12;
-		int actual = core.cdlIdentical3CrowsLookback();
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCdlInNeckLookback(){
-		int expecteds = 11;
-		int actual = core.cdlInNeckLookback();
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCdlKickingLookback(){
-		int expecteds = 11;
-		int actual = core.cdlKickingLookback();
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCdlKickingByLengthLookback(){
-		int expecteds = 11;
-		int actual = core.cdlKickingByLengthLookback();
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCdlOnNeckLookback(){
-		int expecteds = 11;
-		int actual = core.cdlOnNeckLookback();
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCdlRiseFall3MethodsLookback(){
-		int expecteds = 14;
-		int actual = core.cdlRiseFall3MethodsLookback();
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCdlThrustingLookback(){
-		int expecteds = 11;
-		int actual = core.cdlThrustingLookback();
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCdlUnique3RiverLookback(){
-		int expecteds = 12;
-		int actual = core.cdlUnique3RiverLookback();
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCdlUpsideGap2CrowsLookback(){
-		int expecteds = 12;
-		int actual = core.cdlUpsideGap2CrowsLookback();
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCmoLookback(){
-		int expecteds = 10;
-		int optInTimePeriod = 10;
-		int actual = core.cmoLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testMinusDMLookback(){
-		int expecteds = 9;
-		int optInTimePeriod = 10;
-		int actual = core.minusDMLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testPlusDMLookback(){
-		int expecteds = 9;
-		int optInTimePeriod = 10;
-		int actual = core.plusDMLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testRsiLookback(){
-		int expecteds = 10;
-		int optInTimePeriod = 10;
-		int actual = core.rsiLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testAdxrLookback(){
-		int expecteds = 28;
-		int optInTimePeriod = 10;
-		int actual = core.adxrLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCdlBeltHoldLookback(){
-		int expecteds = 10;
-		int actual = core.cdlBeltHoldLookback();
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCdlDragonflyDojiLookback(){
-		int expecteds = 10;
-		int actual = core.cdlDragonflyDojiLookback();
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCdlHignWaveLookback(){
-		int expecteds = 10;
-		int actual = core.cdlHignWaveLookback();
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCdlLongLeggedDojiLookback(){
-		int expecteds = 10;
-		int actual = core.cdlLongLeggedDojiLookback();
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCdlLongLineLookback(){
-		int expecteds = 10;
-		int actual = core.cdlLongLineLookback();
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCdlMarubozuLookback(){
-		int expecteds = 10;
-		int actual = core.cdlMarubozuLookback();
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCdlShortLineLookback(){
-		int expecteds = 10;
-		int actual = core.cdlShortLineLookback();
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testDxLookback(){
-		int expecteds = 10;
-		int optInTimePeriod = 10;
-		int actual = core.dxLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testMinusDILookback(){
-		int expecteds = 10;
-		int optInTimePeriod = 10;
-		int actual = core.minusDILookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testPlusDILookback(){
-		int expecteds = 10;
-		int optInTimePeriod = 10;
-		int actual = core.plusDILookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testAdxLookback(){
-		int expecteds = 19;
-		int optInTimePeriod = 10;
-		int actual = core.adxLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCdlDarkCloudCoverLookback(){
-		int expecteds = 11;
-		int optInPenetration = 10;
-		int actual = core.cdlDarkCloudCoverLookback(optInPenetration);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testTrixLookback(){
-		int expecteds = 28;
-		int optInTimePeriod = 10;
-		int actual = core.trixLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testEmaLookback(){
-		int expecteds = 9;
-		int optInTimePeriod = 10;
-		int actual = core.emaLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testAtrLookback(){
-		int expecteds = 10;
-		int optInTimePeriod = 10;
-		int actual = core.atrLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testKamaLookback(){
-		int expecteds = 10;
-		int optInTimePeriod = 10;
-		int actual = core.kamaLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testMacdFixLookback(){
-		int expecteds = 34;
-		int optInSignalPeriod = 10;
-		int actual = core.macdFixLookback(optInSignalPeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testMfiLookback(){
-		int expecteds = 10;
-		int optInTimePeriod = 10;
-		int actual = core.mfiLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-  
-	@Test
-	public void testNatrLookback(){
-		int expecteds = 10;
-		int optInTimePeriod = 10;
-		int actual = core.natrLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testTemaLookback(){
-		int expecteds = 27;
-		int optInTimePeriod = 10;
-		int actual = core.temaLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testDemaLookback(){
-		int expecteds = 18;
-		int optInTimePeriod = 10;
-		int actual = core.demaLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCdlHikkakeModLookback(){
-		int expecteds = 10;
-		int actual = core.cdlHikkakeModLookback();
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCciLookback(){
-		int expecteds = 9;
-		int optInTimePeriod = 10;
-		int actual = core.cciLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testCorrelLookback(){
-		int expecteds = 9;
-		int optInTimePeriod = 10;
-		int actual = core.correlLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testLinearRegLookback(){
-		int expecteds = 9;
-		int optInTimePeriod = 10;
-		int actual = core.linearRegLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testLinearRegAngleLookback(){
-		int expecteds = 9;
-		int optInTimePeriod = 10;
-		int actual = core.linearRegAngleLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testLinearRegInterceptLookback(){
-		int expecteds = 9;
-		int optInTimePeriod = 10;
-		int actual = core.linearRegInterceptLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testLinearRegSlopeLookback(){
-		int expecteds = 9;
-		int optInTimePeriod = 10;
-		int actual = core.linearRegSlopeLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testMaxLookback(){
-		int expecteds = 9;
-		int optInTimePeriod = 10;
-		int actual = core.maxLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testMaxIndexLookback(){
-		int expecteds = 9;
-		int optInTimePeriod = 10;
-		int actual = core.maxIndexLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testMidPointLookback(){
-		int expecteds = 9;
-		int optInTimePeriod = 10;
-		int actual = core.midPointLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testMidPriceLookback(){
-		int expecteds = 9;
-		int optInTimePeriod = 10;
-		int actual = core.midPriceLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testMinLookback(){
-		int expecteds = 9;
-		int optInTimePeriod = 10;
-		int actual = core.minLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}
-	
-	@Test
-	public void testMinIndexLookback(){
-		int expecteds = 9;
-		int optInTimePeriod = 10;
-		int actual = core.minIndexLookback(optInTimePeriod);
-		assertEquals(expecteds, actual);
-	}	
+		 @Test
+			public void testAroonOscLookback() {
+				int expecteds = -1;
+				int actual = core.aroonOscLookback(expecteds);
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testBetaLookback() {
+				int expecteds = -1;
+				int actual = core.betaLookback(expecteds);
+				assertEquals(expecteds, actual);
+			}
+		 @Test
+			public void testRocLookback() {
+				int expecteds = -1;
+				int actual = core.rocLookback(expecteds);
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testRocPLookback() {
+				int expecteds = -1;
+				int actual = core.rocPLookback(expecteds);
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testRocRLookback() {
+				int expecteds = -1;
+				int actual = core.rocRLookback(expecteds);
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testRocR100Lookback() {
+				int expecteds = -1;
+				int actual = core.rocR100Lookback(expecteds);
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testCdl12Lookback() {
+				int expecteds = 12;
+				int actual = core.cdl2CrowsLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testCdl3BlackCrowsLookback() {
+				int expecteds = 13;
+				int actual = core.cdl3BlackCrowsLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testCdl3LineStrikeLookback() {
+				int expecteds = 8;
+				int actual = core.cdl3LineStrikeLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testCdlBreakwayLookback() {
+				int expecteds = 14;
+				int actual = core.cdlBreakawayLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testCdlConcealBabyWallLookback() {
+				int expecteds = 13;
+				int actual = core.cdlConcealBabysWallLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testCdlLadderBottomLookback() {
+				int expecteds = 14;
+				int actual = core.cdlLadderBottomLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testCdlMatchingLowLookback() {
+				int expecteds = 6;
+				int actual = core.cdlMatchingLowLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testCdlPiercingLookback() {
+				int expecteds = 11;
+				int actual = core.cdlPiercingLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testCdlStickSandwichLookback() {
+				int expecteds = 7;
+				int actual = core.cdlStickSandwhichLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testCdlTasukiGapLookback() {
+				int expecteds = 7;
+				int actual = core.cdlTasukiGapLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testCdlTristarLookback() {
+				int expecteds = 12;
+				int actual = core.cdlTristarLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testHtDcPeriodLookback() {
+				int expecteds = 32;
+				int actual = core.htDcPeriodLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testHtDcPhaseLookback() {
+				int expecteds = 63;
+				int actual = core.htDcPhaseLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testHtPhasorLookback() {
+				int expecteds = 32;
+				int actual = core.htPhasorLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testHtSineLookback() {
+				int expecteds = 63;
+				int actual = core.htSineLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testHtTrendlineLookback() {
+				int expecteds = 63;
+				int actual = core.htTrendlineLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testHtTrendmodeLookback() {
+				int expecteds = 63;
+				int actual = core.htTrendModeLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testCdlDojiLookback() {
+				int expecteds = 10;
+				int actual = core.cdlDojiLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testAcosLookback1() {
+				int expecteds = 0;
+				int actual = core.acosLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testAdLookback1() {
+				int expecteds = 0;
+				int actual = core.addLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testAddLookback1() {
+				int expecteds = 0;
+				int actual = core.addLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testAsinLookback() {
+				int expecteds = 0;
+				int actual = core.asinLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testAvgPriceLookback() {
+				int expecteds = 0;
+				int actual = core.avgPriceLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testBopLookback() {
+				int expecteds = 0;
+				int actual = core.bopLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testCdl3OutsideLookback() {
+				int expecteds = 3;
+				int actual = core.cdl3OutsideLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testCdlEngulfingLookback() {
+				int expecteds = 2;
+				int actual = core.cdlEngulfingLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testCdlXSideGap3MethodsLookback() {
+				int expecteds = 2;
+				int actual = core.cdlXSideGap3MethodsLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testCeilLookback() {
+				int expecteds = 0;
+				int actual = core.ceilLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testCosLookback() {
+				int expecteds = 0;
+				int actual = core.cosLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testCoshLookback() {
+				int expecteds = 0;
+				int actual = core.coshLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testDivLookback() {
+				int expecteds = 0;
+				int actual = core.divLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testExpLookback() {
+				int expecteds = 0;
+				int actual = core.expLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testFloorLookback() {
+				int expecteds = 0;
+				int actual = core.floorLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testLnLookback() {
+				int expecteds = 0;
+				int actual = core.lnLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testLog10Lookback() {
+				int expecteds = 0;
+				int actual = core.log10Lookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testMedPriceLookback() {
+				int expecteds = 0;
+				int actual = core.medPriceLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testMultLookback() {
+				int expecteds = 0;
+				int actual = core.multLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testObvLookback() {
+				int expecteds = 0;
+				int actual = core.obvLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testSInLookback() {
+				int expecteds = 0;
+				int actual = core.sinLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testSinhLookback() {
+				int expecteds = 0;
+				int actual = core.sinhLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testSqrtLookback() {
+				int expecteds = 0;
+				int actual = core.sqrtLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testSubLookback() {
+				int expecteds = 0;
+				int actual = core.subLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testTanLookback() {
+				int expecteds = 0;
+				int actual = core.tanLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testTanhLookback() {
+				int expecteds = 0;
+				int actual = core.tanhLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testTrueRangeLookback() {
+				int expecteds = 1;
+				int actual = core.trueRangeLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testTypPriceLookback() {
+				int expecteds = 0;
+				int actual = core.typPriceLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+			public void testWclPriceLookback() {
+				int expecteds = 0;
+				int actual = core.wclPriceLookback();
+				assertEquals(expecteds, actual);
+			}
+		 
+		 @Test
+		 public void testTA_INT_SMA()
+		    {
+			 double[] inputsinReal= new double[]  {
+						0,
+				};
+				
+				double[] expecteds = new double[] { 0 };
+				
+				MInteger outBegIdx = new MInteger();
+				MInteger outNBElement = new MInteger();
+				
+				double[] outReal = new double[1];
+				
+				
+				
+			RetCode ra = core.TA_INT_EMA(0, lookback, inputsinReal, 2, lookback, outBegIdx, outNBElement, inputsinReal);
+			
+			
+			assertArrayEquals(expecteds, outReal, 0);
+		    }
+		 
+		 @Test
+			public void testGetCompatibility() {
+			Compatibility aa = core.getCompatibility();				
+						
+			}
+		 
+		
+		 
+		
+		 @Test
+			public void testGetUnstablePeriod() {
+			 
+			funcunstld = FuncUnstId.Adxr;
+			int aa = core.GetUnstablePeriod(funcunstld);
 
+			 
+			}
+		 
+		 @Test
+			public void testSetUnstablePeriod() {
+			 
+			funcunstld = FuncUnstId.Adx;
+			RetCode aa = core.SetUnstablePeriod(funcunstld, 0);
+			 
+			}
+		 
+		 
+		 @Test
+			public void testSetCompatibility() {
+			core.SetCompatibility(compatibility);			
+						
+			}
+		 
+		 
+		 
+		 
+		 
 }
