@@ -303,7 +303,7 @@ public class Core {
      * @param outBegIdx
      * @param outNBElement
      * @param outReal
-     * @return
+     * @return zwraca kod sukcesu lub kod inofrmujacy, ze indeks poczatkowy jest poza zakresem
      */
     public RetCode acos(int startIdx,
                         int endIdx,
@@ -325,6 +325,22 @@ public class Core {
         return RetCode.Success;
     }
 
+    /**
+     * Funkcja przyjmujaca ponizsze parametry. Sprawdza, czy pierwszy parametr jest mniejszy od zera. Jesli tak, to zwraca
+     * kod informujacy, ze indeks poczatkowy jest poza zakresem.
+     * Sprawdza, czy indeks koncowy jest mniejszy od 0 lub jest mniejszy od poczatkowego. Jesli tak to zwraca kod informujacy,
+     * ze indeks koncowy jest poza zakresem.
+     * Petla for przypisuje wszystkim elementom tablicy outReal o indeksie outIdx wartosci funkcji arcus cosinus i-tego
+     * tablicy inReal. Po wyjsciu z petli do pola value obiektu outNBElement przypisuje wartosc zmiennej outIdx.
+     * Do pola value obiektu outBegIdx przupisuje wartosc zmiennej startIdx. Zwraca kod sukcesu.
+     * @param startIdx
+     * @param endIdx
+     * @param inReal
+     * @param outBegIdx
+     * @param outNBElement
+     * @param outReal
+     * @return zwraca kod sukcesu lub kod inofrmujacy, ze indeks poczatkowy jest poza zakresem
+     */
     public RetCode acos(int startIdx,
                         int endIdx,
                         float inReal[],
@@ -346,10 +362,30 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Funkcja zwracajaca wartosc 0
+     * @return
+     */
     public int adLookback() {
         return 0;
     }
 
+    /**
+     * Funkcja przujmuje ponizsze argumenty. Sprawdza czy indeksy podane w parametrach zawieraja sie w odpowiednich zakresach.
+     * Tworzone sa zmienne lokalne typu int oraz double. Przyjmuja one wartosci z parametrow. Petla while przypisuje
+     * do zmiennych lokalnych kolejne wartosci tablic przekazanych w parametrze. Po wyjsciu z petli zwraca kod sukcesu.
+     * @param startIdx
+     * @param endIdx
+     * @param inHigh
+     * @param inLow
+     * @param inClose
+     * @param inVolume
+     * @param outBegIdx
+     * @param outNBElement
+     * @param outReal
+     * @return
+     */
     public RetCode ad(int startIdx,
                       int endIdx,
                       double inHigh[],
@@ -386,6 +422,23 @@ public class Core {
         return RetCode.Success;
     }
 
+    /**
+     * Funkcja przujmuje ponizsze argumenty. Sprawdza czy indeksy podane w parametrach zawieraja sie w odpowiednich zakresach.
+     * Tworzone sa zmienne lokalne typu int oraz double. Przyjmuja one wartosci z parametrow. Petla while przypisuje
+     * do zmiennych lokalnych kolejne wartosci tablic przekazanych w parametrze. Po wyjsciu z petli zwraca kod sukcesu.
+     *
+     * Rozni sie od poprzedniej przekazywanymi argumentami. W tym przypadku float zamiast double.
+     * @param startIdx
+     * @param endIdx
+     * @param inHigh
+     * @param inLow
+     * @param inClose
+     * @param inVolume
+     * @param outBegIdx
+     * @param outNBElement
+     * @param outReal
+     * @return
+     */
     public RetCode ad(int startIdx,
                       int endIdx,
                       float inHigh[],
@@ -423,10 +476,29 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Funkcja zwraca wartosc 0
+     * @return 0
+     */
     public int addLookback() {
         return 0;
     }
 
+    /**
+     * Funkcja przujmuje ponizsze argumenty. Sprawdza czy indeksy podane w parametrach zawieraja sie w odpowiednich zakresach.
+     * Tworzone sa zmienne lokalne typu int oraz double. Przyjmuja one wartosci z parametrow. Petla for przypisuje
+     * do zmiennych przekazanych w parametrze kolejne wartosci drugiej tablicy przekazanej w parametrze.
+     * Po wyjsciu z petli zwraca kod sukcesu.
+     * @param startIdx
+     * @param endIdx
+     * @param inReal0
+     * @param inReal1
+     * @param outBegIdx
+     * @param outNBElement
+     * @param outReal
+     * @return
+     */
     public RetCode add(int startIdx,
                        int endIdx,
                        double inReal0[],
@@ -448,6 +520,20 @@ public class Core {
         return RetCode.Success;
     }
 
+    /**
+     * Funkcja przujmuje ponizsze argumenty. Sprawdza czy indeksy podane w parametrach zawieraja sie w odpowiednich zakresach.
+     * Tworzone sa zmienne lokalne typu int oraz double. Przyjmuja one wartosci z parametrow. Petla while przypisuje
+     * do zmiennych lokalnych kolejne wartosci tablic przekazanych w parametrze. Po wyjsciu z petli zwraca kod sukcesu.
+     * Zamiast tablic typu double przyjmuje tablice float
+     * @param startIdx
+     * @param endIdx
+     * @param inReal0
+     * @param inReal1
+     * @param outBegIdx
+     * @param outNBElement
+     * @param outReal
+     * @return
+     */
     public RetCode add(int startIdx,
                        int endIdx,
                        float inReal0[],
@@ -470,6 +556,20 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Funkcja sprawdza czy parametr optInFastPeriod rzutowany na int jest rowny minimalnej wartosci Integer. Jesli tak,
+     * to tej zmiennej przypisuje wartosc 3. W przeciwnym wypadku sprawdza, czy parametr optInFastPeriod rzutowany na int
+     * jest mniejszy od 2 lub optInFastPeriod rzutowany na int jest wiekszy od 100 000. Jesli tak to zwraca -1, jesli nie,
+     * to sprawdza, czy optInSlowPeriod rzutowany na int jest rowny minimalnej wartosci Integer, jesli tak, to ustawia
+     * optInSlowPeriod na 10. Jesli nie, to sprawdza, czy optInSlowPeriod rzutowana na int jest mniejsza od 2 lub wieksza od 100 000.
+     * Jesli tak, to zwraca -1. W przeciwnym wypadku sprawdza, czy optInFastPeriod jest mniejsza od optInSlowPeriod.
+     * Jesli tak, to wartosci slowestPeriod przypisuje wartosc optInSlowPeriod. W przeciwnym wypadku zmiennej slowestPeriod
+     * przypisuje wartosc optInFastPeriod i zwraca wartosc funkcji emaLookback, ktora za parametr przyjmuje wartosc zmiennej slowestPeriod
+     * @param optInFastPeriod
+     * @param optInSlowPeriod
+     * @return
+     */
     public int adOscLookback(int optInFastPeriod,
                              int optInSlowPeriod) {
         int slowestPeriod;
