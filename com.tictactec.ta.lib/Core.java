@@ -589,7 +589,7 @@ public class Core {
     }
 
     /**
-     *
+     * Funkcja przyjmujaca ponizsze argumenty. Sprawdza
      * @param startIdx
      * @param endIdx
      * @param inHigh
