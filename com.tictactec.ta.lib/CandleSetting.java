@@ -67,7 +67,7 @@ public class CandleSetting {
     }
 
     /**
-     * Konstruktor kopiujacy CandleSetting
+     * Konstruktor kopiujacy CandleSetting 
      *
      * @param Przyjmuje inny obiekt typu CandleSetting
      */
