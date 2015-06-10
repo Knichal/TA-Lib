@@ -46,6 +46,9 @@
 
 package com.tictactec.ta.lib;
 
+/**
+ * Klasa o zasiegu package posiadajaca dwa pola typu double wskazujaca na przeplyw pieniedzy (negatywny lub pozytywny)
+ */
  class MoneyFlow
  {
     public double positive;

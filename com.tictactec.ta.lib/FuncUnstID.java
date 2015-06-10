@@ -45,7 +45,9 @@
  */
 
 package com.tictactec.ta.lib;
-
+/**
+ * Klasa zawierajaca typ wyliczeniowy FuncUnstId
+ */
 public enum FuncUnstId {
 	
 	  /* 000 */  Adx,

@@ -45,7 +45,9 @@
  */
 
 package com.tictactec.ta.lib;
-
+/**
+ * Klasa zawierajaca typ wyliczeniowy Compatibility
+ */
 public enum Compatibility
 {
     Default,

@@ -46,6 +46,9 @@
 
 package com.tictactec.ta.lib;
 
+/**
+ * Klasa zawierajaca typ wyliczeniowy CandleSettingType
+ */
 public enum CandleSettingType 
 {
     BodyLong,
