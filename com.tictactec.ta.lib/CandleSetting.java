@@ -49,54 +49,39 @@
 package com.tictactec.ta.lib;
 
 public class CandleSetting {
-    /**
-     * Konstruktor przyjmujacy za parametry obiekt CandleSettingType, RangeType oraz zmienne int i double.
-     * Ustawia pola settingType, rangeType, avgPeriod i factor na wartosci przekazane w konstruktorze
-     */
-    /**
-     * Creates a new instance of TA_CandleSetting
-     */
-    public CandleSetting(CandleSettingType p_settingType,
-                         RangeType p_rangeType,
-                         int p_avgPeriod,
-                         double p_factor) {
+    
+    /** Creates a new instance of TA_CandleSetting */
+    public CandleSetting( CandleSettingType p_settingType, 
+                             RangeType p_rangeType, 
+                             int p_avgPeriod, 
+                             double p_factor )
+    {
         settingType = p_settingType;
         rangeType = p_rangeType;
         avgPeriod = p_avgPeriod;
         factor = p_factor;
     }
 
-    /**
-     * Konstruktor kopiujacy CandleSetting
-     *
-     * @param Przyjmuje inny obiekt typu CandleSetting
-     */
-    public CandleSetting(CandleSetting that) {
-        this.settingType = that.settingType;
-        this.rangeType = that.rangeType;
-        this.avgPeriod = that.avgPeriod;
-        this.factor = that.factor;
+    public CandleSetting(CandleSetting that)
+    {
+       this.settingType = that.settingType;
+       this.rangeType = that.rangeType;
+       this.avgPeriod = that.avgPeriod;
+       this.factor = that.factor;       
     }
-
-    /**
-     * Konstruktor kopiujacy
-     *
-     * @param Przyjmuje za parametr inny obiekt typu CandleSetting, ktorego wartosci przypisuje
-     * polom obiektu na ktorym wykonywana jest metoda
-     */
-    public void CopyFrom(CandleSetting src) {
-        this.settingType = src.settingType;
-        this.rangeType = src.rangeType;
-        this.avgPeriod = src.avgPeriod;
-        this.factor = src.factor;
+    
+    public void CopyFrom( CandleSetting src )
+    {
+       this.settingType = src.settingType;
+       this.rangeType = src.rangeType;
+       this.avgPeriod = src.avgPeriod;
+       this.factor = src.factor;
     }
-
-    /**
-     * Pola klasy CandleSetting (zasieg package)
-     */
-
-    CandleSettingType settingType;
-    RangeType rangeType;
-    int avgPeriod;
-    double factor;
+    
+    CandleSettingType    settingType;
+    RangeType            rangeType;
+    int                     avgPeriod;
+    double                  factor;    
 }
+//Test 123
+//New branch test
