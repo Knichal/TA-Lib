@@ -45,9 +45,7 @@
  */
 
 package com.tictactec.ta.lib;
-/**
- * Klasa zawierajaca typ wyliczeniowy Retcode
- */
+
 public enum RetCode
 {
 	Success,
