@@ -588,6 +588,21 @@ public class Core {
         return emaLookback(slowestPeriod);
     }
 
+    /**
+     * Funkcja przyjmujaca ponizsze argumenty. Sprawdza
+     * @param startIdx
+     * @param endIdx
+     * @param inHigh
+     * @param inLow
+     * @param inClose
+     * @param inVolume
+     * @param optInFastPeriod
+     * @param optInSlowPeriod
+     * @param outBegIdx
+     * @param outNBElement
+     * @param outReal
+     * @return
+     */
     public RetCode adOsc(int startIdx,
                          int endIdx,
                          double inHigh[],
