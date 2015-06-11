@@ -1745,6 +1745,14 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Funkcja sprawdza, czy zmienna w parametrze jest rowna minimalnej wartosci Integer. Jesli tak, to przypisuje jej wartosc 14.
+     * W przeciwnym wypadku sprawdza, czy znajduje sie ona w przedziale (2, 100000). Jesli nie, to zwraca -1, w przeciwnym wypadku zwraca zmienna.
+     * @param optInTimePeriod typu int
+     * @return int
+     */
+
     public int aroonLookback(int optInTimePeriod) {
         if ((int) optInTimePeriod == (Integer.MIN_VALUE))
             optInTimePeriod = 14;
