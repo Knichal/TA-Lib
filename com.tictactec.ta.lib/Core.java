@@ -1958,6 +1958,15 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Funkcja sprawdza, czy parametr jest rowny minimalnej wartosci Integer.
+     * Jesli tak, to do tej zmiennej przypisuje 14. W przeciwnym wypadku sprawdza,
+     * czy zmienna zawiera sie w przedziale (2, 100000) i w razie niepowodzenia zwraca -1,
+     * w przeciwnym wypadku zwraca zmienna
+     * @param optInTimePeriod typu int
+     * @return int
+     */
     public int aroonOscLookback(int optInTimePeriod) {
         if ((int) optInTimePeriod == (Integer.MIN_VALUE))
             optInTimePeriod = 14;
@@ -1965,7 +1974,25 @@ public class Core {
             return -1;
         return optInTimePeriod;
     }
-
+    /**
+     * Metoda sprawdza, czy indeksy zawieraja sie w odpowiednim przedziale. W razie niepowodzenia zwraca kod bledu.
+     * Nastepnie metoda sprawdza, czy optInFastPeriod jest rowna wartosci minimalnej Integer. Jesli tak, to przypisuje
+     * jej wartosc 14. Jesli nie, to sprawdza czy znajduje sie w przedziale (2, 100000) i zwraca kod bledu w razie niepowodzenia.
+     * Nastêpnie inicjalizowane s¹ zmienne lokalne oraz wyliczany wspolczynnik factor.
+     * Kolejnym krokiem jest petla while, w ktorej znajduja sie kolejne dwie petle while.
+     * Zajmuja sie one przypisywaniem wartosci do tablicy lowest lub highest, zaleznie od spelnionego warunku.
+     * Metoda zwraca kod sukcesu.
+     *
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param optInTimePeriod typu int
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal typu double []
+     * @return kod RetCode
+     */
     public RetCode aroonOsc(int startIdx,
                             int endIdx,
                             double inHigh[],
@@ -2043,7 +2070,25 @@ public class Core {
         outNBElement.value = outIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda sprawdza, czy indeksy zawieraja sie w odpowiednim przedziale. W razie niepowodzenia zwraca kod bledu.
+     * Nastepnie metoda sprawdza, czy optInFastPeriod jest rowna wartosci minimalnej Integer. Jesli tak, to przypisuje
+     * jej wartosc 14. Jesli nie, to sprawdza czy znajduje sie w przedziale (2, 100000) i zwraca kod bledu w razie niepowodzenia.
+     * Nastêpnie inicjalizowane s¹ zmienne lokalne oraz wyliczany wspolczynnik factor.
+     * Kolejnym krokiem jest petla while, w ktorej znajduja sie kolejne dwie petle while.
+     * Zajmuja sie one przypisywaniem wartosci do tablicy lowest lub highest, zaleznie od spelnionego warunku.
+     * Metoda zwraca kod sukcesu.
+     *
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param optInTimePeriod typu int
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal typu double []
+     * @return kod RetCode
+     */
     public RetCode aroonOsc(int startIdx,
                             int endIdx,
                             float inHigh[],
@@ -2123,10 +2168,28 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Metoda zwraca wartosc 0
+     * @return 0
+     */
     public int asinLookback() {
         return 0;
     }
 
+    /**
+     *
+     * Metoda sprawdza, czy indeksy zawieraja sie w odpowiednim przedziale. W razie niepowodzenia zwraca kod bledu.
+     * Nastepnie w petli for przypisywane sa do tablicy outreal kolejne wartosci funkcji asin z biblioteki Math
+     * Metoda zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inReal typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal double []
+     * @return RetCode
+     */
     public RetCode asin(int startIdx,
                         int endIdx,
                         double inReal[],
@@ -2146,7 +2209,19 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     *
+     * Metoda sprawdza, czy indeksy zawieraja sie w odpowiednim przedziale. W razie niepowodzenia zwraca kod bledu.
+     * Nastepnie w petli for przypisywane sa do tablicy outreal kolejne wartosci funkcji asin z biblioteki Math
+     * Metoda zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inReal typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal double []
+     * @return RetCode
+     */
     public RetCode asin(int startIdx,
                         int endIdx,
                         float inReal[],
@@ -2168,10 +2243,27 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Metoda zwraca wartosc 0
+     * @return 0
+     */
     public int atanLookback() {
         return 0;
     }
-
+    /**
+     *
+     * Metoda sprawdza, czy indeksy zawieraja sie w odpowiednim przedziale. W razie niepowodzenia zwraca kod bledu.
+     * Nastepnie w petli for przypisywane sa do tablicy outreal kolejne wartosci funkcji atan z biblioteki Math
+     * Metoda zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inReal typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal double []
+     * @return RetCode
+     */
     public RetCode atan(int startIdx,
                         int endIdx,
                         double inReal[],
@@ -2191,7 +2283,19 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     *
+     * Metoda sprawdza, czy indeksy zawieraja sie w odpowiednim przedziale. W razie niepowodzenia zwraca kod bledu.
+     * Nastepnie w petli for przypisywane sa do tablicy outreal kolejne wartosci funkcji atan z biblioteki Math
+     * Metoda zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inReal typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal float []
+     * @return RetCode
+     */
     public RetCode atan(int startIdx,
                         int endIdx,
                         float inReal[],
