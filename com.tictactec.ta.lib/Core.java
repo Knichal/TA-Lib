@@ -1282,6 +1282,16 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Funkcja sprawdza, czy wartosc zmiennej w parametrze jest rowna minimalnej wartosci Integera.
+     * Jesli tak, to przypisuje jej wartosc 14. Jesli nie, to sprawdza czy zmienna ta zawiera sie w przedziale
+     * (2, 100000). Jesli nie, to zwraca -1, jesli tak, to sprawdza, czy liczba ta jest wieksza od 1.
+     * Jesli tak, to zwraca wynik sumy jej samej, oraz wartosci zwroconej z funkcji adxLookback (z parametrem tej zmiennej)
+     * pomniejszonej o 1. W przeciwnym wypadku zwraca wartosc 3.
+     * @param optInTimePeriod int
+     * @return int
+     */
     public int adxrLookback(int optInTimePeriod) {
         if ((int) optInTimePeriod == (Integer.MIN_VALUE))
             optInTimePeriod = 14;
