@@ -6,6 +6,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.tictactec.ta.lib.meta.CoreMetaInfo;
+import com.tictactec.ta.lib.meta.TaFuncClosure;
 import com.tictactec.ta.lib.meta.TaFuncMetaInfo;
 
 public class TestCoreMetaInfo {
@@ -52,6 +53,19 @@ public class TestCoreMetaInfo {
 	@Test
 	public void testGetAllFuncs() {
 		coreMetaInfo.getAllFuncs();
+	}
+	
+	@Test
+	public void testMain() {
+		String[] args = null;
+		coreMetaInfo.main(args);
+	}
+	
+	@Test
+	public void testForEach() throws Exception {
+		TaFuncClosure closure = null;
+		coreMetaInfo.forEach(closure);
+
 	}
 
 }
