@@ -2317,6 +2317,16 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Funkcja sprawdza, czy zmienna z parametry jest rowna wartosci minimalnej Integer.
+     * Jesli tak, to przypisuje jej wartosc 14. W przeciwnym wypadku sprawdza, czy zmienna
+     * zawiera sie w przedziale (1, 100000). Jesli nie, to zwraca wartosc -1. W przeciwnym wypadku
+     * zwraca sume wartosci zmiennej oraz wartosci tabeli unstablePeriod o indeksie zwroconym przez
+     * statyczna funkcje ordinal z klasy FuncUnstId
+     * @param optInTimePeriod
+     * @return int
+     */
     public int atrLookback(int optInTimePeriod) {
         if ((int) optInTimePeriod == (Integer.MIN_VALUE))
             optInTimePeriod = 14;
