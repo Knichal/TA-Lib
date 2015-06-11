@@ -725,7 +725,7 @@ public class Core {
     }
 
     /**
-     * *Funkcja przyjmujaca ponizsze argumenty. Sprawdza zgodnosc indeksow.
+     * Funkcja przyjmujaca ponizsze argumenty. Sprawdza zgodnosc indeksow.
      * Nastepnie sprawdza czy optInFastPeriod rzutowany na int jest rowny minimalnej wartosci
      * Integera. Jesli tak, to ustawia optInFastPeriod na wartosc 3. W przeciwnym wypadku sprawdza czy optInFastPeriod
      * jest mniejszy od 2 lub wiêkszy od 100000. Jesli tak, to zwraca kod blednego parametru.
@@ -870,6 +870,33 @@ public class Core {
         return (2 * optInTimePeriod) + (this.unstablePeriod[FuncUnstId.Adx.ordinal()]) - 1;
     }
 
+    /**
+     * Funkcja sprawdza poprawnosc indeksow. W przypadku niezgodnosci zwraca odpowiedni kod.
+     * Sprawdza, czy zmienna optInTimePeriod jest rowna minimalnej wartosci Integer. Jesli tak, to do zmiennej optInTimePeriod
+     * przypisuje wartosc 14. W przeciwnym wypadku sprawdza czy optInTimePeriod zawiera sie w zakresie (2, 100000). Jesli nie, to zwraca
+     * kod blednego parametru. Do zmiennej lookbackTotal przypisuje wartosc dzialania (2 * optInTimePeriod) + (this.unstablePeriod[FuncUnstId.Adx.ordinal()]) - 1
+     * Nastepnie funkcja sprawdza, czy startIdx zawiera sie w przedziale (endIdx, lookbackTotal). Jesli tak, to zwraca kod sukcesu.
+     * Funkcja wykonuje przypisania wartosci do zmiennych lokalnych.
+     * Malejaca petla while sprawdza, czy diffM zawiera sie w przedziale (0, diffP) i wykonuje odpowiednie operacje.
+     * Nastepnie sprawdza czy tempReal2 jest wieksze od tempReal. Jesli tak, to do zmiennej tempReal2 przypisuje wartosc
+     * funkcji obliczajacej wartosc bezwzgledna roznicy prevLow i prevClose. Powtarza sprawdzanie.
+     * Dalej funkcja przypisuje zmiennym lokalnym odpowiednie wartosci.
+     * Druga petla while dziala podobnie jak pierwsza z ta roznica, ze wprowadza zmienne prevLow, prevMinusDM oraz prevPlusDM.
+     * Po wyjsciu z petli sprawdza czy prevTr znajduje sie w przedziale (-0.00000001, 0.0000001).
+     * To samo robi dla zmiennej tempReal. Kolejna petla dziala bardzo podobnie.
+     * Czwarta petla wykonuje te same operacje (zmieniony jest tylko jej warunek).
+     * Po wyjsciu z petli funkcja zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param optInTimePeriod typu int
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal typu double []
+     * @return kod RetCode
+     */
     public RetCode adx(int startIdx,
                        int endIdx,
                        double inHigh[],
