@@ -748,17 +748,17 @@ public class Core {
      * Kolejna petla while robi to samo, tylko z innym warunkiem do spelnienia.
      * Zwraca kod sukcesu.
      *
-     * @param startIdx typu int
-     * @param endIdx typu int
-     * @param inHigh typu float []
-     * @param inLow typu float []
-     * @param inClose typu float []
-     * @param inVolume typu float []
+     * @param startIdx        typu int
+     * @param endIdx          typu int
+     * @param inHigh          typu float []
+     * @param inLow           typu float []
+     * @param inClose         typu float []
+     * @param inVolume        typu float []
      * @param optInFastPeriod typu int
      * @param optInSlowPeriod typu int
-     * @param outBegIdx typu MInteger
-     * @param outNBElement typu MInteger
-     * @param outReal typu MInteger
+     * @param outBegIdx       typu MInteger
+     * @param outNBElement    typu MInteger
+     * @param outReal         typu MInteger
      * @return RetCode
      */
     public RetCode adOsc(int startIdx,
@@ -853,6 +853,15 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Funkcja sprawdza, czy zmienna int przekazana w parametrze jest rowna wartosci minimalnej Integer.
+     * Jesli tak, to ustawia optInTimePeriod na 14, w przeciwnym przypadku sprawdza, czy zmienna z parametru jest mniejsza
+     * od 2 lub wieksza od 100 000. Jesli tak, to zwraca -1, jesli nie, to zwraca wynik dzialania
+     * (2 * optInTimePeriod) + (this.unstablePeriod[FuncUnstId.Adx.ordinal()]) - 1 bedacy liczba calkowita
+     * @param optInTimePeriod typu int
+     * @return int
+     */
     public int adxLookback(int optInTimePeriod) {
         if ((int) optInTimePeriod == (Integer.MIN_VALUE))
             optInTimePeriod = 14;
