@@ -724,6 +724,43 @@ public class Core {
         return RetCode.Success;
     }
 
+    /**
+     * *Funkcja przyjmujaca ponizsze argumenty. Sprawdza zgodnosc indeksow.
+     * Nastepnie sprawdza czy optInFastPeriod rzutowany na int jest rowny minimalnej wartosci
+     * Integera. Jesli tak, to ustawia optInFastPeriod na wartosc 3. W przeciwnym wypadku sprawdza czy optInFastPeriod
+     * jest mniejszy od 2 lub wiêkszy od 100000. Jesli tak, to zwraca kod blednego parametru.
+     * W przeciwnym wypadku sprawdza, czy optInSlowPeriod jest rowny minimalnej wartosci Integera.
+     * Jesli tak, to do optInSlowPeriod przypisuje wartosc 10. W przeciwnym wypadku sprawdza, czy
+     * optInSlowPeriod rzutowany na int jest mniejszy od 2 lub wiekszy od 100000. Jesli tak, to zwraca
+     * kod blednego parametru. Jesli nie, to sprawdza czy optInFastPeriod jest mniejsza od optInSlowPeriod.
+     * Jesli tak, to do slowestPeriod przypisuje optInSlowPeriod. W przeciwnym wypadku do slowestPeriod przypisuje optInFastPeriod.
+     * do zmiennej lookbackTotal przypisuje wartosc zwrocona przez funkcje emaLookback z parametrem slowestPeriod.
+     * Jesli poczatkowy indeks jest mniejszy od lookbackTotal, to do startIdx przypisuje wartosc lookbackTotal.
+     * Sprawdza, czy startIdx jest wiekszy od endIdx. Jesli tak, to ustawia outBegIdx.value oraz outNBElement.value na 0
+     * i zwraca kod sukcesu. Nastepnie przypisuje do outBegIdx.value wartosc startIdx, a do zmiennej today wynik odejmowania startIdx i lookbackTotal.
+     * Do zmiennej ad przypisuje 0.0.
+     * Do zmiennych fastk, one_minus_fastk, slowk i one_minus_slowk przypisuje wyniki ich dzialan.
+     * Nastepnie do zmiennej high przypisuje wartosc tablicy inHigh o indeksie today. Analogicznie ze zmienna low.
+     * Ustawia wartosc zmienne tmp na roznice high i low. Przypisuje zmiennej close wartosc tablicy inClose z indeksem today
+     * Sprawdza warunek. Jesli jest spelniony, to zwieksza today.
+     * Przypisuje zmiennym fastEma i slowEma wartosc ad.
+     * Petla while sprawdza, czy today jest mniejsze od startIdx i wykonuje operacje przypisywania.
+     * Kolejna petla while robi to samo, tylko z innym warunkiem do spelnienia.
+     * Zwraca kod sukcesu.
+     *
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param inVolume typu float []
+     * @param optInFastPeriod typu int
+     * @param optInSlowPeriod typu int
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal typu MInteger
+     * @return RetCode
+     */
     public RetCode adOsc(int startIdx,
                          int endIdx,
                          float inHigh[],
