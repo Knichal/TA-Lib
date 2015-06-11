@@ -65,6 +65,7 @@ public class TestCoreMetaInfo {
 	public void testForEach() throws Exception {
 		TaFuncClosure closure = null;
 		coreMetaInfo.forEach(closure);
+
 	}
 
 }
