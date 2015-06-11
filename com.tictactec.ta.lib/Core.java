@@ -333,6 +333,7 @@ public class Core {
      * Petla for przypisuje wszystkim elementom tablicy outReal o indeksie outIdx wartosci funkcji arcus cosinus i-tego
      * tablicy inReal. Po wyjsciu z petli do pola value obiektu outNBElement przypisuje wartosc zmiennej outIdx.
      * Do pola value obiektu outBegIdx przupisuje wartosc zmiennej startIdx. Zwraca kod sukcesu.
+     *
      * @param startIdx
      * @param endIdx
      * @param inReal
@@ -365,6 +366,7 @@ public class Core {
 
     /**
      * Funkcja zwracajaca wartosc 0
+     *
      * @return
      */
     public int adLookback() {
@@ -375,6 +377,7 @@ public class Core {
      * Funkcja przujmuje ponizsze argumenty. Sprawdza czy indeksy podane w parametrach zawieraja sie w odpowiednich zakresach.
      * Tworzone sa zmienne lokalne typu int oraz double. Przyjmuja one wartosci z parametrow. Petla while przypisuje
      * do zmiennych lokalnych kolejne wartosci tablic przekazanych w parametrze. Po wyjsciu z petli zwraca kod sukcesu.
+     *
      * @param startIdx
      * @param endIdx
      * @param inHigh
@@ -426,8 +429,9 @@ public class Core {
      * Funkcja przujmuje ponizsze argumenty. Sprawdza czy indeksy podane w parametrach zawieraja sie w odpowiednich zakresach.
      * Tworzone sa zmienne lokalne typu int oraz double. Przyjmuja one wartosci z parametrow. Petla while przypisuje
      * do zmiennych lokalnych kolejne wartosci tablic przekazanych w parametrze. Po wyjsciu z petli zwraca kod sukcesu.
-     *
+     * <p>
      * Rozni sie od poprzedniej przekazywanymi argumentami. W tym przypadku float zamiast double.
+     *
      * @param startIdx
      * @param endIdx
      * @param inHigh
@@ -479,6 +483,7 @@ public class Core {
 
     /**
      * Funkcja zwraca wartosc 0
+     *
      * @return 0
      */
     public int addLookback() {
@@ -490,6 +495,7 @@ public class Core {
      * Tworzone sa zmienne lokalne typu int oraz double. Przyjmuja one wartosci z parametrow. Petla for przypisuje
      * do zmiennych przekazanych w parametrze kolejne wartosci drugiej tablicy przekazanej w parametrze.
      * Po wyjsciu z petli zwraca kod sukcesu.
+     *
      * @param startIdx
      * @param endIdx
      * @param inReal0
@@ -525,6 +531,7 @@ public class Core {
      * Tworzone sa zmienne lokalne typu int oraz double. Przyjmuja one wartosci z parametrow. Petla while przypisuje
      * do zmiennych lokalnych kolejne wartosci tablic przekazanych w parametrze. Po wyjsciu z petli zwraca kod sukcesu.
      * Zamiast tablic typu double przyjmuje tablice float
+     *
      * @param startIdx
      * @param endIdx
      * @param inReal0
@@ -566,6 +573,7 @@ public class Core {
      * Jesli tak, to zwraca -1. W przeciwnym wypadku sprawdza, czy optInFastPeriod jest mniejsza od optInSlowPeriod.
      * Jesli tak, to wartosci slowestPeriod przypisuje wartosc optInSlowPeriod. W przeciwnym wypadku zmiennej slowestPeriod
      * przypisuje wartosc optInFastPeriod i zwraca wartosc funkcji emaLookback, ktora za parametr przyjmuje wartosc zmiennej slowestPeriod
+     *
      * @param optInFastPeriod
      * @param optInSlowPeriod
      * @return
@@ -589,7 +597,29 @@ public class Core {
     }
 
     /**
-     * Funkcja przyjmujaca ponizsze argumenty. Sprawdza
+     * Funkcja przyjmujaca ponizsze argumenty. Sprawdza zgodnosc indeksow.
+     * Nastepnie sprawdza czy optInFastPeriod rzutowany na int jest rowny minimalnej wartosci
+     * Integera. Jesli tak, to ustawia optInFastPeriod na wartosc 3. W przeciwnym wypadku sprawdza czy optInFastPeriod
+     * jest mniejszy od 2 lub wiêkszy od 100000. Jesli tak, to zwraca kod blednego parametru.
+     * W przeciwnym wypadku sprawdza, czy optInSlowPeriod jest rowny minimalnej wartosci Integera.
+     * Jesli tak, to do optInSlowPeriod przypisuje wartosc 10. W przeciwnym wypadku sprawdza, czy
+     * optInSlowPeriod rzutowany na int jest mniejszy od 2 lub wiekszy od 100000. Jesli tak, to zwraca
+     * kod blednego parametru. Jesli nie, to sprawdza czy optInFastPeriod jest mniejsza od optInSlowPeriod.
+     * Jesli tak, to do slowestPeriod przypisuje optInSlowPeriod. W przeciwnym wypadku do slowestPeriod przypisuje optInFastPeriod.
+     * do zmiennej lookbackTotal przypisuje wartosc zwrocona przez funkcje emaLookback z parametrem slowestPeriod.
+     * Jesli poczatkowy indeks jest mniejszy od lookbackTotal, to do startIdx przypisuje wartosc lookbackTotal.
+     * Sprawdza, czy startIdx jest wiekszy od endIdx. Jesli tak, to ustawia outBegIdx.value oraz outNBElement.value na 0
+     * i zwraca kod sukcesu. Nastepnie przypisuje do outBegIdx.value wartosc startIdx, a do zmiennej today wynik odejmowania startIdx i lookbackTotal.
+     * Do zmiennej ad przypisuje 0.0.
+     * Do zmiennych fastk, one_minus_fastk, slowk i one_minus_slowk przypisuje wyniki ich dzialan.
+     * Nastepnie do zmiennej high przypisuje wartosc tablicy inHigh o indeksie today. Analogicznie ze zmienna low.
+     * Ustawia wartosc zmienne tmp na roznice high i low. Przypisuje zmiennej close wartosc tablicy inClose z indeksem today
+     * Sprawdza warunek. Jesli jest spelniony, to zwieksza today.
+     * Przypisuje zmiennym fastEma i slowEma wartosc ad.
+     * Petla while sprawdza, czy today jest mniejsze od startIdx i wykonuje operacje przypisywania.
+     * Kolejna petla while robi to samo, tylko z innym warunkiem do spelnienia.
+     * Zwraca kod sukcesu.
+     *
      * @param startIdx
      * @param endIdx
      * @param inHigh
