@@ -1601,7 +1601,26 @@ public class Core {
         }
         return retCode;
     }
-
+    /**
+     * Metoda sprawdza, czy indeksy zawieraja sie w odpowiednim przedziale. W razie niepowodzenia zwraca kod bledu.
+     * Nastepnie metoda sprawdza, czy optInFastPeriod jest rowna wartosci minimalnej Integer. Jesli tak, to przypisuje jej wartosc 12.
+     * Jesli nie, to sprawdza czy znajduje sie w przedziale (2, 100000) i zwraca kod bledu w razie niepowodzenia.
+     * Analogicznie to samo dzieje sie dla zmiennej optInSlowPeriod.
+     * Dalej zainicjalizowana zostaje tablica tempBuffer typu double.
+     * Obiekt retCode zainicjalizowany zostaje wartoscia funkcji TA_INT_PO o podanych w jej nawiasie argumentach.
+     * Metoda zwraca obiekt retCode.
+     *
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inReal typu float []
+     * @param optInFastPeriod typu int
+     * @param optInSlowPeriod typu int
+     * @param optInMAType typu MAType
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal typu double []
+     * @return kod RetCode
+     */
     public RetCode apo(int startIdx,
                        int endIdx,
                        float inReal[],
