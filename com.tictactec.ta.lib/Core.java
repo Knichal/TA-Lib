@@ -1367,7 +1367,25 @@ public class Core {
         outNBElement.value = outIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Najpierw sprawdzane sa przekazane indeksy, czy zawieraja sie w odpowiednim przedziale. W przeciwnym wypadku
+     * funkcja zwraca odpowiedni kod bledu. Nastepnie sprawdza, czy optInTimePeriod jest rowny minimalnej wartosci Integer.
+     * Jesli tak, to przypisuje jej wartosc 14. Nastepnie sprawdza, czy zawiera sie w przedziale (2, 100 000). W przeciwnym wypadku
+     * zwraca kod bledu. Kolejno sprawdza, czy startIdx zawiera sie w odpowiednim przedziale i w razie powodzenia zwraca kod sukcesu.
+     * Nastepnie zwraca kod retCode, ktorego wartosc to wynik funkcji adx z podanymi argumentami.
+     * Kolejnym krokiem jest petla while. Wykonuje ona dzialania na tablicy outReal.
+     * Funkcja zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param optInTimePeriod typu int
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal typu float []
+     * @return Kod RetCode
+     */
     public RetCode adxr(int startIdx,
                         int endIdx,
                         float inHigh[],
