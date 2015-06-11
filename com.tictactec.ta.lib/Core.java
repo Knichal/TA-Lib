@@ -1760,7 +1760,26 @@ public class Core {
             return -1;
         return optInTimePeriod;
     }
-
+    /**
+     * Metoda sprawdza, czy indeksy zawieraja sie w odpowiednim przedziale. W razie niepowodzenia zwraca kod bledu.
+     * Nastepnie metoda sprawdza, czy optInFastPeriod jest rowna wartosci minimalnej Integer. Jesli tak, to przypisuje
+     * jej wartosc 14. Jesli nie, to sprawdza czy znajduje sie w przedziale (2, 100000) i zwraca kod bledu w razie niepowodzenia.
+     * Nastêpnie inicjalizowane s¹ zmienne lokalne oraz wyliczany wspolczynnik factor.
+     * Kolejnym krokiem jest petla while, w ktorej znajduja sie kolejne dwie petle while.
+     * Zajmuja sie one przypisywaniem wartosci do tablicy lowest lub highest, zaleznie od spelnionego warunku.
+     * Metoda zwraca kod sukcesu.
+     *
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param optInTimePeriod typu int
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outAroonDown typu double []
+     * @param outAroonUp typu double []
+     * @return kod RetCode
+     */
     public RetCode aroon(int startIdx,
                          int endIdx,
                          double inHigh[],
@@ -1839,7 +1858,26 @@ public class Core {
         outNBElement.value = outIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda sprawdza, czy indeksy zawieraja sie w odpowiednim przedziale. W razie niepowodzenia zwraca kod bledu.
+     * Nastepnie metoda sprawdza, czy optInFastPeriod jest rowna wartosci minimalnej Integer. Jesli tak, to przypisuje
+     * jej wartosc 14. Jesli nie, to sprawdza czy znajduje sie w przedziale (2, 100000) i zwraca kod bledu w razie niepowodzenia.
+     * Nastêpnie inicjalizowane s¹ zmienne lokalne oraz wyliczany wspolczynnik factor.
+     * Kolejnym krokiem jest petla while, w ktorej znajduja sie kolejne dwie petle while.
+     * Zajmuja sie one przypisywaniem wartosci do tablicy lowest lub highest, zaleznie od spelnionego warunku.
+     * Metoda zwraca kod sukcesu.
+     *
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param optInTimePeriod typu int
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outAroonDown typu double []
+     * @param outAroonUp typu double []
+     * @return kod RetCode
+     */
     public RetCode aroon(int startIdx,
                          int endIdx,
                          float inHigh[],
