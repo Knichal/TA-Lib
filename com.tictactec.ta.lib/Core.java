@@ -1658,6 +1658,30 @@ public class Core {
         return retCode;
     }
 
+    /**
+     * Metoda tworzy obiekty typu MInteger.
+     * Metoda sprawdza, czy optInSlowPeriod jest mniejsza od optInFastPeriod.
+     * Obiekt RetCode zainicjalizowany jest wynikiem metody movingAverage.
+     * Sprawdza, czy ten obiekt to kod sukcesu. Jesli tak, to znow wykonuje na nim metode movingAverage i sprawdza kod.
+     * Sprawdza, czy doPercentageOutput jest rozny od 0. Jesli tak, to w petli for przypisuje do tablicy tempReal wartosci tablicy outReal.
+     * Sprawdza, czy tempReal zawiera sie w odpowiednim zakresie.
+     * W przeciwnym wypadku modyfikuje tablice outReal o podane wartosci.
+     * Sprawdza, czy retCode jest kodem sukcesu. Jesli nie, to zeruje pola value obiektow outBegIdx i outNBElement.
+     * Metoda zwraca obiekt retCode.
+     *
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inReal typu float []
+     * @param optInFastPeriod typu int
+     * @param optInSlowPeriod typu int
+     * @param optInMethod_2 typu MAType
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal typu double []
+     * @param tempBuffer typu double []
+     * @param doPercentageOutput typu int
+     * @return kod RetCode
+     */
     RetCode TA_INT_PO(int startIdx,
                       int endIdx,
                       float inReal[],
