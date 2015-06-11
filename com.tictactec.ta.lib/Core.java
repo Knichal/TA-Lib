@@ -1433,6 +1433,18 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Funkcja sprawdza, czy optInFastPeriod jest rowny wartosci minimalnej Integer. Jesli tak, to do tej zmiennej
+     * przypisuje wartosc 12. W przeciwnym wypadku sprawdza czy zawiera sie w przedziale (2, 100000). Jesli nie, to zwraca -1.
+     * Sprawdza, czy optInSlowPeriod jest rowne minimalnej wartosci Integer. Jesli tak, to przypisuje do niej wartosc 26.
+     * W przeciwnym wypadku sprawdza, czy optInSlowPeriod zawiera sie w przedziale (2, 100000). Jesli nie, to zwraca -1,
+     * jesli tak, to zwraca wartosc funkcji movingAverageLookback z podanymi argumentami.
+     * @param optInFastPeriod typu int
+     * @param optInSlowPeriod typu int
+     * @param optInMAType typu MAType
+     * @return int
+     */
     public int apoLookback(int optInFastPeriod,
                            int optInSlowPeriod,
                            MAType optInMAType) {
