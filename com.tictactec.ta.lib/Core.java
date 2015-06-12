@@ -2529,10 +2529,30 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Funkcja zwraca wartosc 0
+     * @return 0
+     */
     public int avgPriceLookback() {
         return 0;
     }
 
+    /**
+     * Metoda oblicza srednia cene. Sprawdza, czy podany indeks zawiera sie w odpowiedni przedziale.
+     * Petla for przypisujaca wartosci do kolejnych indeksow tablicy outReal. Przypisanie wartosci do
+     * pol przekazanych obiektow.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal typu double []
+     * @return RetCode
+     */
     public RetCode avgPrice(int startIdx,
                             int endIdx,
                             double inOpen[],
@@ -2558,7 +2578,21 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda oblicza srednia cene. Sprawdza, czy podany indeks zawiera sie w odpowiedni przedziale.
+     * Petla for przypisujaca wartosci do kolejnych indeksow tablicy outReal. Przypisanie wartosci do
+     * pol przekazanych obiektow.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal typu double []
+     * @return RetCode
+     */
     public RetCode avgPrice(int startIdx,
                             int endIdx,
                             float inOpen[],
