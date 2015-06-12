@@ -2620,6 +2620,17 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Metoda sprawdza, czy optInTimePeriod ma odpowiednia wartosc oraz czy znajduje sie w zakresie (2, 100000).
+     * Nastepnie sprawdza, czy optInNbDevUp ma wartosc -4e+37. Jesli tak, to przypisuje do niej wartosc 2.000000e+0.
+     * W przeciwnym wypadku sprawdza, czy znajduje sie w zadanym zakresie. Zwraca wartosc funkcji movingAverageLookback.
+     * @param optInTimePeriod typu int
+     * @param optInNbDevUp typu double
+     * @param optInNbDevDn typu double
+     * @param optInMAType typu MAType
+     * @return typu int
+     */
     public int bbandsLookback(int optInTimePeriod,
                               double optInNbDevUp,
                               double optInNbDevDn,
