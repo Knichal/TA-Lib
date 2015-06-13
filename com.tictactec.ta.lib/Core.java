@@ -2898,13 +2898,6 @@ public class Core {
     }
 
     /* Generated */
-
-    /**
-     * Metoda sprawdza, czy optInTimePeriod jest rowne minimalnej wartosci Integera. Jesli tak to przypisuje jej wartosc 5.
-     * W przeciwnym wypadku sprawdza, czy zawiera sie w zakresie (1, 100000). Jesli nie, to zwraca -1, przeciwnie zwraca optInTimePeriod.
-     * @param optInTimePeriod typu int
-     * @return int
-     */
     public int betaLookback(int optInTimePeriod) {
         if ((int) optInTimePeriod == (Integer.MIN_VALUE))
             optInTimePeriod = 5;
