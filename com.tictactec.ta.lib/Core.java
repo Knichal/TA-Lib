@@ -3034,7 +3034,22 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda tworzy zmienne lokalne zainicjalizowane zerem. Sprawdza, czy indeksy zawieraja sie w odpowiednim przedziale.
+     * Nastepnie sprawdza, czy optInTimePeriod znajduje sie w odpowiednim przedziale. Po raz kolejny sprawdza indeksy (w innym kryterium).
+     * Petla while, ktora przypisuje wartosci do zmiennych lokalnych funkcji.
+     * Petla do while przypisujaca wartosci do zmiennych lokalnych na podstawie argumentow funkcji.
+     * Zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inReal0 typu float []
+     * @param inReal1 typu float []
+     * @param optInTimePeriod typu int
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal typu double []
+     * @return kod RetCode
+     */
     public RetCode beta(int startIdx,
                         int endIdx,
                         float inReal0[],
