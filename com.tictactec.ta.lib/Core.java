@@ -3452,6 +3452,11 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Metoda zwraca wartosc tablicy candleSettings o danym indeksie
+     * @return int
+     */
     public int cdl2CrowsLookback() {
         return (this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod) + 2;
     }
