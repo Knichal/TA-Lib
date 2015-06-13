@@ -2650,6 +2650,26 @@ public class Core {
         return movingAverageLookback(optInTimePeriod, optInMAType);
     }
 
+    /**
+     * Metoda sprawdza, czy optInTimePeriod ma odpowiednia wartosc oraz czy znajduje sie w zakresie (2, 100000).
+     * Nastepnie sprawdza, czy optInNbDevUp ma wartosc -4e+37. Jesli tak, to przypisuje do niej wartosc 2.000000e+0.
+     * W przeciwnym wypadku sprawdza, czy znajduje sie w zadanym zakresie. Nastepnie nastepuje seria sprawdzen parametrow
+     * przekazanych w argumencie funkcji. Po spelnieniu wszystkich warunkow metoda zwraca kod sukcesu.
+     *
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inReal typu double []
+     * @param optInTimePeriod typu int
+     * @param optInNbDevUp double
+     * @param optInNbDevDn double
+     * @param optInMAType typu MAType
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outRealUpperBand typu double []
+     * @param outRealMiddleBand typu double []
+     * @param outRealLowerBand typu double []
+     * @return kod RetCode
+     */
     public RetCode bbands(int startIdx,
                           int endIdx,
                           double inReal[],
@@ -2761,7 +2781,26 @@ public class Core {
         }
         return RetCode.Success;
     }
-
+    /**
+     * Metoda sprawdza, czy optInTimePeriod ma odpowiednia wartosc oraz czy znajduje sie w zakresie (2, 100000).
+     * Nastepnie sprawdza, czy optInNbDevUp ma wartosc -4e+37. Jesli tak, to przypisuje do niej wartosc 2.000000e+0.
+     * W przeciwnym wypadku sprawdza, czy znajduje sie w zadanym zakresie. Nastepnie nastepuje seria sprawdzen parametrow
+     * przekazanych w argumencie funkcji. Po spelnieniu wszystkich warunkow metoda zwraca kod sukcesu.
+     *
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inReal typu float []
+     * @param optInTimePeriod typu int
+     * @param optInNbDevUp double
+     * @param optInNbDevDn double
+     * @param optInMAType typu MAType
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outRealUpperBand typu double []
+     * @param outRealMiddleBand typu double []
+     * @param outRealLowerBand typu double []
+     * @return kod RetCode
+     */
     public RetCode bbands(int startIdx,
                           int endIdx,
                           float inReal[],
@@ -2859,6 +2898,13 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Metoda sprawdza, czy optInTimePeriod jest rowne minimalnej wartosci Integera. Jesli tak to przypisuje jej wartosc 5.
+     * W przeciwnym wypadku sprawdza, czy zawiera sie w zakresie (1, 100000). Jesli nie, to zwraca -1, przeciwnie zwraca optInTimePeriod.
+     * @param optInTimePeriod typu int
+     * @return int
+     */
     public int betaLookback(int optInTimePeriod) {
         if ((int) optInTimePeriod == (Integer.MIN_VALUE))
             optInTimePeriod = 5;
@@ -2867,6 +2913,22 @@ public class Core {
         return optInTimePeriod;
     }
 
+    /**
+     * Metoda tworzy zmienne lokalne zainicjalizowane zerem. Sprawdza, czy indeksy zawieraja sie w odpowiednim przedziale.
+     * Nastepnie sprawdza, czy optInTimePeriod znajduje sie w odpowiednim przedziale. Po raz kolejny sprawdza indeksy (w innym kryterium).
+     * Petla while, ktora przypisuje wartosci do zmiennych lokalnych funkcji.
+     * Petla do while przypisujaca wartosci do zmiennych lokalnych na podstawie argumentow funkcji.
+     * Zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inReal0 typu double []
+     * @param inReal1 typu double []
+     * @param optInTimePeriod typu int
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal typu double []
+     * @return kod RetCode
+     */
     public RetCode beta(int startIdx,
                         int endIdx,
                         double inReal0[],
@@ -2972,7 +3034,22 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda tworzy zmienne lokalne zainicjalizowane zerem. Sprawdza, czy indeksy zawieraja sie w odpowiednim przedziale.
+     * Nastepnie sprawdza, czy optInTimePeriod znajduje sie w odpowiednim przedziale. Po raz kolejny sprawdza indeksy (w innym kryterium).
+     * Petla while, ktora przypisuje wartosci do zmiennych lokalnych funkcji.
+     * Petla do while przypisujaca wartosci do zmiennych lokalnych na podstawie argumentow funkcji.
+     * Zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inReal0 typu float []
+     * @param inReal1 typu float []
+     * @param optInTimePeriod typu int
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal typu double []
+     * @return kod RetCode
+     */
     public RetCode beta(int startIdx,
                         int endIdx,
                         float inReal0[],
@@ -3080,10 +3157,15 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Funkcja zwraca wartosc 0
+     * @return 0
+     */
     public int bopLookback() {
         return 0;
     }
-
+    
     public RetCode bop(int startIdx,
                        int endIdx,
                        double inOpen[],
