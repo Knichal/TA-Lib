@@ -3930,7 +3930,21 @@ public class Core {
     public int cdl3LineStrikeLookback() {
         return (this.candleSettings[CandleSettingType.Near.ordinal()].avgPeriod) + 3;
     }
-
+    /**
+     * Metoda sprawdza zakres indeksow. Petla while wykonuje sumowanie wartosci NearPeriodTotal.
+     * Petla for w petli do while sprawdza rozbudowany warunek i sumuje wartosci NearPeriodTotal.
+     * Zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdl3LineStrike(int startIdx,
                                   int endIdx,
                                   double inOpen[],
@@ -4001,7 +4015,21 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda sprawdza zakres indeksow. Petla while wykonuje sumowanie wartosci NearPeriodTotal.
+     * Petla for w petli do while sprawdza rozbudowany warunek i sumuje wartosci NearPeriodTotal.
+     * Zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdl3LineStrike(int startIdx,
                                   int endIdx,
                                   float inOpen[],
