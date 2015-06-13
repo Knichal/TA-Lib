@@ -3922,6 +3922,11 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Metoda zwraca wartosc tablicy candleSettings o zadanym indeksie
+     * @return int
+     */
     public int cdl3LineStrikeLookback() {
         return (this.candleSettings[CandleSettingType.Near.ordinal()].avgPeriod) + 3;
     }
