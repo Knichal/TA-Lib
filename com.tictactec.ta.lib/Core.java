@@ -3157,10 +3157,15 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Funkcja zwraca wartosc 0
+     * @return 0
+     */
     public int bopLookback() {
         return 0;
     }
-
+    
     public RetCode bop(int startIdx,
                        int endIdx,
                        double inOpen[],
