@@ -3252,6 +3252,14 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Sprawdza, czy wartosc przekazana w parametrze jest rowna minimalnej wartosci Integer. Jesli tak, to przypisuje jej wartosc 14,
+     * W przeciwnym wypadku sprawdza, czy ta wartosc zawiera sie w zakresie (2, 100000). Jesli nie, to zwraca -1, w przeciwnym wypadku zwraca
+     * optInTimePeriod -1.
+     * @param optInTimePeriod int
+     * @return int
+     */
     public int cciLookback(int optInTimePeriod) {
         if ((int) optInTimePeriod == (Integer.MIN_VALUE))
             optInTimePeriod = 14;
