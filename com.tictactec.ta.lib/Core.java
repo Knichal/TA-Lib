@@ -2324,7 +2324,7 @@ public class Core {
      * zawiera sie w przedziale (1, 100000). Jesli nie, to zwraca wartosc -1. W przeciwnym wypadku
      * zwraca sume wartosci zmiennej oraz wartosci tabeli unstablePeriod o indeksie zwroconym przez
      * statyczna funkcje ordinal z klasy FuncUnstId
-     * @param optInTimePeriod
+     * @param optInTimePeriod int
      * @return int
      */
     public int atrLookback(int optInTimePeriod) {
@@ -2335,6 +2335,27 @@ public class Core {
         return optInTimePeriod + (this.unstablePeriod[FuncUnstId.Atr.ordinal()]);
     }
 
+    /**
+     * Metoda sprawdza, czy indeksy zawieraja sie w odpowiednim przedziale. W razie niepowodzenia zwraca kod bledu.
+     * Nastepnie metoda sprawdza, czy optInFastPeriod jest rowna wartosci minimalnej Integer. Jesli tak, to przypisuje
+     * jej wartosc 14. Jesli nie, to sprawdza czy znajduje sie w przedziale (1, 100000) i zwraca kod bledu w razie niepowodzenia.
+     * Nastepnie nastepuje przypisanie do zmiennej lookbackTotal wartosci funkcji atrLookback.
+     * Metoda sprawdza, czy indeksy sa prawidlowe. Metoda sprawdza, czy optInTimePeriod jest niewieksza od 1.
+     * Jesli tak, to zwraca wartosc funkcji trueRange o zadanych parametrach
+     * Inicjalizowana jest tablica double. Wyliczany jest kod retCode.
+     * Kolejnym krokiem sa dwie petle while, ktore wykonuje operacje arytmetyczne.
+     * Metoda zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param optInTimePeriod typu int
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal typu double []
+     * @return RetCode
+     */
     public RetCode atr(int startIdx,
                        int endIdx,
                        double inHigh[],
@@ -2410,7 +2431,27 @@ public class Core {
         outNBElement.value = outIdx;
         return retCode;
     }
-
+    /**
+     * Metoda sprawdza, czy indeksy zawieraja sie w odpowiednim przedziale. W razie niepowodzenia zwraca kod bledu.
+     * Nastepnie metoda sprawdza, czy optInFastPeriod jest rowna wartosci minimalnej Integer. Jesli tak, to przypisuje
+     * jej wartosc 14. Jesli nie, to sprawdza czy znajduje sie w przedziale (1, 100000) i zwraca kod bledu w razie niepowodzenia.
+     * Nastepnie nastepuje przypisanie do zmiennej lookbackTotal wartosci funkcji atrLookback.
+     * Metoda sprawdza, czy indeksy sa prawidlowe. Metoda sprawdza, czy optInTimePeriod jest niewieksza od 1.
+     * Jesli tak, to zwraca wartosc funkcji trueRange o zadanych parametrach
+     * Inicjalizowana jest tablica double. Wyliczany jest kod retCode.
+     * Kolejnym krokiem sa dwie petle while, ktore wykonuje operacje arytmetyczne.
+     * Metoda zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param optInTimePeriod typu int
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal typu double []
+     * @return RetCode
+     */
     public RetCode atr(int startIdx,
                        int endIdx,
                        float inHigh[],
@@ -2488,10 +2529,30 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Funkcja zwraca wartosc 0
+     * @return 0
+     */
     public int avgPriceLookback() {
         return 0;
     }
 
+    /**
+     * Metoda oblicza srednia cene. Sprawdza, czy podany indeks zawiera sie w odpowiedni przedziale.
+     * Petla for przypisujaca wartosci do kolejnych indeksow tablicy outReal. Przypisanie wartosci do
+     * pol przekazanych obiektow.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal typu double []
+     * @return RetCode
+     */
     public RetCode avgPrice(int startIdx,
                             int endIdx,
                             double inOpen[],
@@ -2517,7 +2578,21 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda oblicza srednia cene. Sprawdza, czy podany indeks zawiera sie w odpowiedni przedziale.
+     * Petla for przypisujaca wartosci do kolejnych indeksow tablicy outReal. Przypisanie wartosci do
+     * pol przekazanych obiektow.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal typu double []
+     * @return RetCode
+     */
     public RetCode avgPrice(int startIdx,
                             int endIdx,
                             float inOpen[],
@@ -2545,6 +2620,17 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Metoda sprawdza, czy optInTimePeriod ma odpowiednia wartosc oraz czy znajduje sie w zakresie (2, 100000).
+     * Nastepnie sprawdza, czy optInNbDevUp ma wartosc -4e+37. Jesli tak, to przypisuje do niej wartosc 2.000000e+0.
+     * W przeciwnym wypadku sprawdza, czy znajduje sie w zadanym zakresie. Zwraca wartosc funkcji movingAverageLookback.
+     * @param optInTimePeriod typu int
+     * @param optInNbDevUp typu double
+     * @param optInNbDevDn typu double
+     * @param optInMAType typu MAType
+     * @return typu int
+     */
     public int bbandsLookback(int optInTimePeriod,
                               double optInNbDevUp,
                               double optInNbDevDn,
