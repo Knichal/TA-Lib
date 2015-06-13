@@ -4102,10 +4102,29 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Metoda zwraca wartosc 3
+     * @return 3
+     */
     public int cdl3OutsideLookback() {
         return 3;
     }
 
+    /**
+     * Metoda sprawdza zakres indeksow. Petla do while wykonuje wypelnianie tablicy outInteger.
+     * Zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdl3Outside(int startIdx,
                                int endIdx,
                                double inOpen[],
@@ -4150,7 +4169,20 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda sprawdza zakres indeksow. Petla do while wykonuje wypelnianie tablicy outInteger.
+     * Zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdl3Outside(int startIdx,
                                int endIdx,
                                float inOpen[],
