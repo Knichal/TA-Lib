@@ -3165,7 +3165,22 @@ public class Core {
     public int bopLookback() {
         return 0;
     }
-    
+
+    /**
+     * Metoda sprawdza, czy indeks zawiera sie w odpowiednim zakresie.
+     * Petla for przypisuje wartosci do tablic tempreal i outreal.
+     * Modyfikuje pola obiektow MInteger i zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal typu double []
+     * @return kod RetCode
+     */
     public RetCode bop(int startIdx,
                        int endIdx,
                        double inOpen[],
@@ -3193,7 +3208,21 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda sprawdza, czy indeks zawiera sie w odpowiednim zakresie.
+     * Petla for przypisuje wartosci do tablic tempreal i outreal.
+     * Modyfikuje pola obiektow MInteger i zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal typu double []
+     * @return kod RetCode
+     */
     public RetCode bop(int startIdx,
                        int endIdx,
                        float inOpen[],
