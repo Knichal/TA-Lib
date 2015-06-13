@@ -4229,6 +4229,11 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Sprawdza zlozony warunek i zwraca wyliczona weatosc
+     * @return int
+     */
     public int cdl3StarsInSouthLookback() {
         return (((((((this.candleSettings[CandleSettingType.ShadowVeryShort.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.ShadowLong.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.ShadowVeryShort.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.ShadowLong.ordinal()].avgPeriod)))) > (((((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod))))) ? (((((this.candleSettings[CandleSettingType.ShadowVeryShort.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.ShadowLong.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.ShadowVeryShort.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.ShadowLong.ordinal()].avgPeriod)))) : (((((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod))))) +
                 2;
