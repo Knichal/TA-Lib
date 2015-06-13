@@ -2650,6 +2650,26 @@ public class Core {
         return movingAverageLookback(optInTimePeriod, optInMAType);
     }
 
+    /**
+     * Metoda sprawdza, czy optInTimePeriod ma odpowiednia wartosc oraz czy znajduje sie w zakresie (2, 100000).
+     * Nastepnie sprawdza, czy optInNbDevUp ma wartosc -4e+37. Jesli tak, to przypisuje do niej wartosc 2.000000e+0.
+     * W przeciwnym wypadku sprawdza, czy znajduje sie w zadanym zakresie. Nastepnie nastepuje seria sprawdzen parametrow
+     * przekazanych w argumencie funkcji. Po spelnieniu wszystkich warunkow metoda zwraca kod sukcesu.
+     *
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inReal typu double []
+     * @param optInTimePeriod typu int
+     * @param optInNbDevUp double
+     * @param optInNbDevDn double
+     * @param optInMAType typu MAType
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outRealUpperBand typu double []
+     * @param outRealMiddleBand typu double []
+     * @param outRealLowerBand typu double []
+     * @return kod RetCode
+     */
     public RetCode bbands(int startIdx,
                           int endIdx,
                           double inReal[],
