@@ -3758,10 +3758,29 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Metoda zwraca wartosc tablicy candleSettings o danym indeksie
+     * @return int
+     */
     public int cdl3InsideLookback() {
         return ((((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod))) + 2;
     }
-
+    /**
+     * Metoda sprawdza zakres indeksow. Petla while wykonuje sumowanie wartosci BodyLongPeriodTotal.
+     * Petla do while sprawdza rozbudowany warunek i sumuje wartosci BodyLongPeriodTotal.
+     * Zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdl3Inside(int startIdx,
                               int endIdx,
                               double inOpen[],
@@ -3824,7 +3843,21 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda sprawdza zakres indeksow. Petla while wykonuje sumowanie wartosci BodyLongPeriodTotal.
+     * Petla do while sprawdza rozbudowany warunek i sumuje wartosci BodyLongPeriodTotal.
+     * Zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdl3Inside(int startIdx,
                               int endIdx,
                               float inOpen[],
