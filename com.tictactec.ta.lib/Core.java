@@ -3268,6 +3268,22 @@ public class Core {
         return (optInTimePeriod - 1);
     }
 
+    /**
+     * Metoda ustawia bufor i sprawdza, czy indeksy sa w okreslonym zakresie.
+     * Petla while wypelnia tablice circBuffer odpowiednimi wartosciami.
+     * Petla do while wykonuje operacje arytmetyczne i wypelnia tablice outReal.
+     * Zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param optInTimePeriod typu int
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal typu double []
+     * @return kod RetCode
+     */
     public RetCode cci(int startIdx,
                        int endIdx,
                        double inHigh[],
@@ -3343,7 +3359,22 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda ustawia bufor i sprawdza, czy indeksy sa w okreslonym zakresie.
+     * Petla while wypelnia tablice circBuffer odpowiednimi wartosciami.
+     * Petla do while wykonuje operacje arytmetyczne i wypelnia tablice outReal.
+     * Zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param optInTimePeriod typu int
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal typu double []
+     * @return kod RetCode
+     */
     public RetCode cci(int startIdx,
                        int endIdx,
                        float inHigh[],
