@@ -3165,7 +3165,22 @@ public class Core {
     public int bopLookback() {
         return 0;
     }
-    
+
+    /**
+     * Metoda sprawdza, czy indeks zawiera sie w odpowiednim zakresie.
+     * Petla for przypisuje wartosci do tablic tempreal i outreal.
+     * Modyfikuje pola obiektow MInteger i zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal typu double []
+     * @return kod RetCode
+     */
     public RetCode bop(int startIdx,
                        int endIdx,
                        double inOpen[],
@@ -3193,7 +3208,21 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda sprawdza, czy indeks zawiera sie w odpowiednim zakresie.
+     * Petla for przypisuje wartosci do tablic tempreal i outreal.
+     * Modyfikuje pola obiektow MInteger i zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal typu double []
+     * @return kod RetCode
+     */
     public RetCode bop(int startIdx,
                        int endIdx,
                        float inOpen[],
@@ -3223,6 +3252,14 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Sprawdza, czy wartosc przekazana w parametrze jest rowna minimalnej wartosci Integer. Jesli tak, to przypisuje jej wartosc 14,
+     * W przeciwnym wypadku sprawdza, czy ta wartosc zawiera sie w zakresie (2, 100000). Jesli nie, to zwraca -1, w przeciwnym wypadku zwraca
+     * optInTimePeriod -1.
+     * @param optInTimePeriod int
+     * @return int
+     */
     public int cciLookback(int optInTimePeriod) {
         if ((int) optInTimePeriod == (Integer.MIN_VALUE))
             optInTimePeriod = 14;
@@ -3231,6 +3268,22 @@ public class Core {
         return (optInTimePeriod - 1);
     }
 
+    /**
+     * Metoda ustawia bufor i sprawdza, czy indeksy sa w okreslonym zakresie.
+     * Petla while wypelnia tablice circBuffer odpowiednimi wartosciami.
+     * Petla do while wykonuje operacje arytmetyczne i wypelnia tablice outReal.
+     * Zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param optInTimePeriod typu int
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal typu double []
+     * @return kod RetCode
+     */
     public RetCode cci(int startIdx,
                        int endIdx,
                        double inHigh[],
@@ -3306,7 +3359,22 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda ustawia bufor i sprawdza, czy indeksy sa w okreslonym zakresie.
+     * Petla while wypelnia tablice circBuffer odpowiednimi wartosciami.
+     * Petla do while wykonuje operacje arytmetyczne i wypelnia tablice outReal.
+     * Zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param optInTimePeriod typu int
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outReal typu double []
+     * @return kod RetCode
+     */
     public RetCode cci(int startIdx,
                        int endIdx,
                        float inHigh[],
@@ -3384,10 +3452,30 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Metoda zwraca wartosc tablicy candleSettings o danym indeksie
+     * @return int
+     */
     public int cdl2CrowsLookback() {
         return (this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod) + 2;
     }
 
+    /**
+     * Metoda sprawdza zakres indeksow. Petla while wykonuje sumowanie wartosci BodyLongPeriodTotal.
+     * Petla do while sprawdza rozbudowany warunek i sumuje wartosci BodyLongPeriodTotal.
+     * Zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdl2Crows(int startIdx,
                              int endIdx,
                              double inOpen[],
@@ -3440,7 +3528,21 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda sprawdza zakres indeksow. Petla while wykonuje sumowanie wartosci BodyLongPeriodTotal.
+     * Petla do while sprawdza rozbudowany warunek i sumuje wartosci BodyLongPeriodTotal.
+     * Zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdl2Crows(int startIdx,
                              int endIdx,
                              float inOpen[],
@@ -3498,7 +3600,21 @@ public class Core {
     public int cdl3BlackCrowsLookback() {
         return (this.candleSettings[CandleSettingType.ShadowVeryShort.ordinal()].avgPeriod) + 3;
     }
-
+    /**
+     * Metoda sprawdza zakres indeksow. Petla while wykonuje sumowanie wartosci ShadowVeryShortPeriodTotal.
+     * Petla for w petli do while sprawdza rozbudowany warunek i sumuje wartosci ShadowVeryShortPeriodTotal.
+     * Zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdl3BlackCrows(int startIdx,
                                   int endIdx,
                                   double inOpen[],
@@ -3562,7 +3678,21 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda sprawdza zakres indeksow. Petla while wykonuje sumowanie wartosci ShadowVeryShortPeriodTotal.
+     * Petla for w petli do while sprawdza rozbudowany warunek i sumuje wartosci ShadowVeryShortPeriodTotal.
+     * Zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdl3BlackCrows(int startIdx,
                                   int endIdx,
                                   float inOpen[],
@@ -3628,10 +3758,29 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Metoda zwraca wartosc tablicy candleSettings o danym indeksie
+     * @return int
+     */
     public int cdl3InsideLookback() {
         return ((((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod))) + 2;
     }
-
+    /**
+     * Metoda sprawdza zakres indeksow. Petla while wykonuje sumowanie wartosci BodyLongPeriodTotal.
+     * Petla do while sprawdza rozbudowany warunek i sumuje wartosci BodyLongPeriodTotal.
+     * Zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdl3Inside(int startIdx,
                               int endIdx,
                               double inOpen[],
@@ -3694,7 +3843,21 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda sprawdza zakres indeksow. Petla while wykonuje sumowanie wartosci BodyLongPeriodTotal.
+     * Petla do while sprawdza rozbudowany warunek i sumuje wartosci BodyLongPeriodTotal.
+     * Zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdl3Inside(int startIdx,
                               int endIdx,
                               float inOpen[],
@@ -3759,10 +3922,29 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Metoda zwraca wartosc tablicy candleSettings o zadanym indeksie
+     * @return int
+     */
     public int cdl3LineStrikeLookback() {
         return (this.candleSettings[CandleSettingType.Near.ordinal()].avgPeriod) + 3;
     }
-
+    /**
+     * Metoda sprawdza zakres indeksow. Petla while wykonuje sumowanie wartosci NearPeriodTotal.
+     * Petla for w petli do while sprawdza rozbudowany warunek i sumuje wartosci NearPeriodTotal.
+     * Zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdl3LineStrike(int startIdx,
                                   int endIdx,
                                   double inOpen[],
@@ -3833,7 +4015,21 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda sprawdza zakres indeksow. Petla while wykonuje sumowanie wartosci NearPeriodTotal.
+     * Petla for w petli do while sprawdza rozbudowany warunek i sumuje wartosci NearPeriodTotal.
+     * Zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdl3LineStrike(int startIdx,
                                   int endIdx,
                                   float inOpen[],
@@ -3906,10 +4102,29 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Metoda zwraca wartosc 3
+     * @return 3
+     */
     public int cdl3OutsideLookback() {
         return 3;
     }
 
+    /**
+     * Metoda sprawdza zakres indeksow. Petla do while wykonuje wypelnianie tablicy outInteger.
+     * Zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdl3Outside(int startIdx,
                                int endIdx,
                                double inOpen[],
@@ -3954,7 +4169,20 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda sprawdza zakres indeksow. Petla do while wykonuje wypelnianie tablicy outInteger.
+     * Zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdl3Outside(int startIdx,
                                int endIdx,
                                float inOpen[],
@@ -4001,11 +4229,30 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Sprawdza zlozony warunek i zwraca wyliczona wartosc zalezna od spelnionego warunku.
+     * @return int
+     */
     public int cdl3StarsInSouthLookback() {
         return (((((((this.candleSettings[CandleSettingType.ShadowVeryShort.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.ShadowLong.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.ShadowVeryShort.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.ShadowLong.ordinal()].avgPeriod)))) > (((((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod))))) ? (((((this.candleSettings[CandleSettingType.ShadowVeryShort.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.ShadowLong.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.ShadowVeryShort.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.ShadowLong.ordinal()].avgPeriod)))) : (((((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod))))) +
                 2;
     }
 
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic lokalnych za pomoca przetworzonych
+     * parametrow przekazanych do tej metody. Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdl3StarsInSouth(int startIdx,
                                     int endIdx,
                                     double inOpen[],
@@ -4101,7 +4348,20 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic lokalnych za pomoca przetworzonych
+     * parametrow przekazanych do tej metody. Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdl3StarsInSouth(int startIdx,
                                     int endIdx,
                                     float inOpen[],
@@ -4199,11 +4459,28 @@ public class Core {
     }
 
     /* Generated */
+    /**
+     * Sprawdza zlozony warunek i zwraca wyliczona wartosc zalezna od spelnionego warunku.
+     * @return int
+     */
     public int cdl3WhiteSoldiersLookback() {
         return (((((((this.candleSettings[CandleSettingType.ShadowVeryShort.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.ShadowVeryShort.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod)))) > (((((this.candleSettings[CandleSettingType.Far.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.Near.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.Far.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.Near.ordinal()].avgPeriod))))) ? (((((this.candleSettings[CandleSettingType.ShadowVeryShort.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.ShadowVeryShort.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod)))) : (((((this.candleSettings[CandleSettingType.Far.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.Near.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.Far.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.Near.ordinal()].avgPeriod))))) +
                 2;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic lokalnych za pomoca przetworzonych
+     * parametrow przekazanych do tej metody. Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdl3WhiteSoldiers(int startIdx,
                                      int endIdx,
                                      double inOpen[],
@@ -4309,7 +4586,20 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic lokalnych za pomoca przetworzonych
+     * parametrow przekazanych do tej metody. Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdl3WhiteSoldiers(int startIdx,
                                      int endIdx,
                                      float inOpen[],
@@ -4417,6 +4707,12 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Metoda sprawdza, czy parametr zawiera sie w danym zakresie i zwraca odpowiednia wartosc.
+     * @param optInPenetration typu double
+     * @return int
+     */
     public int cdlAbandonedBabyLookback(double optInPenetration) {
         if (optInPenetration == (-4e+37))
             optInPenetration = 3.000000e-1;
@@ -4425,7 +4721,21 @@ public class Core {
         return (((((((this.candleSettings[CandleSettingType.BodyDoji.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.BodyDoji.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod)))) > ((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod))) ? (((((this.candleSettings[CandleSettingType.BodyDoji.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.BodyDoji.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod)))) : ((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod))) +
                 2;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic lokalnych za pomoca przetworzonych
+     * parametrow przekazanych do tej metody. Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param optInPenetration typu double
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlAbandonedBaby(int startIdx,
                                     int endIdx,
                                     double inOpen[],
@@ -4512,7 +4822,21 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic lokalnych za pomoca przetworzonych
+     * parametrow przekazanych do tej metody. Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param optInPenetration typu double
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlAbandonedBaby(int startIdx,
                                     int endIdx,
                                     float inOpen[],
@@ -4601,11 +4925,29 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Metoda sprawdza rozbudowany warunek i zwraca odpowiednia wartosc.
+     * @return int
+     */
     public int cdlAdvanceBlockLookback() {
         return ((((((((((this.candleSettings[CandleSettingType.ShadowLong.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.ShadowShort.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.ShadowLong.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.ShadowShort.ordinal()].avgPeriod)))) > (((((this.candleSettings[CandleSettingType.Far.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.Near.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.Far.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.Near.ordinal()].avgPeriod))))) ? (((((this.candleSettings[CandleSettingType.ShadowLong.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.ShadowShort.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.ShadowLong.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.ShadowShort.ordinal()].avgPeriod)))) : (((((this.candleSettings[CandleSettingType.Far.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.Near.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.Far.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.Near.ordinal()].avgPeriod)))))) > ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod))) ? ((((((((this.candleSettings[CandleSettingType.ShadowLong.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.ShadowShort.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.ShadowLong.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.ShadowShort.ordinal()].avgPeriod)))) > (((((this.candleSettings[CandleSettingType.Far.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.Near.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.Far.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.Near.ordinal()].avgPeriod))))) ? (((((this.candleSettings[CandleSettingType.ShadowLong.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.ShadowShort.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.ShadowLong.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.ShadowShort.ordinal()].avgPeriod)))) : (((((this.candleSettings[CandleSettingType.Far.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.Near.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.Far.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.Near.ordinal()].avgPeriod)))))) : ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod))) +
                 2;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic lokalnych za pomoca przetworzonych
+     * parametrow przekazanych do tej metody. Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlAdvanceBlock(int startIdx,
                                    int endIdx,
                                    double inOpen[],
@@ -4743,7 +5085,20 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic lokalnych za pomoca przetworzonych
+     * parametrow przekazanych do tej metody. Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlAdvanceBlock(int startIdx,
                                    int endIdx,
                                    float inOpen[],
@@ -4883,10 +5238,28 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Metoda sprawdza rozbudowany warunek i zwraca odpowiednia wartosc
+     * @return int
+     */
     public int cdlBeltHoldLookback() {
         return ((((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.ShadowVeryShort.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.ShadowVeryShort.ordinal()].avgPeriod)));
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic lokalnych za pomoca przetworzonych
+     * parametrow przekazanych do tej metody. Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlBeltHold(int startIdx,
                                int endIdx,
                                double inOpen[],
@@ -4951,7 +5324,20 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic lokalnych za pomoca przetworzonych
+     * parametrow przekazanych do tej metody. Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlBeltHold(int startIdx,
                                int endIdx,
                                float inOpen[],
@@ -5018,10 +5404,27 @@ public class Core {
     }
 
     /* Generated */
+    /**
+     * Metoda zwraca wartosc pola avgPeriod obiektu znajdujacego sie w tablicy candleSettings pod indeksem CandleSettingType.BodyLong.ordinal() zwiekszona o 4
+     * @return int
+     */
     public int cdlBreakawayLookback() {
         return (this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod) + 4;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic za pomoca przetworzonych
+     * parametrow przekazanych do tej metody. Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlBreakaway(int startIdx,
                                 int endIdx,
                                 double inOpen[],
@@ -5087,7 +5490,20 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic za pomoca przetworzonych
+     * parametrow przekazanych do tej metody. Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlBreakaway(int startIdx,
                                 int endIdx,
                                 float inOpen[],
@@ -5154,11 +5570,28 @@ public class Core {
         return RetCode.Success;
     }
 
+    /**
+     * Metoda sprawdza rozbudowany warunek i zwraca odpowiednia wartosc
+     * @return int
+     */
     /* Generated */
     public int cdlClosingMarubozuLookback() {
         return ((((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.ShadowVeryShort.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.ShadowVeryShort.ordinal()].avgPeriod)));
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic za pomoca przetworzonych
+     * parametrow przekazanych do tej metody. Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlClosingMarubozu(int startIdx,
                                       int endIdx,
                                       double inOpen[],
@@ -5223,7 +5656,20 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic za pomoca przetworzonych
+     * parametrow przekazanych do tej metody. Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlClosingMarubozu(int startIdx,
                                       int endIdx,
                                       float inOpen[],
@@ -5290,10 +5736,28 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Metoda zwraca wartosc pola avgPeriod obiektu znajdujacego sie w tablicy candleSettings pod indeksem CandleSettingType.BodyLong.ordinal() zwiekszona o 3
+     * @return
+     */
     public int cdlConcealBabysWallLookback() {
         return (this.candleSettings[CandleSettingType.ShadowVeryShort.ordinal()].avgPeriod) + 3;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic lokalnych za pomoca przetworzonych
+     * parametrow przekazanych do tej metody. Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlConcealBabysWall(int startIdx,
                                        int endIdx,
                                        double inOpen[],
@@ -5357,7 +5821,20 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic lokalnych za pomoca przetworzonych
+     * parametrow przekazanych do tej metody. Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlConcealBabysWall(int startIdx,
                                        int endIdx,
                                        float inOpen[],
@@ -5423,11 +5900,29 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Sprawdza zlozony warunek i zwraca wyliczona wartosc zalezna od spelnionego warunku.
+     * @return int
+     */
     public int cdlCounterAttackLookback() {
         return ((((this.candleSettings[CandleSettingType.Equal.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.Equal.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod))) +
                 1;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic lokalnych za pomoca przetworzonych
+     * parametrow przekazanych do tej metody. Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlCounterAttack(int startIdx,
                                     int endIdx,
                                     double inOpen[],
