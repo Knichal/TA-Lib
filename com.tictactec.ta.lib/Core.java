@@ -4231,7 +4231,7 @@ public class Core {
     /* Generated */
 
     /**
-     * Sprawdza zlozony warunek i zwraca wyliczona weatosc
+     * Sprawdza zlozony warunek i zwraca wyliczona wartosc zalezna od spelnionego warunku.
      * @return int
      */
     public int cdl3StarsInSouthLookback() {
@@ -4239,6 +4239,20 @@ public class Core {
                 2;
     }
 
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic lokalnych za pomoca przetworzonych
+     * parametrow przekazanych do tej metody. Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdl3StarsInSouth(int startIdx,
                                     int endIdx,
                                     double inOpen[],
@@ -4334,7 +4348,20 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic lokalnych za pomoca przetworzonych
+     * parametrow przekazanych do tej metody. Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdl3StarsInSouth(int startIdx,
                                     int endIdx,
                                     float inOpen[],
@@ -4432,11 +4459,28 @@ public class Core {
     }
 
     /* Generated */
+    /**
+     * Sprawdza zlozony warunek i zwraca wyliczona wartosc zalezna od spelnionego warunku.
+     * @return int
+     */
     public int cdl3WhiteSoldiersLookback() {
         return (((((((this.candleSettings[CandleSettingType.ShadowVeryShort.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.ShadowVeryShort.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod)))) > (((((this.candleSettings[CandleSettingType.Far.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.Near.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.Far.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.Near.ordinal()].avgPeriod))))) ? (((((this.candleSettings[CandleSettingType.ShadowVeryShort.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.ShadowVeryShort.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod)))) : (((((this.candleSettings[CandleSettingType.Far.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.Near.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.Far.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.Near.ordinal()].avgPeriod))))) +
                 2;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic lokalnych za pomoca przetworzonych
+     * parametrow przekazanych do tej metody. Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdl3WhiteSoldiers(int startIdx,
                                      int endIdx,
                                      double inOpen[],
@@ -4542,7 +4586,20 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic lokalnych za pomoca przetworzonych
+     * parametrow przekazanych do tej metody. Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdl3WhiteSoldiers(int startIdx,
                                      int endIdx,
                                      float inOpen[],
