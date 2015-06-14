@@ -5987,7 +5987,20 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic lokalnych za pomoca przetworzonych
+     * parametrow przekazanych do tej metody. Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlCounterAttack(int startIdx,
                                     int endIdx,
                                     float inOpen[],
