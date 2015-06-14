@@ -5995,7 +5995,7 @@ public class Core {
      * @param inOpen typu float []
      * @param inHigh typu float []
      * @param inLow typu float []
-     * @param inClose typu float []
+     * @param inClose typu float [] 
      * @param outBegIdx typu MInteger
      * @param outNBElement typu MInteger
      * @param outInteger typu int []
