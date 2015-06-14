@@ -8186,10 +8186,28 @@ public class Core {
     }
 
     /* Generated */
+    /**
+     * Sprawdza zlozony warunek i zwraca wyliczona wartosc zalezna od spelnionego warunku.
+     * @return int
+     */
     public int cdlHignWaveLookback() {
         return ((((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.ShadowVeryLong.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.ShadowVeryLong.ordinal()].avgPeriod)));
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic za pomoca przetworzonych
+     * parametrow przekazanych do tej metody oraz wyliczaniem wartosci zmiennych lokalnych.
+     * Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlHignWave(int startIdx,
                                int endIdx,
                                double inOpen[],
@@ -8245,7 +8263,21 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic za pomoca przetworzonych
+     * parametrow przekazanych do tej metody oraz wyliczaniem wartosci zmiennych lokalnych.
+     * Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlHignWave(int startIdx,
                                int endIdx,
                                float inOpen[],
