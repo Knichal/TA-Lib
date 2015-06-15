@@ -2,20 +2,13 @@ package strawinska.magda;
 
 import static org.junit.Assert.*;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.tictactec.ta.lib.Compatibility;
 import com.tictactec.ta.lib.FuncUnstId;
 
 public class TestFuncUnstld {
 	
 	static FuncUnstId funcunstld;
-	
-	@BeforeClass
-	public static void beforeClass() {
-		FuncUnstId funcunstld;
-	}
 
 	@Test
 	public void testAdx() {
@@ -165,18 +158,6 @@ public class TestFuncUnstld {
 	public void testT3() {
 		if (funcunstld.T3.equals(funcunstld.T3)) {
 		}
-	}
-	
-	@Test
-	public void test4() {
-		funcunstld.values();
-		
-	}
-	
-	@Test
-	public void testValueOf() {
-		
-		funcunstld.valueOf(FuncUnstId.Adx.toString());
 	}
 	
 	
