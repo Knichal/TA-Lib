@@ -2,15 +2,19 @@ package strawinska.magda;
 
 import static org.junit.Assert.*;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.tictactec.ta.lib.CandleSetting;
+import com.tictactec.ta.lib.Compatibility;
+import com.tictactec.ta.lib.Core;
 import com.tictactec.ta.lib.FuncUnstId;
 import com.tictactec.ta.lib.MAType;
 
 public class TestMAType {
 
 	static MAType maType;
-	
+
 	
 	@Test
 	public void testDema() {
@@ -63,7 +67,34 @@ public class TestMAType {
 	@Test
 	public void testWma() {
 			if (maType.Wma.equals(maType.Wma)) {
+				
 			}
 		}
 	
-}
+	
+	@Test
+	public void testValues() {
+			maType.values();
+				
+			}
+	
+	
+	@Test
+	public void testValueOf() {
+		
+		maType.valueOf(MAType.Dema.toString());
+		maType.valueOf(MAType.Ema.toString());
+		maType.valueOf(MAType.Kama.toString());
+		maType.valueOf(MAType.Mama.toString());
+		maType.valueOf(MAType.Sma.toString());
+		maType.valueOf(MAType.T3.toString());
+		maType.valueOf(MAType.Tema.toString());
+		maType.valueOf(MAType.Trima.toString());
+		maType.valueOf(MAType.Wma.toString());
+	}
+	
+
+		}
+	
+	
+
