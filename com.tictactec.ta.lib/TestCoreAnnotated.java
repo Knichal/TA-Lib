@@ -15,8 +15,12 @@ import com.tictactec.ta.lib.RetCode;
 
 public class TestCoreAnnotated extends TestCore{
 	
+	
 		@Test
 		public void testSMA() {
+			CoreAnnotated coreAnnotated;
+			coreAnnotated = new CoreAnnotated();
+			
 			super.testSMA();	
 		}
 	
@@ -44,11 +48,10 @@ public class TestCoreAnnotated extends TestCore{
 			public void testAddLookback() {
 			 super.testAddLookback();
 			}
-		 
+		
 		 @Test
-			public void testAdLookback() {
-			 super.testAdLookback();
-			}
+		 public void TestAdLookback() {
+				     super.testAddLookback(); }
 		 
 		 @Test
 			public void testMinMaxLookback() {
@@ -362,7 +365,7 @@ public class TestCoreAnnotated extends TestCore{
 		 
 		 @Test
 			public void testSetUnstablePeriod() {
-			super.testSetUnstablePeriod();
+			 super.testSetUnstablePeriod();
 			}
 		 
 		 

@@ -61,6 +61,8 @@ public class TestCore{
 			double[] outReal = new double[1];
 			
 		RetCode rc = core.sma(0, 104, inputsinReal, 105, outBegIdx, outNBElement, outReal);
+		core.toString().valueOf(0);
+		core.toString().valueOf(lookback);
 		
 		assertArrayEquals(expecteds, outReal, 0);
 				
@@ -182,6 +184,9 @@ public class TestCore{
 				int expecteds = -1;
 				int actual = core.aroonLookback(expecteds);
 				assertEquals(expecteds, actual);
+				RetCode.BadParam.equals(core.minMaxLookback(expecteds));
+				core.equals(core.toString().valueOf(retCode));
+				
 			}
 	
 		 @Test
@@ -209,6 +214,8 @@ public class TestCore{
 				int expecteds = -1;
 				int actual = core.rocPLookback(expecteds);
 				assertEquals(expecteds, actual);
+				
+				
 			}
 		 
 		 @Test
@@ -570,8 +577,10 @@ public class TestCore{
 				
 				
 				
-			RetCode ra = core.TA_INT_EMA(0, lookback, inputsinReal, 2, lookback, outBegIdx, outNBElement, inputsinReal);
-			
+			RetCode ra = core.TA_INT_EMA(0, 0, inputsinReal, 2, lookback, outBegIdx, outNBElement, inputsinReal);
+			core.TA_INT_EMA(0, 0, inputsinReal, 0, lookback, outBegIdx, outNBElement, outReal);
+			assertArrayEquals(expecteds, inputsinReal, lookback);
+			core.TA_INT_EMA(0, 0, inputsinReal, lookback, lookback, outNBElement, outNBElement, inputsinReal);
 			
 			assertArrayEquals(expecteds, outReal, 0);
 		    }
@@ -597,8 +606,9 @@ public class TestCore{
 		 @Test
 			public void testSetUnstablePeriod() {
 			 
-			funcunstld = FuncUnstId.Adx;
-			RetCode aa = core.SetUnstablePeriod(funcunstld, 0);
+			RetCode aa = core.SetUnstablePeriod(funcunstld,0);
+			int rc = core.GetUnstablePeriod(funcunstld.Adx);
+			
 			 
 			}
 		 
