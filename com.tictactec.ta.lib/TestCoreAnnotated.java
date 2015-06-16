@@ -18,360 +18,423 @@ public class TestCoreAnnotated extends TestCore{
 	
 		@Test
 		public void testSMA() {
-			CoreAnnotated coreAnnotated;
-			coreAnnotated = new CoreAnnotated();
-			
-			super.testSMA();	
-		}
+
+				CoreAnnotated cd = new CoreAnnotated();
+				cd.sma(lookback, lookback, input, lookback, outNbElement, outNbElement, input);
+				}
 	
 		@Test
 		public void testSMA3() {
-			super.testSMA3();	
+			CoreAnnotated cd = new CoreAnnotated();
+			cd.sma(lookback, lookback, output, lookback, outNbElement, outNbElement, input);	
 		}
 
 		@Test
 		public void testCdlHikkakeLookback() {
-		    super.testCdlHikkakeLookback();
+			CoreAnnotated cd = new CoreAnnotated();
+			cd.cdlHikkakeLookback();
 		}
 		 
 		@Test
 		public void testSmaLookback() {
-			super.testSmaLookback();
+			CoreAnnotated cd = new CoreAnnotated();
+			cd.smaLookback(lookback);
 		}
 	
 		 @Test
 			public void testAcosLookback() {
-			 super.testAcosLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+				cd.acosLookback();
 			}
 		 
 		 @Test
 			public void testAddLookback() {
-			 super.testAddLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.addLookback();
 			}
 		
 		 @Test
 		 public void TestAdLookback() {
-				     super.testAddLookback(); }
+			 CoreAnnotated cd = new CoreAnnotated();
+				     cd.adLookback(); }
 		 
 		 @Test
 			public void testMinMaxLookback() {
-			 super.testSmaLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.minMaxLookback(lookback);
 			}
 		 
 		 @Test
 			public void testMinMaxIndexLookback() {
-			 super.testMinMaxLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.minMaxIndexLookback(lookback);
 			}
 		 
 		 @Test
 			public void testSumLookback() {
-			 super.testSmaLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.sumLookback(lookback);
 			}
 		 
 		 @Test
 			public void testTrimaLookback() {
-			 super.testTrimaLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.trimaLookback(lookback);
 			}
 		 
 		 @Test
 			public void testTsfLookback() {
-			 super.testTsfLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.tsfLookback(lookback);
 			}
 		 
 		 @Test
 			public void testWillLookback() {
-			 super.testWillLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.willRLookback(lookback);
 			}
 		 
 		 @Test
 			public void testWmaLookback() {
-			 super.testWmaLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.wmaLookback(lookback);
 			}
 		 
 		 @Test
 			public void testAroonLookback() {
-			 super.testAroonLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.aroonLookback(lookback);
 			}
 	
 		 @Test
 			public void testAroonOscLookback() {
-			 super.testAroonOscLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.aroonOscLookback(lookback);
 			}
 		 
 		 @Test
 			public void testBetaLookback() {
-			 super.testBetaLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.betaLookback(lookback);
 			}
 		 
 		 @Test
 			public void testRocLookback() {
-			 super.testRocLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.rocLookback(lookback);
 			}
 		 
 		 @Test
 			public void testRocPLookback() {
-			 super.testRocPLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.rocPLookback(lookback);
 			}
 		 
 		 @Test
 			public void testRocRLookback() {
-			 super.testRocRLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.rocRLookback(lookback);
 			}
 		 
 		 @Test
 			public void testRocR100Lookback() {
-			 super.testRocR100Lookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.rocR100Lookback(lookback);
 			}
 		 
 		 @Test
 			public void testCdl12Lookback() {
-			 super.testCdl12Lookback();
+			 
 			}
 		 
 		 @Test
 			public void testCdl3BlackCrowsLookback() {
-			 super.testCdl3BlackCrowsLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.cdl2CrowsLookback();
 			}
 		 
 		 @Test
 			public void testCdl3LineStrikeLookback() {
-			 super.testCdl3LineStrikeLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.cdl3LineStrikeLookback();
 			}
 		 
 		 @Test
 			public void testCdlBreakwayLookback() {
-			 super.testCdlBreakwayLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.cdlBreakawayLookback();
 			}
 		 
 		 @Test
 			public void testCdlConcealBabyWallLookback() {
-			 super.testCdlConcealBabyWallLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.cdlConcealBabysWallLookback();
 			}
 		 
 		 @Test
 			public void testCdlLadderBottomLookback() {
-			 super.testCdlLadderBottomLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.cdlLadderBottomLookback();
 			}
 		 
 		 @Test
 			public void testCdlMatchingLowLookback() {
-			 super.testCdlMatchingLowLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.cdlMatchingLowLookback();
 			}
 		 
 		 @Test
 			public void testCdlPiercingLookback() {
-			 super.testCdlPiercingLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.cdlPiercingLookback();
 			}
 		 
 		 @Test
 			public void testCdlStickSandwichLookback() {
-			 super.testCdlStickSandwichLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.cdlStickSandwhichLookback();
 			}
 		 
 		 @Test
 			public void testCdlTasukiGapLookback() {
-			 super.testCdlTasukiGapLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.cdlTasukiGapLookback();
 			}
 		 
 		 @Test
 			public void testCdlTristarLookback() {
-			 super.testCdlTristarLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.cdlTristarLookback();
 			}
 		 
 		 @Test
 			public void testHtDcPeriodLookback() {
-			 super.testHtDcPeriodLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.htDcPeriodLookback();
 			}
 		 
 		 @Test
 			public void testHtDcPhaseLookback() {
-			 super.testHtDcPhaseLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.htDcPhaseLookback();
 			}
 		 
 		 @Test
 			public void testHtPhasorLookback() {
-			 super.testHtPhasorLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.htPhasorLookback();
 			}
 		 
 		 @Test
 			public void testHtSineLookback() {
-			 super.testHtSineLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.htSineLookback();
 			}
 		 
 		 @Test
 			public void testHtTrendlineLookback() {
-			 super.testHtTrendlineLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.htTrendlineLookback();
 			}
 		 
 		 @Test
 			public void testHtTrendmodeLookback() {
-			 super.testHtTrendmodeLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.htTrendModeLookback();
 			}
 		 
 		 @Test
 			public void testCdlDojiLookback() {
-			 super.testCdlDojiLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.cdlDojiLookback();
 			}
-
-		 
 		 
 		 @Test
 			public void testAsinLookback() {
-			 super.testAsinLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.asinLookback();
 			}
 		 
 		 @Test
 			public void testAvgPriceLookback() {
-			 super.testAvgPriceLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.avgPriceLookback();
 			}
 		 
 		 @Test
 			public void testBopLookback() {
-			 super.testBopLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.bopLookback();
 			}
 		 
 		 @Test
 			public void testCdl3OutsideLookback() {
-			 super.testCdl3OutsideLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.cdl3OutsideLookback();
 			}
 		 
 		 @Test
 			public void testCdlEngulfingLookback() {
-			 super.testCdlEngulfingLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.cdlEngulfingLookback();
 			}
 		 
 		 @Test
 			public void testCdlXSideGap3MethodsLookback() {
-			 super.testCdlXSideGap3MethodsLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.cdlXSideGap3MethodsLookback();
 			}
 		 
 		 @Test
 			public void testCeilLookback() {
-			 super.testCeilLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.ceilLookback();
 			}
 		 
 		 @Test
 			public void testCosLookback() {
-			 super.testCosLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.cosLookback();
 			}
 		 
 		 @Test
 			public void testCoshLookback() {
-			 super.testCoshLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.coshLookback();
 			}
 		 
 		 @Test
 			public void testDivLookback() {
-			 super.testDivLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.divLookback();
 			}
 		 
 		 @Test
 			public void testExpLookback() {
-			 super.testExpLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.expLookback();
 			}
 		 
 		 @Test
 			public void testFloorLookback() {
-			 super.testFloorLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.floorLookback();
 			}
 		 
 		 @Test
 			public void testLnLookback() {
-			 super.testLnLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.lnLookback();
 			}
 		 
 		 @Test
 			public void testLog10Lookback() {
-			 super.testLog10Lookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.log10Lookback();
 			}
 		 
 		 @Test
 			public void testMedPriceLookback() {
-			 super.testMedPriceLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.medPriceLookback();
 			}
 		 
 		 @Test
 			public void testMultLookback() {
-			 super.testMultLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.multLookback();
 			}
 		 
 		 @Test
 			public void testObvLookback() {
-			 super.testObvLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.obvLookback();
 			}
 		 
 		 @Test
 			public void testSInLookback() {
-			 super.testSInLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.sinLookback();
 			}
 		 
 		 @Test
 			public void testSinhLookback() {
-			 super.testSinhLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.sinhLookback();
 			}
 		 
 		 @Test
 			public void testSqrtLookback() {
-			 super.testSqrtLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.sqrtLookback();
 			}
 		 
 		 @Test
 			public void testSubLookback() {
-			 super.testSubLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.subLookback();
 			}
 		 
 		 @Test
 			public void testTanLookback() {
-			 super.testTanLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.tanLookback();
 			}
 		 
 		 @Test
 			public void testTanhLookback() {
-			 super.testTanhLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.tanhLookback();
 			}
 		 
 		 @Test
 			public void testTrueRangeLookback() {
-			 super.testTrueRangeLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.trueRangeLookback();
 			}
 		 
 		 @Test
 			public void testTypPriceLookback() {
-			 super.testTypPriceLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.typPriceLookback();
 			}
 		 
 		 @Test
 			public void testWclPriceLookback() {
-			 super.testWclPriceLookback();
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.wclPriceLookback();
 			}
 		 
-		 @Test
-		 public void testTA_INT_SMA()
-		    {
-			 super.testTA_INT_SMA();
-		    }
 		 
 		 @Test
 			public void testGetCompatibility() {
-			super.testGetCompatibility();				
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.getCompatibility();		
+						
+		 }
+		 
+		 @Test
+			public void testTA_INT_SMA() {
+			 
+			 double[] optInk_1 = new double[] { 1.0 };
+				
+				MInteger outBegIdx = new MInteger();
+				MInteger outNBElement = new MInteger();
+				double[] inReal = new double[] {2};
+				double[] outReal = new double[] {1.0};
+				double[] optInTimePeriod= new double[]  {1};
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.TA_INT_EMA(0, 0, inReal, 0, lookback, outBegIdx, outNBElement, outReal);
 						
 			}
-		 
-		
-		 @Test
-			public void testGetUnstablePeriod() {
-			super.testGetUnstablePeriod();
-			}
-		 
-		 @Test
-			public void testSetUnstablePeriod() {
-			 super.testSetUnstablePeriod();
-			}
+	
+
 		 
 		 
 		 @Test
 			public void testSetCompatibility() {
-			 super.testSetCompatibility();			
+			 CoreAnnotated cd = new CoreAnnotated();
+			 cd.SetCompatibility(compatibility);			
 						
 			}
 }
