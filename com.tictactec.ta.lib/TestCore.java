@@ -2104,4 +2104,1082 @@ public class TestCore{
 				optInSlowK_MAType, optInSlowD_Period, optInSlowD_MAType);
 		assertEquals(-1, actual5);
 	}		 
+@Test
+	public void testMfiD(){
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+		
+		core.mfi(0, 104, inHigh, inLow, inClose, inVolume, optInTimePeriod, outBegIdx, outNBElement, outReal);
+	}
+	@Test
+	public void testMfiF(){
+		float[] inOpen = new float[] { 4, 1, 0, 12, 
+				4, 4, 12, 10, 9, 6, 12, 4, 1, 1,
+				0,  6, 3, 7, 2, 7, 10, 0, 2,
+				10, 2, 3, 4, 0, 6, 2, 11, 1, 12,
+				7, 9, 12, 8, 7, 10, 9, 3, 6, 6, 2,
+				5, 1, 3, 6, 9, 2, 11, 0, 5, 7,
+				5, 9, 8, 3, 8, 3, 8, 6, 11, 7,
+				0, 4, 0, 3, 12, 12, 10, 0, 1, 3,
+				11, 0, 9, 0, 1, 11, 0, 3, 9, 10,
+				2, 1, 11, 9, 4, 11, 10, 8, 9, 12,
+				5, 4, 12, 5, 6, 2, 4, 1, 4, 1 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+	}
+	@Test
+	public void testcmoD(){
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+		double[] inReal = new double[1];
+		
+		core.cmo(0, 104, inReal , optInTimePeriod, outBegIdx, outNBElement, outReal);
+	}
+	@Test
+	public void testF(){
+		float[] inOpen = new float[] { 4, 1, 0, 12, 
+				4, 4, 12, 10, 9, 6, 12, 4, 1, 1,
+				0,  6, 3, 7, 2, 7, 10, 0, 2,
+				10, 2, 3, 4, 0, 6, 2, 11, 1, 12,
+				7, 9, 12, 8, 7, 10, 9, 3, 6, 6, 2,
+				5, 1, 3, 6, 9, 2, 11, 0, 5, 7,
+				5, 9, 8, 3, 8, 3, 8, 6, 11, 7,
+				0, 4, 0, 3, 12, 12, 10, 0, 1, 3,
+				11, 0, 9, 0, 1, 11, 0, 3, 9, 10,
+				2, 1, 11, 9, 4, 11, 10, 8, 9, 12,
+				5, 4, 12, 5, 6, 2, 4, 1, 4, 1 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+	
+		
+		double[] inReal= new double[1] ;
+		core.cmo(0, 104, inReal= new double[1] , optInTimePeriod, outBegIdx, outNBElement, outReal);
+	}
+	@Test
+	public void rsiD(){
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+		double[] inReal = new double[1];
+	
+		core.rsi(0, 104, inReal, optInTimePeriod, outBegIdx, outNBElement, outReal);
+	}
+	@Test
+	public void rsiF(){
+		float[] inOpen = new float[] { 4, 1, 0, 12, 
+				4, 4, 12, 10, 9, 6, 12, 4, 1, 1,
+				0,  6, 3, 7, 2, 7, 10, 0, 2,
+				10, 2, 3, 4, 0, 6, 2, 11, 1, 12,
+				7, 9, 12, 8, 7, 10, 9, 3, 6, 6, 2,
+				5, 1, 3, 6, 9, 2, 11, 0, 5, 7,
+				5, 9, 8, 3, 8, 3, 8, 6, 11, 7,
+				0, 4, 0, 3, 12, 12, 10, 0, 1, 3,
+				11, 0, 9, 0, 1, 11, 0, 3, 9, 10,
+				2, 1, 11, 9, 4, 11, 10, 8, 9, 12,
+				5, 4, 12, 5, 6, 2, 4, 1, 4, 1 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+	
+		
+		double[] inReal= new double[1] ;
+	
+		core.rsi(0, 104, inReal, optInTimePeriod, outBegIdx, outNBElement, outReal);
+	} 
+	@Test
+	public void testcdlXSideGap3MethodsD(){
+		
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+		double[] inReal = new double[1];
+		
+		int[] outInteger = new int[1];
+		core.cdlXSideGap3Methods(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+	}
+//	@Test
+//	public void cdlXSideGap3MethodsF(){
+//		float[] inOpen = new float[] { 4 };
+//		
+//		
+//		double[] inHigh = new double[1];
+//		double[] inLow = new double[1];
+//		double[] inClose = new double[1];
+//		double[] inVolume = new double[1];
+//		int optInTimePeriod = 1;
+//		MInteger outBegIdx = new MInteger();
+//		MInteger outNBElement = new MInteger();
+//		double[] outReal = new double[]{1};
+//	
+//		int[] outInteger = new int[1];
+//		core.cdlXSideGap3Methods(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+//	}	 
+//	
+	@Test
+	public void testtrimaD(){
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+		double[] inReal = new double[1];
+		int endIdx = 1;
+		int startIdx = 1;
+		core.trima(startIdx , endIdx , inReal, optInTimePeriod, outBegIdx, outNBElement, outReal);
+	}
+	@Test
+	public void testtrimaF(){
+		float[] inOpen = new float[] { 4, 1, 0, 12, 
+				4, 4, 12, 10, 9, 6, 12, 4, 1, 1,
+				0,  6, 3, 7, 2, 7, 10, 0, 2,
+				10, 2, 3, 4, 0, 6, 2, 11, 1, 12,
+				7, 9, 12, 8, 7, 10, 9, 3, 6, 6, 2,
+				5, 1, 3, 6, 9, 2, 11, 0, 5, 7,
+				5, 9, 8, 3, 8, 3, 8, 6, 11, 7,
+				0, 4, 0, 3, 12, 12, 10, 0, 1, 3,
+				11, 0, 9, 0, 1, 11, 0, 3, 9, 10,
+				2, 1, 11, 9, 4, 11, 10, 8, 9, 12,
+				5, 4, 12, 5, 6, 2, 4, 1, 4, 1 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+	
+		
+		double[] inReal= new double[1] ;
+		int startIdx = 1;
+		int endIdx = 1;
+		core.trima(startIdx , endIdx , inReal, optInTimePeriod, outBegIdx, outNBElement, outReal);
+	}
+	@Test
+	public void testsarF(){
+		float[] inOpen = new float[] { 4, 1, 0, 12, 
+				4, 4, 12, 10, 9, 6, 12, 4, 1, 1,
+				0,  6, 3, 7, 2, 7, 10, 0, 2,
+				10, 2, 3, 4, 0, 6, 2, 11, 1, 12,
+				7, 9, 12, 8, 7, 10, 9, 3, 6, 6, 2,
+				5, 1, 3, 6, 9, 2, 11, 0, 5, 7,
+				5, 9, 8, 3, 8, 3, 8, 6, 11, 7,
+				0, 4, 0, 3, 12, 12, 10, 0, 1, 3,
+				11, 0, 9, 0, 1, 11, 0, 3, 9, 10,
+				2, 1, 11, 9, 4, 11, 10, 8, 9, 12,
+				5, 4, 12, 5, 6, 2, 4, 1, 4, 1 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+		double optInAcceleration = 1.2;
+		double optInMaximum = 1.2;
+		
+		RetCode rc = core.sar(0, lookback, inHigh, inLow, optInAcceleration , optInMaximum , outBegIdx, outNBElement, outReal);
+	}
+	@Test
+	public void testminusDMD(){
+		
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+		double[] inReal = new double[1];
+
+		core.minusDM(0, lookback, inHigh, inLow, optInTimePeriod, outBegIdx, outNBElement, outReal);
+	}
+	@Test
+	public void testminusDMF(){
+		float[] inOpen = new float[] { 4, 1, 0, 12, 
+				4, 4, 12, 10, 9, 6, 12, 4, 1, 1,
+				0,  6, 3, 7, 2, 7, 10, 0, 2,
+				10, 2, 3, 4, 0, 6, 2, 11, 1, 12,
+				7, 9, 12, 8, 7, 10, 9, 3, 6, 6, 2,
+				5, 1, 3, 6, 9, 2, 11, 0, 5, 7,
+				5, 9, 8, 3, 8, 3, 8, 6, 11, 7,
+				0, 4, 0, 3, 12, 12, 10, 0, 1, 3,
+				11, 0, 9, 0, 1, 11, 0, 3, 9, 10,
+				2, 1, 11, 9, 4, 11, 10, 8, 9, 12,
+				5, 4, 12, 5, 6, 2, 4, 1, 4, 1 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+	
+		
+		double[] inReal= new double[1] ;
+		
+	
+		core.minusDM(0, lookback, inHigh, inLow, optInTimePeriod, outBegIdx, outNBElement, outReal);
+	}
+	@Test
+	public void testplusDMD(){
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+		double[] inReal = new double[1];
+		
+		core.plusDM(0, lookback, inHigh, inLow, optInTimePeriod, outBegIdx, outNBElement, outReal);
+	}
+	@Test
+	public void testplusDMF(){
+		float[] inOpen = new float[] { 4, 1, 0, 12, 
+				4, 4, 12, 10, 9, 6, 12, 4, 1, 1,
+				0,  6, 3, 7, 2, 7, 10, 0, 2,
+				10, 2, 3, 4, 0, 6, 2, 11, 1, 12,
+				7, 9, 12, 8, 7, 10, 9, 3, 6, 6, 2,
+				5, 1, 3, 6, 9, 2, 11, 0, 5, 7,
+				5, 9, 8, 3, 8, 3, 8, 6, 11, 7,
+				0, 4, 0, 3, 12, 12, 10, 0, 1, 3,
+				11, 0, 9, 0, 1, 11, 0, 3, 9, 10,
+				2, 1, 11, 9, 4, 11, 10, 8, 9, 12,
+				5, 4, 12, 5, 6, 2, 4, 1, 4, 1 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+	
+		
+		double[] inReal= new double[1] ;
+	
+		core.plusDM(0, lookback, inHigh, inLow, optInTimePeriod, outBegIdx, outNBElement, outReal);
+	}
+	@Test
+	public void testmacdExtD(){
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+		double[] inReal = new double[1];
+	
+		int optInFastPeriod = 1;
+		MAType optInFastMAType = null;
+		int optInSlowPeriod = 1;
+		MAType optInSlowMAType = null;
+		int optInSignalPeriod = 1;
+		
+		MAType optInSignalMAType = null;
+		double[] outMACD = new double[1];
+		double[] outMACDSignal = new double[1];
+		double[] outMACDHist = new double [1];
+		core.macdExt(0, lookback, inReal, optInFastPeriod , optInFastMAType , optInSlowPeriod , optInSlowMAType , optInSignalPeriod , optInSignalMAType , outBegIdx, outNBElement, outMACD , outMACDSignal, outMACDHist );
+	}	
+	@Test
+	public void macdExtF(){
+		float[] inOpen = new float[] { 4, 1, 0, 12, 
+				4, 4, 12, 10, 9, 6, 12, 4, 1, 1,
+				0,  6, 3, 7, 2, 7, 10, 0, 2,
+				10, 2, 3, 4, 0, 6, 2, 11, 1, 12,
+				7, 9, 12, 8, 7, 10, 9, 3, 6, 6, 2,
+				5, 1, 3, 6, 9, 2, 11, 0, 5, 7,
+				5, 9, 8, 3, 8, 3, 8, 6, 11, 7,
+				0, 4, 0, 3, 12, 12, 10, 0, 1, 3,
+				11, 0, 9, 0, 1, 11, 0, 3, 9, 10,
+				2, 1, 11, 9, 4, 11, 10, 8, 9, 12,
+				5, 4, 12, 5, 6, 2, 4, 1, 4, 1 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};		
+		double[] inReal= new double[1] ;
+		int optInFastPeriod = 1;
+		MAType optInFastMAType = null;
+		int optInSlowPeriod = 1;
+		MAType optInSlowMAType = null;
+		int optInSignalPeriod = 1;
+		MAType optInSignalMAType = null;
+		double[] outMACD = new double [1];
+		double[] outMACDSignal = new double [1];
+		double[] outMACDHist = new double [1];
+		core.macdExt(0, lookback, inReal, optInFastPeriod , optInFastMAType , optInSlowPeriod , optInSlowMAType , optInSignalPeriod , optInSignalMAType , outBegIdx, outNBElement, outMACD, outMACDSignal, outMACDHist);
+	}
+	@Test
+	public void teststochFD(){
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+		double[] inReal = new double[1];
+		int optInFastK_Period = 1;
+		
+		int optInFastD_Period = 1;
+		MAType optInFastD_MAType = null;
+		double[] outFastK = new double [1];
+		double[] outFastD = new double [1];
+		core.stochF(0, lookback, inHigh, inLow, inClose, optInFastK_Period , optInFastD_Period , optInFastD_MAType, outBegIdx, outNBElement, outFastK, outFastD);
+	}
+	@Test
+	public void teststochFF(){
+		float[] inOpen = new float[] { 4, 1, 0, 12, 
+				4, 4, 12, 10, 9, 6, 12, 4, 1, 1,
+				0,  6, 3, 7, 2, 7, 10, 0, 2,
+				10, 2, 3, 4, 0, 6, 2, 11, 1, 12,
+				7, 9, 12, 8, 7, 10, 9, 3, 6, 6, 2,
+				5, 1, 3, 6, 9, 2, 11, 0, 5, 7,
+				5, 9, 8, 3, 8, 3, 8, 6, 11, 7,
+				0, 4, 0, 3, 12, 12, 10, 0, 1, 3,
+				11, 0, 9, 0, 1, 11, 0, 3, 9, 10,
+				2, 1, 11, 9, 4, 11, 10, 8, 9, 12,
+				5, 4, 12, 5, 6, 2, 4, 1, 4, 1 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};		
+		double[] inReal= new double[1] ;	
+		int optInFastK_Period = 1;
+		int optInFastD_Period = 1;
+		MAType optInFastD_MAType = null;
+		double[] outFastK = new double [1];
+		double[] outFastD = new double [1];
+		core.stochF(0, lookback, inHigh, inLow, inClose, optInFastK_Period , optInFastD_Period , optInFastD_MAType , outBegIdx, outNBElement, outFastK , outFastD );
+	}
+	@Test
+	public void testbbandsD(){
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+		double[] inReal = new double[1];
+		double optInNbDevUp = 4.54;
+		double optInNbDevDn = 4.45;
+		MAType optInMAType = null;
+		double[] outRealUpperBand = new double [1];
+		double[] outRealMiddleBand = new double[1];
+		
+		double[] outRealLowerBand = new double [1];
+		core.bbands(0, lookback, inReal, optInTimePeriod, optInNbDevUp , optInNbDevDn , optInMAType , outBegIdx, outNBElement, outRealUpperBand , outRealMiddleBand , outRealLowerBand );
+	}
+	@Test
+	public void testbbandsF(){
+		float[] inOpen = new float[] { 4, 1, 0, 12, 
+				4, 4, 12, 10, 9, 6, 12, 4, 1, 1,
+				0,  6, 3, 7, 2, 7, 10, 0, 2,
+				10, 2, 3, 4, 0, 6, 2, 11, 1, 12,
+				7, 9, 12, 8, 7, 10, 9, 3, 6, 6, 2,
+				5, 1, 3, 6, 9, 2, 11, 0, 5, 7,
+				5, 9, 8, 3, 8, 3, 8, 6, 11, 7,
+				0, 4, 0, 3, 12, 12, 10, 0, 1, 3,
+				11, 0, 9, 0, 1, 11, 0, 3, 9, 10,
+				2, 1, 11, 9, 4, 11, 10, 8, 9, 12,
+				5, 4, 12, 5, 6, 2, 4, 1, 4, 1 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};		
+		double[] inReal= new double[1] ;	
+	
+		double optInNbDevUp = 4.54;
+		double optInNbDevDn = 4.54;
+		MAType optInMAType = null;
+		double[] outRealUpperBand = new double[1];
+		double[] outRealMiddleBand = new double [1];
+		double[] outRealLowerBand = new double [1];
+		core.bbands(0, lookback, inReal, optInTimePeriod, optInNbDevUp , optInNbDevDn , optInMAType , outBegIdx, outNBElement, outRealUpperBand , outRealMiddleBand , outRealLowerBand );
+	}
+	@Test
+	public void testkamaD(){
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+		double[] inReal = new double[1];
+	
+		core.kama(0, lookback, inReal, optInTimePeriod, outBegIdx, outNBElement, outReal);
+	}
+	@Test
+	public void testkamaF(){
+		float[] inOpen = new float[] { 4, 1, 0, 12, 
+				4, 4, 12, 10, 9, 6, 12, 4, 1, 1,
+				0,  6, 3, 7, 2, 7, 10, 0, 2,
+				10, 2, 3, 4, 0, 6, 2, 11, 1, 12,
+				7, 9, 12, 8, 7, 10, 9, 3, 6, 6, 2,
+				5, 1, 3, 6, 9, 2, 11, 0, 5, 7,
+				5, 9, 8, 3, 8, 3, 8, 6, 11, 7,
+				0, 4, 0, 3, 12, 12, 10, 0, 1, 3,
+				11, 0, 9, 0, 1, 11, 0, 3, 9, 10,
+				2, 1, 11, 9, 4, 11, 10, 8, 9, 12,
+				5, 4, 12, 5, 6, 2, 4, 1, 4, 1 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+	
+		double[] inReal = new double [1];
+		core.kama(0, lookback, inReal , optInTimePeriod, outBegIdx, outNBElement, outReal);
+	}
+	@Test
+	public void testcdlHikkakeD(){
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+		double[] inReal = new double[1];
+		double optInNbDevUp = 4.54;
+		double optInNbDevDn = 4.45;
+		MAType optInMAType = null;
+		double[] outRealUpperBand = new double [1];
+		double[] outRealMiddleBand = new double[1];
+		
+		double[] outRealLowerBand = new double [1];
+	
+		int[] outInteger = new int [1];
+		core.cdlHikkake(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger );
+	}
+//	@Test
+//	public void testcdlHikkakeF(){
+//		float[] inOpen = new float[] { 4, 1, 0, 12, 
+//				4, 4, 12, 10, 9, 6, 12, 4, 1, 1,
+//				0,  6, 3, 7, 2, 7, 10, 0, 2,
+//				10, 2, 3, 4, 0, 6, 2, 11, 1, 12,
+//				7, 9, 12, 8, 7, 10, 9, 3, 6, 6, 2,
+//				5, 1, 3, 6, 9, 2, 11, 0, 5, 7,
+//				5, 9, 8, 3, 8, 3, 8, 6, 11, 7,
+//				0, 4, 0, 3, 12, 12, 10, 0, 1, 3,
+//				11, 0, 9, 0, 1, 11, 0, 3, 9, 10,
+//				2, 1, 11, 9, 4, 11, 10, 8, 9, 12,
+//				5, 4, 12, 5, 6, 2, 4, 1, 4, 1 };
+//		
+//		
+//		double[] inHigh = new double[1];
+//		double[] inLow = new double[1];
+//		double[] inClose = new double[1];
+//		int optInTimePeriod = 1;
+//		MInteger outBegIdx = new MInteger();
+//		MInteger outNBElement = new MInteger();
+//		
+//	
+//		int[] outInteger = new int[]{1};
+//		core.cdlHikkake(0, 104, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+//	}
+	@Test
+	public void testcorrelD(){
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+		double[] inReal = new double[1];
+		double optInNbDevUp = 4.54;
+		double optInNbDevDn = 4.45;
+		MAType optInMAType = null;
+		double[] outRealUpperBand = new double [1];
+		double[] outRealMiddleBand = new double[1];
+		
+		double[] outRealLowerBand = new double [1];
+	
+		int[] outInteger = new int [1];
+	
+		double[] inReal0 = new double [1];
+		double[] inReal1 = new double [1];
+		core.correl(0, lookback, inReal0 , inReal1 , optInTimePeriod, outBegIdx, outNBElement, outReal);
+	}
+	@Test
+	public void testcorrelF(){
+		float[] inOpen = new float[] { 4, 1, 0, 12, 
+				4, 4, 12, 10, 9, 6, 12, 4, 1, 1,
+				0,  6, 3, 7, 2, 7, 10, 0, 2,
+				10, 2, 3, 4, 0, 6, 2, 11, 1, 12,
+				7, 9, 12, 8, 7, 10, 9, 3, 6, 6, 2,
+				5, 1, 3, 6, 9, 2, 11, 0, 5, 7,
+				5, 9, 8, 3, 8, 3, 8, 6, 11, 7,
+				0, 4, 0, 3, 12, 12, 10, 0, 1, 3,
+				11, 0, 9, 0, 1, 11, 0, 3, 9, 10,
+				2, 1, 11, 9, 4, 11, 10, 8, 9, 12,
+				5, 4, 12, 5, 6, 2, 4, 1, 4, 1 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] inReal0 = new double [1];
+		double[] inReal1 = new double [1];
+		double[] outReal = new double [1];
+		core.correl(0, lookback, inReal0, inReal1 , optInTimePeriod, outBegIdx, outNBElement, outReal );
+	}
+	@Test
+	public void testad0scD(){
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+		double[] inReal = new double[1];
+		double optInNbDevUp = 4.54;
+		double optInNbDevDn = 4.45;
+		MAType optInMAType = null;
+		double[] outRealUpperBand = new double [1];
+		double[] outRealMiddleBand = new double[1];
+		
+		double[] outRealLowerBand = new double [1];
+	
+		int[] outInteger = new int [1];
+	
+		double[] inReal0 = new double [1];
+		double[] inReal1 = new double [1];
+	
+		int optInFastPeriod = 1;
+		int optInSlowPeriod = 1;
+		core.adOsc(0, lookback, inHigh, inLow, inClose, inVolume, optInFastPeriod , optInSlowPeriod , outBegIdx, outNBElement, outReal);
+	}
+	@Test
+	public void testadOscF(){
+		float[] inOpen = new float[] { 4, 1, 0, 12, 
+				4, 4, 12, 10, 9, 6, 12, 4, 1, 1,
+				0,  6, 3, 7, 2, 7, 10, 0, 2,
+				10, 2, 3, 4, 0, 6, 2, 11, 1, 12,
+				7, 9, 12, 8, 7, 10, 9, 3, 6, 6, 2,
+				5, 1, 3, 6, 9, 2, 11, 0, 5, 7,
+				5, 9, 8, 3, 8, 3, 8, 6, 11, 7,
+				0, 4, 0, 3, 12, 12, 10, 0, 1, 3,
+				11, 0, 9, 0, 1, 11, 0, 3, 9, 10,
+				2, 1, 11, 9, 4, 11, 10, 8, 9, 12,
+				5, 4, 12, 5, 6, 2, 4, 1, 4, 1 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] inReal0 = new double [1];
+		double[] inReal1 = new double [1];
+		double[] outReal = new double [1];
+		int optInFastPeriod = 1;
+		int optInSlowPeriod = 1;
+		core.adOsc(0, lookback, inHigh, inLow, inClose, inVolume, optInFastPeriod , optInSlowPeriod , outBegIdx, outNBElement, outReal);
+	}
+	@Test
+	public void testnatrD(){
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+		double[] inReal = new double[1];
+		double optInNbDevUp = 4.54;
+		double optInNbDevDn = 4.45;
+		MAType optInMAType = null;
+		double[] outRealUpperBand = new double [1];
+		double[] outRealMiddleBand = new double[1];
+		
+		double[] outRealLowerBand = new double [1];
+	
+		int[] outInteger = new int [1];
+	
+		double[] inReal0 = new double [1];
+		double[] inReal1 = new double [1];
+	
+		int optInFastPeriod = 1;
+		int optInSlowPeriod = 1;
+	
+		core.natr(0, lookback, inHigh, inLow, inClose, optInTimePeriod, outBegIdx, outNBElement, outReal);
+		}
+	@Test
+	public void testgetName(){
+		float[] inOpen = new float[] { 4, 1, 0, 12, 
+				4, 4, 12, 10, 9, 6, 12, 4, 1, 1,
+				0,  6, 3, 7, 2, 7, 10, 0, 2,
+				10, 2, 3, 4, 0, 6, 2, 11, 1, 12,
+				7, 9, 12, 8, 7, 10, 9, 3, 6, 6, 2,
+				5, 1, 3, 6, 9, 2, 11, 0, 5, 7,
+				5, 9, 8, 3, 8, 3, 8, 6, 11, 7,
+				0, 4, 0, 3, 12, 12, 10, 0, 1, 3,
+				11, 0, 9, 0, 1, 11, 0, 3, 9, 10,
+				2, 1, 11, 9, 4, 11, 10, 8, 9, 12,
+				5, 4, 12, 5, 6, 2, 4, 1, 4, 1 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] inReal0 = new double [1];
+		double[] inReal1 = new double [1];
+		double[] outReal = new double [1];
+		int optInFastPeriod = 1;
+		int optInSlowPeriod = 1;	
+	
+		core.natr(0, lookback, inHigh, inLow, inClose, optInTimePeriod, outBegIdx, outNBElement, outReal);
+	}
+	@Test
+	public void testcdl3OutsideD(){
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+		double[] inReal = new double[1];
+		double optInNbDevUp = 4.54;
+		double optInNbDevDn = 4.45;
+		MAType optInMAType = null;
+		double[] outRealUpperBand = new double [1];
+		double[] outRealMiddleBand = new double[1];
+		
+		double[] outRealLowerBand = new double [1];
+	
+		int[] outInteger = new int [1];
+	
+		double[] inReal0 = new double [1];
+		double[] inReal1 = new double [1];
+	
+		int optInFastPeriod = 1;
+		int optInSlowPeriod = 1;
+	
+		core.cdl3Outside(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+	}
+//	@Test
+//	public void testgetName(){
+//		float[] inOpen = new float[] { 4, 1, 0, 12, 
+//				4, 4, 12, 10, 9, 6, 12, 4, 1, 1,
+//				0,  6, 3, 7, 2, 7, 10, 0, 2,
+//				10, 2, 3, 4, 0, 6, 2, 11, 1, 12,
+//				7, 9, 12, 8, 7, 10, 9, 3, 6, 6, 2,
+//				5, 1, 3, 6, 9, 2, 11, 0, 5, 7,
+//				5, 9, 8, 3, 8, 3, 8, 6, 11, 7,
+//				0, 4, 0, 3, 12, 12, 10, 0, 1, 3,
+//				11, 0, 9, 0, 1, 11, 0, 3, 9, 10,
+//				2, 1, 11, 9, 4, 11, 10, 8, 9, 12,
+//				5, 4, 12, 5, 6, 2, 4, 1, 4, 1 };
+//		
+//		
+//		double[] inHigh = new double[1];
+//		double[] inLow = new double[1];
+//		double[] inClose = new double[1];
+//		double[] inVolume = new double[1];
+//		int optInTimePeriod = 1;
+//		MInteger outBegIdx = new MInteger();
+//		MInteger outNBElement = new MInteger();
+//		double[] inReal0 = new double [1];
+//		double[] inReal1 = new double [1];
+//		double[] outReal = new double [1];
+//		int optInFastPeriod = 1;
+//		int optInSlowPeriod = 1;	
+//	
+//		int[] outInteger = new int [1];
+//		core.cdl3Outside(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger );
+//	}
+	@Test
+	public void testtemaD(){
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[]{1};
+		double[] inReal = new double[1];
+		double optInNbDevUp = 4.54;
+		double optInNbDevDn = 4.45;
+		MAType optInMAType = null;
+		double[] outRealUpperBand = new double [1];
+		double[] outRealMiddleBand = new double[1];
+		
+		double[] outRealLowerBand = new double [1];
+	
+		int[] outInteger = new int [1];
+	
+		double[] inReal0 = new double [1];
+		double[] inReal1 = new double [1];
+	
+		int optInFastPeriod = 1;
+		int optInSlowPeriod = 1;	
+	
+		core.tema(0, lookback, inReal, optInTimePeriod, outBegIdx, outNBElement, outReal);
+	}
+	@Test
+	public void testtemaF(){
+		float[] inOpen = new float[] { 4, 1, 0, 12, 
+				4, 4, 12, 10, 9, 6, 12, 4, 1, 1,
+				0,  6, 3, 7, 2, 7, 10, 0, 2,
+				10, 2, 3, 4, 0, 6, 2, 11, 1, 12,
+				7, 9, 12, 8, 7, 10, 9, 3, 6, 6, 2,
+				5, 1, 3, 6, 9, 2, 11, 0, 5, 7,
+				5, 9, 8, 3, 8, 3, 8, 6, 11, 7,
+				0, 4, 0, 3, 12, 12, 10, 0, 1, 3,
+				11, 0, 9, 0, 1, 11, 0, 3, 9, 10,
+				2, 1, 11, 9, 4, 11, 10, 8, 9, 12,
+				5, 4, 12, 5, 6, 2, 4, 1, 4, 1 };
+		
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] inReal0 = new double [1];
+		double[] inReal1 = new double [1];
+		double[] outReal = new double [1];
+		int optInFastPeriod = 1;
+		int optInSlowPeriod = 1;	
+	
+		double[] inReal = new double [1];
+		core.tema(0, lookback, inReal , optInTimePeriod, outBegIdx, outNBElement, outReal);
+	}
+
 }
