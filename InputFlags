@@ -1,0 +1,49 @@
+package gryglik.maciej;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import com.tictactec.ta.lib.meta.annotation.FuncFlags;
+import com.tictactec.ta.lib.meta.annotation.InputFlags;
+
+public class TestInputFlags {
+
+	static InputFlags inputflag;
+	
+	@Before
+	public void BeforeClass(){
+		
+		inputflag = new InputFlags();
+	}
+	@Test
+	public void test(){
+		Object obj = null;
+		inputflag.equals(obj);
+		
+		String obj1 = "hello";
+		  boolean expected = false;
+		  boolean actual = equals("hello");
+		  assertEquals(obj1, expected, actual);
+	}
+	
+	@Test
+	 public void test1() {
+    	 inputflag.hashCode();
+    	 
+    	 String x = "hello";
+    	  String y = "hello";
+    	     assertTrue(x.hashCode() == y.hashCode());
+}
+	 @Test
+	 public void test2() {
+	    	inputflag.toString();
+	    	assertNotNull(inputflag.toString());
+}
+	 @Test
+	 public void test3(){
+   	 inputflag.getClass(); 
+     Class<? extends InputFlags> name = inputflag.getClass();
+}
+}

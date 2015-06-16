@@ -1,0 +1,879 @@
+package gryglik.maciej;
+
+import static org.junit.Assert.*;
+
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import com.tictactec.ta.lib.Core;
+import com.tictactec.ta.lib.MAType;
+import com.tictactec.ta.lib.MInteger;
+import com.tictactec.ta.lib.RetCode;
+
+public class TestCore {
+
+	static Core core;
+	
+    @BeforeClass
+    public static void BeforeClass(){
+	   core = new Core();
+}
+
+   @Test
+   public void minMaxIndex1(){
+    	double[] inputsinReal = new double[]{
+  			2.34, 6.54
+    };
+   double[] expecteds = new double[] {2.34, 6.54};
+    MInteger outBegIdx = new MInteger();
+    MInteger outNBElement = new MInteger();
+    int[] outMinIdx = new int[0];
+    int[] outMaxIdx = new int[1];
+   
+	RetCode rc = core.minMaxIndex(0, 1, inputsinReal, 0, outBegIdx, outNBElement, outMinIdx, outMaxIdx);
+	
+   }
+   @Test
+   public void minMaxIndex2(){
+	    float[] inputsinReal = new float[]{
+	  			3, 6
+	    };
+	    double[] expecteds = new double[] {3, 6};
+	    MInteger outBegIdx = new MInteger();
+	    MInteger outNBElement = new MInteger();
+	    int[] outMinIdx = new int[0];
+	    int[] outMaxIdx = new int[1];
+	   
+	   
+	   
+	  RetCode rc = core.minMaxIndex(0, 1, inputsinReal, 0, outBegIdx, outNBElement, outMinIdx, outMaxIdx);
+   }
+	
+    @Test
+    public void minIndex1(){
+       double[] inputsinReal = new double []{
+    		2.56
+    	};
+       double[] expecteds = new double[] {2.56};
+       MInteger outBegIdx = new MInteger();
+       MInteger outNBElement = new MInteger();
+       int[] outInteger = new int[1];
+    	
+    RetCode rc = core.minIndex(0, 0, inputsinReal, 0, outBegIdx, outNBElement, outInteger);
+}
+    @Test
+    public void minIndex2(){
+    	float[] inputsinReal = new float []{
+    		7
+    	};
+       double[] expecteds = new double[] {7};
+       MInteger outBegIdx = new MInteger();
+       MInteger outNBElement = new MInteger();
+       int[] outInteger = new int[1];
+    	
+    RetCode rc = core.minIndex(0, 0, inputsinReal, 0, outBegIdx, outNBElement, outInteger);
+    }
+    @Test
+    public void maxIndex1(){
+    	double[] inputsinReal = new double []{
+        		5.62
+        	};
+        double[] expecteds = new double[] {5.62};
+        MInteger outBegIdx = new MInteger();
+        MInteger outNBElement = new MInteger();
+        int[] outInteger = new int[1];
+    	
+    	RetCode rc = core.maxIndex(0, 0, inputsinReal, 0, outBegIdx, outNBElement, outInteger);
+    }
+    @Test
+    public void maxIndex2(){
+         float[] inputsinReal = new float[]{
+            	5
+            };
+         double[] expecteds = new double[] {5};
+         MInteger outBegIdx = new MInteger();
+         MInteger outNBElement = new MInteger();
+         int[] outInteger = new int[1];
+    	
+    	
+    	RetCode rc =core.maxIndex(0, 0, inputsinReal, 0, outBegIdx, outNBElement, outInteger);
+    }
+    	
+    @Test
+    public void min1(){
+    	double[] inputsinReal = new double []{
+    			2.56
+    	};
+    double[] expecteds = new double[] {2.56};
+	MInteger outBegIdx = new MInteger();
+	MInteger outNBElement = new MInteger();
+	double[] outReal = new double[1];
+    	
+    RetCode rc = core.min(0, 0, inputsinReal, 0, outBegIdx, outNBElement, outReal);
+    assertArrayEquals(expecteds, outReal, 2.56);		
+    }
+
+    @Test
+    public void max1(){
+    	double[] inputsinReal = new double []{
+        			4.78
+        	};
+        double[] expecteds = new double[] {4.78};
+    	MInteger outBegIdx = new MInteger();
+    	MInteger outNBElement = new MInteger();
+    	double[] outReal = new double[1];
+        	
+        RetCode rc = core.min(0, 0, inputsinReal, 0, outBegIdx, outNBElement, outReal);
+        assertArrayEquals(expecteds, outReal, 4.78);	
+    	
+    }
+    @Test 
+    public void min2(){
+    	float[] inputsinReal = new float[]  {
+				3
+		};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[1];
+		double[] expecteds = new double[] { 3 };
+		RetCode rc = core.min(0, 0, inputsinReal, 0, outBegIdx, outNBElement, outReal);
+		assertArrayEquals(expecteds, outReal, 3);
+    }
+    @Test
+    public void max2(){
+    	float[] inputsinReal = new float[]  {
+				8
+		};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[1];
+		double[] expecteds = new double[] { 8 };
+	    RetCode rc = core.max(0, 0, inputsinReal, 0, outBegIdx, outNBElement, outReal);
+	    assertArrayEquals(expecteds, outReal, 8);
+    }
+    @Test
+    public void wma1(){
+    	double[] inputsinReal = new double []{
+    			4.54,	1.25,	0.72,	12.69,	2.09,	4.20,	4.51,
+				12.93,	10.04,	9.84,	6.89,	12.44,	4.85,	1.35,
+				1.56,	0.76,	10.75,	6.65,	3.71,	7.8,	2.02,
+				7.36,	10.23,	0.15,	2.56,	10.78,  2.98,	3.45,
+				4.53,	0.56,	6.54,	2.79,	11.87,	1.27,	12.09,
+				7.72,	9.60,	12.78,	7.91,	10.47,	9.07,	3.66,
+				6.12,	6.94,	2.55,	5.01,	1.04,	3.83,	6.86,
+				9.95,	2.58,	11.94,	0.52,	5.64,	7.78,	5.00,
+				9.54,	8.96,	3.57,	8.09,	3.25,	8.75,	6.70,
+				11.49,	7.88,	0.31,	4.99,	0.80,	3.81,	12.66,
+				12.78,	10.91,	0.17,	1.41,	3.38,	11.64,	0.41,
+				9.51,	0.60,	1.59,	11.00,	0.96,   3.23,	9.77,
+				10.13,	2.47,	1.47,	11.16,	9.19,	4.99,	11.94,
+				10.82,	8.67,	9.23,	12.57,	5.85,	4.06,	12.20,
+				5.55,	6.26,	2.69,	4.13,	1.45,	4.97,	1.90
+    	};
+        double[] expecteds = new double[] {6.22928661275831};
+	    MInteger outBegIdx = new MInteger();
+	    MInteger outNBElement = new MInteger();
+	    double[] outReal = new double[1];
+    	
+
+    	RetCode rc = core.wma(0, 104, inputsinReal, 105, outBegIdx, outNBElement, outReal);
+        assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void wma2(){
+    	float[] inputsinReal= new float[]  {
+				4,	1,	0,	12,	2,	4,	4,
+				12,	10,	9,	6,	12,	4,	1,
+				1,	0,	10,	6,	3,	7,	2,
+				7,	10,	0,	2,	10, 2,	3,
+				4,	0,	6,	2,	11,	1,	12,
+				7,	9,	12,	7,	10,	9,	3,
+				6,	6,	2,	5,	1,	3,	6,
+				9,	2,	11,	0,	5,	7,	5,
+				9,	8,	3,	8,	3,	8,	6,
+				11,	7,	0,	4,	0,	3,	12,
+				12,	10,	0,	1,	3,	11,	0,
+				9,	0,	1,	11,	0,  3,	9,
+				10,	2,	1,	11,	9,	4,	11,
+				10,	8,	9,	12,	5,	4,	12,
+				5,	6,	2,	4,	1,	4,	1
+		};
+		double[] expecteds = new double[] { 5.68230008984726 };
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[1];
+	
+    	
+    	RetCode rc = core.wma(0, 104, inputsinReal, 105, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void stdDev1(){
+    	double[] inputsinReal = new double []{
+    			4.54,	1.25,	0.72,	12.69,	2.09,	4.20,	4.51,
+				12.93,	10.04,	9.84,	6.89,	12.44,	4.85,	1.35,
+				1.56,	0.76,	10.75,	6.65,	3.71,	7.8,	2.02,
+				7.36,	10.23,	0.15,	2.56,	10.78,  2.98,	3.45,
+				4.53,	0.56,	6.54,	2.79,	11.87,	1.27,	12.09,
+				7.72,	9.60,	12.78,	7.91,	10.47,	9.07,	3.66,
+				6.12,	6.94,	2.55,	5.01,	1.04,	3.83,	6.86,
+				9.95,	2.58,	11.94,	0.52,	5.64,	7.78,	5.00,
+				9.54,	8.96,	3.57,	8.09,	3.25,	8.75,	6.70,
+				11.49,	7.88,	0.31,	4.99,	0.80,	3.81,	12.66,
+				12.78,	10.91,	0.17,	1.41,	3.38,	11.64,	0.41,
+				9.51,	0.60,	1.59,	11.00,	0.96,   3.23,	9.77,
+				10.13,	2.47,	1.47,	11.16,	9.19,	4.99,	11.94,
+				10.82,	8.67,	9.23,	12.57,	5.85,	4.06,	12.20,
+				5.55,	6.26,	2.69,	4.13,	1.45,	4.97,	1.90
+    	};
+        double[] expecteds = new double[] {39.73225899109114};
+	    MInteger outBegIdx = new MInteger();
+	    MInteger outNBElement = new MInteger();
+	    double optInNbDev = 10;
+	    double[] outReal = new double[1];
+    	
+    	
+		RetCode rc = core.stdDev(0, 104, inputsinReal, 105, optInNbDev, outBegIdx, outNBElement, outReal);
+		assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void stdDev2(){
+    	float[] inputsinReal= new float[]  {
+				4,	1,	0,	12,	2,	4,	4,
+				12,	10,	9,	6,	12,	4,	1,
+				1,	0,	10,	6,	3,	7,	2,
+				7,	10,	0,	2,	10, 2,	3,
+				4,	0,	6,	2,	11,	1,	12,
+				7,	9,	12,	7,	10,	9,	3,
+				6,	6,	2,	5,	1,	3,	6,
+				9,	2,	11,	0,	5,	7,	5,
+				9,	8,	3,	8,	3,	8,	6,
+				11,	7,	0,	4,	0,	3,	12,
+				12,	10,	0,	1,	3,	11,	0,
+				9,	0,	1,	11,	0,  3,	9,
+				10,	2,	1,	11,	9,	4,	11,
+				10,	8,	9,	12,	5,	4,	12,
+				5,	6,	2,	4,	1,	4,	1
+		};
+		double[] expecteds = new double[] { 19.695297964355905 };
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		float optInNbDev = 5;
+		double[] outReal = new double[1];
+	
+    	
+    	RetCode rc = core.stdDev(0, 104, inputsinReal, 105, optInNbDev, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void sum1(){
+    	double[] inputsinReal = new double []{
+    			2.50, 3.40, 5,69
+    	};
+        double[] expecteds = new double[] {10.9};
+	    MInteger outBegIdx = new MInteger();
+	    MInteger outNBElement = new MInteger();
+	    double[] outReal = new double[1];
+    	
+    	RetCode rc = core.sum(0, 2, inputsinReal, 3, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void sum2(){
+    	float[] inputsinReal = new float[]  {
+				3, 7 ,5 ,10 ,9
+		};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[1];
+		double[] expecteds = new double[] { 34 };
+		 	
+    	
+    	RetCode rc = core.sum(0, 4, inputsinReal, 5, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 3);
+    }
+    @Test
+    public void linearReg1(){
+    	double[] inputsinReal = new double []{
+    			2.50
+    	};
+        double[] expecteds = new double[] {0.0};
+	    MInteger outBegIdx = new MInteger();
+	    MInteger outNBElement = new MInteger();
+	    double[] outReal = new double[1];
+    	
+    	
+    	RetCode rc = core.linearReg(0, 1, inputsinReal, 1, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void linearReg2(){
+    	float[] inputsinReal = new float[]  {
+				2
+		};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[1];
+		double[] expecteds = new double[] { 0 };
+		 	
+       RetCode rc = core.linearReg(0, 1, inputsinReal, 1, outBegIdx, outNBElement, outReal);
+       assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void tsf1(){
+    	double[] inputsinReal = new double []{
+    			2.50
+    	};
+        double[] expecteds = new double[] {0.0};
+	    MInteger outBegIdx = new MInteger();
+	    MInteger outNBElement = new MInteger();
+	    double[] outReal = new double[1];
+    
+    	RetCode rc = core.tsf(0, 1, inputsinReal, 1, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    	
+    }
+    @Test
+    public void tsf2(){
+    	float[] inputsinReal = new float[]  {
+				2
+		};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[1];
+		double[] expecteds = new double[] { 0 };	      	
+    	
+    	RetCode rc = core.tsf(0, 1, inputsinReal, 1, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void linearRegIntercept1(){
+    	double[] inputsinReal = new double []{
+    			2.50, 3.40
+    	};
+        double[] expecteds = new double[] {2.5};
+	    MInteger outBegIdx = new MInteger();
+	    MInteger outNBElement = new MInteger();
+	    double[] outReal = new double[1];
+    
+    	
+    	
+    	RetCode rc = core.linearRegIntercept(0, 1, inputsinReal, 2, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void linearRegIntercept2(){
+    	float[] inputsinReal = new float[]  {
+				5, 6
+		};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[1];
+		double[] expecteds = new double[] { 5 };	      	
+    	
+
+    	RetCode rc = core.linearRegIntercept(0, 1, inputsinReal, 2, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void TA_INT_EMA1(){
+    	double[] inputsinReal = new double []{
+    			2.50, 3.40, 5.40, 6.21, 7.89
+    	};
+        double[] expecteds = new double[] {5.08};
+	    MInteger outBegIdx = new MInteger();
+	    MInteger outNBElement = new MInteger();
+	    double[] outReal = new double[1];
+	    double optInK_1 = 2;
+		RetCode rc = core.TA_INT_EMA(0, 4, inputsinReal, 5, optInK_1, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void TA_INT_EMA2(){
+    	float[] inputsinReal = new float[]  {
+				5, 6, 7, 9, 11, 12
+		};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[1];
+		double[] expecteds = new double[] { 8.33333333333333334};
+        double optInK_1 = 4;
+		RetCode rc = core.TA_INT_EMA(0, 5, inputsinReal, 6, optInK_1, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void linearRegAngle1(){
+    	double[] inputsinReal = new double []{
+    			2.50, 3.40, 5.40, 6.21, 7.89
+    	};
+        double[] expecteds = new double[] {53.653057843782214};
+	    MInteger outBegIdx = new MInteger();
+	    MInteger outNBElement = new MInteger();
+	    double[] outReal = new double[1];
+	 
+		RetCode rc = core.linearRegAngle(0, 4, inputsinReal, 5, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void linearRegAngle2(){
+    	float[] inputsinReal = new float[]  {
+				5, 6, 7, 9, 11, 12
+		};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[1];
+		double[] expecteds = new double[] { 56.05641298024819};
+		
+    	RetCode rc = core.linearRegAngle(0, 5, inputsinReal, 6, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void linearRegSlope1(){
+    	double[] inputsinReal = new double []{
+    			2.50, 3.40, 5.40, 6.21, 7.89
+    	};
+        double[] expecteds = new double[] {1.3590000000000004};
+	    MInteger outBegIdx = new MInteger();
+	    MInteger outNBElement = new MInteger();
+	    double[] outReal = new double[1];
+    	
+    	RetCode rc = core.linearRegSlope(0, 4, inputsinReal, 5, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void linearRegSlope2(){
+    	float[] inputsinReal = new float[]  {
+				5, 6, 7, 9, 11, 12
+		};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[1];
+		double[] expecteds = new double[] {1.4857142857142858};
+    	
+    	RetCode rc = core.linearRegSlope(0, 5, inputsinReal, 6, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void TA_INT_VAR1(){
+    	double[] inputsinReal = new double []{
+    			2.50, 3.40, 5.40, 6.21, 7.89
+    	};
+        double[] expecteds = new double[] {3.7508399999999966};
+	    MInteger outBegIdx = new MInteger();
+	    MInteger outNBElement = new MInteger();
+	    double[] outReal = new double[1];
+    	
+    	RetCode rc = core.TA_INT_VAR(0, 4, inputsinReal, 5, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void TA_INT_VAR2(){
+    	float[] inputsinReal = new float[]  {
+				5, 6, 7, 9, 11, 12
+		};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[1];
+		double[] expecteds = new double[] {6.555555555555543};
+    	
+    	RetCode rc = core.TA_INT_VAR(0, 5, inputsinReal, 6, outBegIdx, outNBElement, outReal);
+        assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void midPrice1(){
+    	double[] inputsinHigh = new double []{
+    			4.51, 6.54, 5.43, 6.78, 2.41
+    	};
+    	double[] inputsinLow = new double []{
+    			6.21, 3,46, 4.51, 2.78, 5.32
+    	};
+        double[] expecteds = new double[] {4.78};
+	    MInteger outBegIdx = new MInteger();
+	    MInteger outNBElement = new MInteger();
+	    double[] outReal = new double[1];
+	    
+    	RetCode rc = core.midPrice(0, 4, inputsinHigh, inputsinLow, 5, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void midPrice2(){
+    	float[] inputsinHigh = new float[] {
+				1, 5, 9, 5, 6, 6
+		};
+    	float[] inputsinLow = new float[] {
+				1, 9, 8, 3, 4, 9
+		};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[1];
+		double[] expecteds = new double[] {5};
+        	
+    	RetCode rc = core.midPrice(0, 5, inputsinHigh, inputsinLow, 6, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void midPoint1(){
+    	double[] inputsinReal = new double []{
+    			2.50, 3.40, 5.40, 6.21, 7.89
+    	};
+        double[] expecteds = new double[] {5.195};
+	    MInteger outBegIdx = new MInteger();
+	    MInteger outNBElement = new MInteger();
+	    double[] outReal = new double[1];
+    
+    	RetCode rc = core.midPoint(0, 4, inputsinReal, 5, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void midPoint2(){
+    	float[] inputsinReal = new float[]  {
+				5, 6, 7, 9, 11, 12
+		};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[1];
+		double[] expecteds = new double[] {6.55555555555543};
+    	
+    	RetCode rc = core.midPoint(0, 5, inputsinReal, 6, outBegIdx, outNBElement, outReal);
+    }
+    @Test
+    public void roc1(){
+    	double[] inputsinReal = new double []{
+    			2.50, 3.40, 5.40, 6.21, 7.89
+    	};
+        double[] expecteds = new double[] {0.0};
+	    MInteger outBegIdx = new MInteger();
+	    MInteger outNBElement = new MInteger();
+	    double[] outReal = new double[1];
+    	
+    	RetCode rc = core.roc(0, 4, inputsinReal, 5, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void roc2(){
+    	float[] inputsinReal = new float[]  {
+				1, 9, 5, 2, 3, 5
+		};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[1];
+		double[] expecteds = new double[] {0};
+
+    	RetCode rc = core.roc(0, 5, inputsinReal, 6, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void trueRange1(){
+    	double[] inputsinHigh = new double []{
+    			4.51,
+    	};
+    	double[] inputsinLow = new double []{
+    			6.21,
+    	};
+        double[] expecteds = new double[] {0.0};
+	    MInteger outBegIdx = new MInteger();
+	    MInteger outNBElement = new MInteger();
+	    double[] outReal = new double[1];
+    	double[] inputsinClose = null;
+		RetCode rc = core.trueRange(0, 0, inputsinHigh, inputsinLow, inputsinClose, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void trueRange2(){
+    	float[] inputsinHigh = new float[]  {
+				7
+		};
+    	float[] inputsinLow = new float[]  {
+				5
+		};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[1];
+		double[] expecteds = new double[] {0};
+		float[] inputsinClose = null;
+    	
+    	RetCode rc = core.trueRange(0, 0, inputsinHigh, inputsinLow, inputsinClose, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void rocR1001(){
+    	double[] inputsinReal = new double []{
+    			2.50, 3.40, 5.40, 6.21, 7.89
+    	};
+        double[] expecteds = new double[] {0.0};
+	    MInteger outBegIdx = new MInteger();
+	    MInteger outNBElement = new MInteger();
+	    double[] outReal = new double[1];
+    	
+    	
+    	RetCode rc =core.rocR100(0, 4, inputsinReal, 5, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void rocR1002(){
+    	float[] inputsinReal = new float[]  {
+				1, 9, 5, 2, 3, 5
+		};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[1];
+		double[] expecteds = new double[] {0};
+    	
+    	RetCode rc = core.rocR100(0, 5, inputsinReal, 6, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }  	
+    @Test
+    public void rocP(){
+    	double[] inputsinReal = new double []{
+    			2.50, 3.40, 5.40, 6.21, 7.89
+    	};
+        double[] expecteds = new double[] {0.0};
+	    MInteger outBegIdx = new MInteger();
+	    MInteger outNBElement = new MInteger();
+	    double[] outReal = new double[1];
+    	
+    	RetCode rc = core.rocP(0, 4, inputsinReal, 5, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void rocR1(){
+    	double[] inputsinReal = new double []{
+    			2.89, 2.40, 5.76, 1.21, 3.69
+    	};
+        double[] expecteds = new double[] {0.0};
+	    MInteger outBegIdx = new MInteger();
+	    MInteger outNBElement = new MInteger();
+	    double[] outReal = new double[1];
+    	
+    	RetCode rc = core.rocR(0, 4, inputsinReal, 5, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void rocR2(){
+    	float[] inputsinReal = new float[]  {
+				6, 7, 2, 8, 9, 2
+		};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[1];
+		double[] expecteds = new double[] {0};
+		
+    	RetCode rc = core.rocR(0, 5, inputsinReal, 6, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void ad1(){
+    	double[] inputsinHigh = new double[]{
+    			2.89
+    	};
+    	double[] inputsinLow = new double[]{
+    		    2.89
+    	};
+        double[] expecteds = new double[] {0.0};
+	    MInteger outBegIdx = new MInteger();
+	    MInteger outNBElement = new MInteger();
+	    double[] outReal = new double[1];
+   
+		double[] inputsinClose = new double[] {
+				2.89
+		};
+	    double[] inputsinVolume = new double []{
+	    		2.89
+	    };
+		RetCode rc = core.ad(0, 0, inputsinHigh, inputsinLow, inputsinClose, inputsinVolume, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void ad2(){
+    	float[] inputsinHigh = new float[]{
+    			2
+    	};
+    	float[] inputsinLow = new float[]{
+    		    2
+    	};
+        double[] expecteds = new double[] {0};
+	    MInteger outBegIdx = new MInteger();
+	    MInteger outNBElement = new MInteger();
+	    double[] outReal = new double[1];
+   
+		float[] inputsinClose = new float[] {
+				5
+		};
+	    float[] inputsinVolume = new float[]{
+	    		5
+	    };
+    	
+    	RetCode rc = core.ad(0, 0, inputsinHigh, inputsinLow, inputsinClose, inputsinVolume, outBegIdx, outNBElement, outReal);
+	    assertArrayEquals(expecteds, outReal, 0);
+    }    		  
+    @Test
+    public void mom1(){
+        double[] inputsinReal = new double []{
+    		    2.89, 2.40, 5.76, 1.21, 3.69
+    		  };
+        double[] expecteds = new double[] {0.0};
+    	MInteger outBegIdx = new MInteger();
+    	MInteger outNBElement = new MInteger();
+    	double[] outReal = new double[1];
+    		    						
+    	RetCode rc = core.mom(0, 4, inputsinReal, 5, outBegIdx, outNBElement, outReal);	
+    	assertArrayEquals(expecteds, outReal, 0);  			
+    }
+    @Test
+    public void mom2(){
+    	float[] inputsinReal = new float[]  {
+				6, 7, 2, 8, 9, 2
+		};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[1];
+		double[] expecteds = new double[] {0};
+    	
+    	RetCode rc = core.mom(0, 5, inputsinReal, 6, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void obv1(){
+    	double[] inputsinReal = new double []{
+    		    2.89
+    		  };
+        double[] expecteds = new double[] {2.89};
+    	MInteger outBegIdx = new MInteger();
+    	MInteger outNBElement = new MInteger();
+    	double[] outReal = new double[1];
+    
+    	double[] inputsinVolume = new double []{
+    		    2.89
+    		  };
+		RetCode rc = core.obv(0, 0, inputsinReal, inputsinVolume, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void obv2(){
+    	float[] inputsinReal = new float []{
+    		    2
+    		  };
+        double[] expecteds = new double[] {2};
+    	MInteger outBegIdx = new MInteger();
+    	MInteger outNBElement = new MInteger();
+    	double[] outReal = new double[1];
+    
+    	float[] inputsinVolume = new float[]{
+    		    2
+    		  };
+
+    	RetCode rc = core.obv(0, 0, inputsinReal, inputsinVolume, outBegIdx, outNBElement, outReal);
+    	assertArrayEquals(expecteds, outReal, 0);
+    }
+    @Test
+    public void cdlHammerLookback(){
+    	
+    	int expecteds = 11;
+		int actual = core.cdlHammerLookback();
+		assertEquals(expecteds, actual); 	
+    }
+    @Test
+    public void cdlHangingManLookback(){
+    
+    	int expecteds = 11;
+    	int actual = core.cdlHangingManLookback();
+    	assertEquals(expecteds, actual); 
+    }
+    @Test
+    public void cdl3StarsInSouthLookback(){
+    	
+    	int expecteds = 12;
+    	int actual = core.cdl3StarsInSouthLookback();
+    	assertEquals(expecteds, actual); 
+    }
+    @Test
+    public void cdl3WhiteSoldiersLookback(){
+    	
+    	int expecteds = 12;
+    	int actual = core.cdl3WhiteSoldiersLookback();
+    	assertEquals(expecteds, actual); 		
+    }
+    @Test
+    public void cdlStalledPatternLookback(){
+    		
+    	int expecteds = 12;
+    	int actual = core.cdlStalledPatternLookback();
+    	assertEquals(expecteds, actual);
+    }
+    @Test
+    public void cdlAbandonedBabyLookback(){
+    	
+    	int expecteds = 12;
+		int optInPenetration = 10;
+    	int actual = core.cdlAbandonedBabyLookback(optInPenetration);
+    	assertEquals(expecteds, actual);
+    }
+    @Test
+    public void cdlEveningDojiStarLookback(){
+    	
+    	
+    	int expecteds = 12;
+		int optInPenetration = 11;
+    	int actual = core.cdlEveningDojiStarLookback(optInPenetration);
+    	assertEquals(expecteds, actual);
+    }
+    @Test
+    public void cdlMorningDojiStarLookback(){
+    	
+
+    	int expecteds = 12;
+		int optInPenetration = 11;
+    	int actual = core.cdlMorningDojiStarLookback(optInPenetration);
+    	assertEquals(expecteds, actual);
+    }
+    @Test
+    public void cdlInvertedHammerLookback(){
+    	
+    	int expecteds = 11;
+    	int actual = core.cdlInvertedHammerLookback();
+    	assertEquals(expecteds, actual); 
+    }
+    @Test
+    public void cdlSeperatingLinesLookback(){
+    	
+    	int expecteds = 11;
+    	int actual = core.cdlSeperatingLinesLookback();
+    	assertEquals(expecteds, actual); 
+    }
+    @Test
+    public void cdlShootingStarLookback(){
+    
+    	int expecteds = 11;
+    	int actual = core.cdlShootingStarLookback();
+    	assertEquals(expecteds, actual); 
+    }
+    @Test
+    public void cdlRickshawManLookback(){
+    	
+    	int expecteds = 10;
+    	int actual = core.cdlRickshawManLookback();
+    	assertEquals(expecteds, actual);   	
+    }
+    @Test
+    public void cdlMatHoldLookback(){
+    	
+    	int expecteds = 14;
+		int optInPenetration = 11;
+    	int actual = core.cdlMatHoldLookback(optInPenetration);
+    	assertEquals(expecteds, actual);
+    }
+    @Test
+    public void cdlMorningStarLookback(){
+    	
+    	int expecteds = 12;
+		int optInPenetration = 11;
+    	int actual = core.cdlMorningStarLookback(optInPenetration);
+    	assertEquals(expecteds, actual);
+    }
+    @Test
+    public void cdlTakuriLookback(){
+    	
+    	int expecteds = 10;
+    	int actual = core.cdlTakuriLookback();
+    	assertEquals(expecteds, actual);
+    }
