@@ -3694,5 +3694,801 @@ float[] inOpen = new float[] { 4 };
 	}
 
 
+testCdlAdvanceBlockD() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		double[] outReal = new double[]{1};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+				
+		RetCode rc = core.cdlAdvanceBlock(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger );
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testCcdl3WhiteSoldiers(){
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		double[] outReal = new double[]{1};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdl3WhiteSoldiers(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testCdlStalledPattern(){
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		double[] outReal = new double[]{1};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlStalledPattern(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testCdl3StarsInSouth(){
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		double[] outReal = new double[]{1};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdl3StarsInSouth(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testcdlRiseFall3MethodsD() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		double[] outReal = new double[]{1};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlRiseFall3Methods(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	
 
+	}		
+	@Test
+	public void testcdl3StarsInSouth() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		double[] outReal = new double[]{1};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlRiseFall3Methods(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}	
+	
+	@Test
+	public void testCdlIdentical3Crows() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		double[] outReal = new double[]{1};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlIdentical3Crows(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}	
+	
+	@Test
+	public void testCdlMatHold() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		double[] outReal = new double[]{1};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double optInPenetration = 3.2;
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlMatHold(0, lookback, inOpen, inHigh, inLow, inClose, optInPenetration , outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testcdlKickingByLength() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		double[] inVolume = new double[1];
+		int optInTimePeriod = 1;
+		double[] outReal = new double[]{1};
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double optInPenetration = 3.9;
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlMatHold(0, lookback, inOpen, inHigh, inLow, inClose, optInPenetration , outBegIdx, outNBElement, outInteger);
+	
+		assertArrayEquals(expecteds, actuals, 0);}
+	
+	@Test
+	public void testCdlKicking() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlKicking(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+	
+		assertArrayEquals(expecteds, actuals, 0);}
+	
+	@Test
+	public void testCdlHangingMan() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlHangingMan(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testCdlSeperatingLines() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlSeperatingLines(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);	
+	}
+	
+	@Test
+	public void testCdlConcealBabysWall() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlConcealBabysWall(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);	
+	}
+	
+	@Test
+	public void testCdlGapSideSideWhite() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlGapSideSideWhite(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testCdlRickshawMan() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlRickshawMan(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);	
+	}
+	
+	@Test
+	public void testCdlHikkakeMod() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlHikkakeMod(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);	
+	}
+	
+	@Test
+	public void testcdlAbandonedBaby() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double optInPenetration = 5.32;
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlAbandonedBaby(0, lookback, inOpen, inHigh, inLow, inClose, optInPenetration , outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);	
+	}
+	
+	@Test
+	public void testcdlEveningStar() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double optInPenetration = 5.32;
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlEveningStar(0, lookback, inOpen, inHigh, inLow, inClose, optInPenetration , outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);	
+	}
+	
+	@Test
+	public void testcdlCounterAttack() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double optInPenetration = 5.32;
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlCounterAttack(0, lookback, inOpen, inHigh, inLow, inClose , outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);	
+	}
+	
+	@Test
+	public void testcdlEveningDojiStar() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double optInPenetration = 5.32;
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlEveningDojiStar(0, lookback, inOpen, inHigh, inLow, inClose , optInPenetration, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);	
+	}
+	
+	@Test
+	public void testcdl3LineStrike() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double optInPenetration = 5.32;
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdl3LineStrike(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);	
+	}
+	
+	@Test
+	public void testcdlInvertedHammer() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double optInPenetration = 5.32;
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlInvertedHammer(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);	
+	}
+	
+	@Test
+	public void testcdlOnNeck() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double optInPenetration = 5.32;
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlOnNeck(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);	
+	}
+	
+	@Test
+	public void testcdl3BlackCrows() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double optInPenetration = 5.32;
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdl3BlackCrows(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);	
+	}
+	
+	@Test
+	public void test() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double optInPenetration = 5.32;
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlTakuri(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);	
+	}
+	
+	@Test
+	public void testcdl3Inside() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double optInPenetration = 5.32;
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdl3Inside(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);	
+	}
+	
+	@Test
+	public void testcdlThrusting() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double optInPenetration = 5.32;
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlThrusting(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);	
+	}
+	
+	@Test
+	public void testcdlUpsideGap2Crows() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double optInPenetration = 5.32;
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlUpsideGap2Crows(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);	
+	}
+	
+	@Test
+	public void testcdlClosingMarubozu() {
+		double[] inOpen = new double[] { 4.54, 1.25, 0.72, 12.69, 2.09,
+				4.20, 4.51, 12.93, 10.04, 9.84, 6.89, 12.44, 4.85, 1.35, 1.56,
+				0.76, 10.75, 6.65, 3.71, 7.8, 2.02, 7.36, 10.23, 0.15, 2.56,
+				10.78, 2.98, 3.45, 4.53, 0.56, 6.54, 2.79, 11.87, 1.27, 12.09,
+				7.72, 9.60, 12.78, 7.91, 10.47, 9.07, 3.66, 6.12, 6.94, 2.55,
+				5.01, 1.04, 3.83, 6.86, 9.95, 2.58, 11.94, 0.52, 5.64, 7.78,
+				5.00, 9.54, 8.96, 3.57, 8.09, 3.25, 8.75, 6.70, 11.49, 7.88,
+				0.31, 4.99, 0.80, 3.81, 12.66, 12.78, 10.91, 0.17, 1.41, 3.38,
+				11.64, 0.41, 9.51, 0.60, 1.59, 11.00, 0.96, 3.23, 9.77, 10.13,
+				2.47, 1.47, 11.16, 9.19, 4.99, 11.94, 10.82, 8.67, 9.23, 12.57,
+				5.85, 4.06, 12.20, 5.55, 6.26, 2.69, 4.13, 1.45, 4.97, 1.90 };
+		
+		double[] inHigh = new double[1];
+		double[] inLow = new double[1];
+		double[] inClose = new double[1];
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double optInPenetration = 5.32;
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlClosingMarubozu(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);	
+	}
 }
