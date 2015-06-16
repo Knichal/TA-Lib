@@ -10420,10 +10420,29 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Zwraca wartosc pola avgPeriod obiektu w tablicy candleSettings pod indeksem CandleSettingType.Equal.ordinal() zwiekszony o 1
+     * @return int
+     */
     public int cdlMatchingLowLookback() {
         return (this.candleSettings[CandleSettingType.Equal.ordinal()].avgPeriod) + 1;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic za pomoca przetworzonych
+     * parametrow przekazanych do tej metody oraz wyliczaniem wartosci zmiennych lokalnych.
+     * Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlMatchingLow(int startIdx,
                                   int endIdx,
                                   double inOpen[],
@@ -10473,7 +10492,21 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic za pomoca przetworzonych
+     * parametrow przekazanych do tej metody oraz wyliczaniem wartosci zmiennych lokalnych.
+     * Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlMatchingLow(int startIdx,
                                   int endIdx,
                                   float inOpen[],
@@ -10525,6 +10558,14 @@ public class Core {
     }
 
     /* Generated */
+
+    /**
+     * Sprawdza, czy parametr funkcji jest rowny -4e+37. Jesli tak, to ustawia jego wartosc na 5.000000e-1.
+     * Jesli nie, to sprawdza, czy zawiera sie w podanym zakresie i w razie niepowodzenia zwraca -1. W przeciwnym
+     * wypadku zwraca wartosc zwroconego przez warunek.
+     * @param optInPenetration
+     * @return int
+     */
     public int cdlMatHoldLookback(double optInPenetration) {
         if (optInPenetration == (-4e+37))
             optInPenetration = 5.000000e-1;
@@ -10616,7 +10657,21 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic za pomoca przetworzonych
+     * parametrow przekazanych do tej metody oraz wyliczaniem wartosci zmiennych lokalnych.
+     * Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlMatHold(int startIdx,
                               int endIdx,
                               float inOpen[],
@@ -10702,6 +10757,13 @@ public class Core {
     }
 
     /* Generated */
+    /**
+     * Sprawdza, czy parametr funkcji jest rowny -4e+37. Jesli tak, to ustawia jego wartosc na 5.000000e-1.
+     * Jesli nie, to sprawdza, czy zawiera sie w podanym zakresie i w razie niepowodzenia zwraca -1. W przeciwnym
+     * wypadku zwraca wartosc zwroconego przez warunek.
+     * @param optInPenetration
+     * @return int
+     */
     public int cdlMorningDojiStarLookback(double optInPenetration) {
         if (optInPenetration == (-4e+37))
             optInPenetration = 3.000000e-1;
@@ -10710,7 +10772,21 @@ public class Core {
         return (((((((this.candleSettings[CandleSettingType.BodyDoji.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.BodyDoji.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod)))) > ((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod))) ? (((((this.candleSettings[CandleSettingType.BodyDoji.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.BodyDoji.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod)))) : ((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod))) +
                 2;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic za pomoca przetworzonych
+     * parametrow przekazanych do tej metody oraz wyliczaniem wartosci zmiennych lokalnych.
+     * Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlMorningDojiStar(int startIdx,
                                       int endIdx,
                                       double inOpen[],
@@ -10786,7 +10862,21 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic za pomoca przetworzonych
+     * parametrow przekazanych do tej metody oraz wyliczaniem wartosci zmiennych lokalnych.
+     * Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlMorningDojiStar(int startIdx,
                                       int endIdx,
                                       float inOpen[],
@@ -10864,6 +10954,13 @@ public class Core {
     }
 
     /* Generated */
+    /**
+     * Sprawdza, czy parametr funkcji jest rowny -4e+37. Jesli tak, to ustawia jego wartosc na 5.000000e-1.
+     * Jesli nie, to sprawdza, czy zawiera sie w podanym zakresie i w razie niepowodzenia zwraca -1. W przeciwnym
+     * wypadku zwraca wartosc zwroconego przez warunek.
+     * @param optInPenetration
+     * @return int
+     */
     public int cdlMorningStarLookback(double optInPenetration) {
         if (optInPenetration == (-4e+37))
             optInPenetration = 3.000000e-1;
@@ -10871,7 +10968,21 @@ public class Core {
             return -1;
         return ((((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.BodyShort.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod))) + 2;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic za pomoca przetworzonych
+     * parametrow przekazanych do tej metody oraz wyliczaniem wartosci zmiennych lokalnych.
+     * Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlMorningStar(int startIdx,
                                   int endIdx,
                                   double inOpen[],
@@ -10941,7 +11052,21 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic za pomoca przetworzonych
+     * parametrow przekazanych do tej metody oraz wyliczaniem wartosci zmiennych lokalnych.
+     * Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlMorningStar(int startIdx,
                                   int endIdx,
                                   float inOpen[],
@@ -11013,11 +11138,29 @@ public class Core {
     }
 
     /* Generated */
+    /**
+     * Sprawdza zlozony warunek i zwraca wyliczona wartosc zalezna od spelnionego warunku.
+     * @return int
+     */
     public int cdlOnNeckLookback() {
         return ((((this.candleSettings[CandleSettingType.Equal.ordinal()].avgPeriod)) > ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod))) ? ((this.candleSettings[CandleSettingType.Equal.ordinal()].avgPeriod)) : ((this.candleSettings[CandleSettingType.BodyLong.ordinal()].avgPeriod))) +
                 1;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic za pomoca przetworzonych
+     * parametrow przekazanych do tej metody oraz wyliczaniem wartosci zmiennych lokalnych.
+     * Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu double []
+     * @param inHigh typu double []
+     * @param inLow typu double []
+     * @param inClose typu double []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlOnNeck(int startIdx,
                              int endIdx,
                              double inOpen[],
@@ -11079,7 +11222,21 @@ public class Core {
         outBegIdx.value = startIdx;
         return RetCode.Success;
     }
-
+    /**
+     * Metoda ta zajmuje sie wypelnianiem tablic za pomoca przetworzonych
+     * parametrow przekazanych do tej metody oraz wyliczaniem wartosci zmiennych lokalnych.
+     * Po wykonaniu operacji zwraca kod sukcesu.
+     * @param startIdx typu int
+     * @param endIdx typu int
+     * @param inOpen typu float []
+     * @param inHigh typu float []
+     * @param inLow typu float []
+     * @param inClose typu float []
+     * @param outBegIdx typu MInteger
+     * @param outNBElement typu MInteger
+     * @param outInteger typu int []
+     * @return kod RetCode
+     */
     public RetCode cdlOnNeck(int startIdx,
                              int endIdx,
                              float inOpen[],
