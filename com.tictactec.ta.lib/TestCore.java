@@ -3183,5 +3183,516 @@ public class TestCore{
 		assertArrayEquals(expecteds, actuals, 0);
 
 	}
+@Test
+	public void testultOscdouble() {
+		double[] inHigh = new double[1] ;
+		double[] inLow = new double[1] ;
+		double[] inClose = new double[1] ;
+		int optInTimePeriod1 = 0;
+		int optInTimePeriod2 = 0;
+		int optInTimePeriod3 = 0;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		double[] outReal = new double[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		
+		core.ultOsc(0, 104, inHigh, inLow, inClose, optInTimePeriod1, optInTimePeriod2, optInTimePeriod3, outBegIdx, outNBElement, outReal);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+//	@Test
+//	public void test1() {
+//
+//	float[] inHigh = new float[1] ;
+//	float[] inLow = new float[1] ;
+//	float[] inClose = new float[1] ;
+//	int optInTimePeriod1 = 0;
+//	int optInTimePeriod2 = 0;
+//	int optInTimePeriod3 = 0;
+//	MInteger outBegIdx = new MInteger();
+//	MInteger outNBElement = new MInteger();
+//	int[] outReal = new int[1];
+//	core.ultOsc(0, 104, inHigh, inLow, inClose, optInTimePeriod1, optInTimePeriod2, optInTimePeriod3, outBegIdx, outNBElement, outReal)(0, 104, inHigh, inLow, inClose, optInTimePeriod1, optInTimePeriod2, optInTimePeriod3, outBegIdx, outNBElement, outReal);
+//	
+//	}
+	
+	@Test
+	public void testcdlMatchingLowdouble() {
+		double[] inOpen = new double[] { 4.54 };
+		
+		double[] inHigh = new double[1] ;
+		double[] inLow = new double[1] ;
+		double[] inClose = new double[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlMatchingLow(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+
+	@Test
+	public void testcdlMatchingLowfloat() {
+		float[] inOpen = new float[] { 4 };
+		
+		float[] inHigh = new float[1] ;
+		float[] inLow = new float[1] ;
+		float[] inClose = new float[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlMatchingLow(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testcdlLadderBottomdouble() {
+		double[] inOpen = new double[] { 4.54 };
+		
+		double[] inHigh = new double[1] ;
+		double[] inLow = new double[1] ;
+		double[] inClose = new double[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlLadderBottom(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testcdlLadderBottomfloat() {
+float[] inOpen = new float[] { 4 };
+		
+		float[] inHigh = new float[1] ;
+		float[] inLow = new float[1] ;
+		float[] inClose = new float[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlLadderBottom(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void cdlBeltHolddouble() {
+		double[] inOpen = new double[] { 4.54 };
+		double[] inHigh = new double[1] ;
+		double[] inLow = new double[1] ;
+		double[] inClose = new double[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlBeltHold(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testcdlBeltHoldfloat() {
+float[] inOpen = new float[] { 4 };
+		
+		float[] inHigh = new float[1] ;
+		float[] inLow = new float[1] ;
+		float[] inClose = new float[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlBeltHold(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testcdlClosingMarubozudouble() {
+		double[] inOpen = new double[] { 4.54 };
+		double[] inHigh = new double[1] ;
+		double[] inLow = new double[1] ;
+		double[] inClose = new double[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlClosingMarubozu(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testcdlClosingMarubozufloat() {
+float[] inOpen = new float[] { 4 };
+		
+		float[] inHigh = new float[1] ;
+		float[] inLow = new float[1] ;
+		float[] inClose = new float[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		
+		core.cdlClosingMarubozu(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testcdlTristardouble() {
+		double[] inOpen = new double[] { 4.54 };
+		double[] inHigh = new double[1] ;
+		double[] inLow = new double[1] ;
+		double[] inClose = new double[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlTristar(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testcdlTristarfloat(){
+	float[] inOpen = new float[] { 4 };
+		
+		float[] inHigh = new float[1] ;
+		float[] inLow = new float[1] ;
+		float[] inClose = new float[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+	core.cdlTristar(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+	assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testcdlHomingPigeondouble() {
+		double[] inOpen = new double[] { 4.54 };
+		double[] inHigh = new double[1] ;
+		double[] inLow = new double[1] ;
+		double[] inClose = new double[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlHomingPigeon(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+
+	@Test
+	public void testcdlHomingPigeondfloat() {
+float[] inOpen = new float[] { 4 };
+		
+		float[] inHigh = new float[1] ;
+		float[] inLow = new float[1] ;
+		float[] inClose = new float[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlHomingPigeon(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testcdlHignWavedouble() {
+		double[] inOpen = new double[] { 4.54 };
+		double[] inHigh = new double[1] ;
+		double[] inLow = new double[1] ;
+		double[] inClose = new double[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		
+		core.cdlHignWave(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testcdlHignWavefloat() {
+float[] inOpen = new float[] { 4 };
+		
+		float[] inHigh = new float[1] ;
+		float[] inLow = new float[1] ;
+		float[] inClose = new float[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlHignWave(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testcdlLongLinedouble() {
+		double[] inOpen = new double[] { 4.54 };
+		double[] inHigh = new double[1] ;
+		double[] inLow = new double[1] ;
+		double[] inClose = new double[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		
+		core.cdlLongLine(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+		}
+	
+	@Test
+	public void testcdlLongLinefloat() {
+float[] inOpen = new float[] { 4 };
+		
+		float[] inHigh = new float[1] ;
+		float[] inLow = new float[1] ;
+		float[] inClose = new float[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlLongLine(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testcdlMarubozudouble() {
+		double[] inOpen = new double[] { 4.54 };
+		double[] inHigh = new double[1] ;
+		double[] inLow = new double[1] ;
+		double[] inClose = new double[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlMarubozu(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+		}
+	
+	@Test
+	public void testcdlMarubozufloat() {
+		
+float[] inOpen = new float[] { 4 };
+		
+		float[] inHigh = new float[1] ;
+		float[] inLow = new float[1] ;
+		float[] inClose = new float[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlMarubozu(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+		}
+	
+	@Test
+	public void testcdlShortLinedouble() {
+		double[] inOpen = new double[] { 4.54 };
+		double[] inHigh = new double[1] ;
+		double[] inLow = new double[1] ;
+		double[] inClose = new double[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlShortLine(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+		}
+	
+	@Test
+	public void testcdlShortLinefloat() {
+		
+		
+float[] inOpen = new float[] { 4 };
+		
+		float[] inHigh = new float[1] ;
+		float[] inLow = new float[1] ;
+		float[] inClose = new float[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlShortLine(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testcdlDragonflyDojidouble() {
+		double[] inOpen = new double[] { 4.54 };
+		double[] inHigh = new double[1] ;
+		double[] inLow = new double[1] ;
+		double[] inClose = new double[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlDragonflyDoji(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testcdlDragonflyDojifloat() {
+float[] inOpen = new float[] { 4 };
+		
+		float[] inHigh = new float[1] ;
+		float[] inLow = new float[1] ;
+		float[] inClose = new float[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlDragonflyDoji(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testcdlGravestoneDojidouble() {
+		double[] inOpen = new double[] { 4.54 };
+		double[] inHigh = new double[1] ;
+		double[] inLow = new double[1] ;
+		double[] inClose = new double[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlGravestoneDoji(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testcdlGravestoneDojifloat() {
+float[] inOpen = new float[] { 4 };
+		
+		float[] inHigh = new float[1] ;
+		float[] inLow = new float[1] ;
+		float[] inClose = new float[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlGravestoneDoji(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testcdlHaramidouble() {
+		double[] inOpen = new double[] { 4.54 };
+		double[] inHigh = new double[1] ;
+		double[] inLow = new double[1] ;
+		double[] inClose = new double[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlHarami(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testcdlHaramifloat() {
+float[] inOpen = new float[] { 4 };
+		
+		float[] inHigh = new float[1] ;
+		float[] inLow = new float[1] ;
+		float[] inClose = new float[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlHarami(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testcdlHaramiCrossdouble() {
+		double[] inOpen = new double[] { 4.54 };
+		double[] inHigh = new double[1] ;
+		double[] inLow = new double[1] ;
+		double[] inClose = new double[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlHaramiCross(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testcdlHaramiCrossfloat() {
+float[] inOpen = new float[] { 4 };
+		
+		float[] inHigh = new float[1] ;
+		float[] inLow = new float[1] ;
+		float[] inClose = new float[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlHaramiCross(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+	
+	@Test
+	public void testcdlLongLeggedDojidouble() {
+		double[] inOpen = new double[] { 4.54 };
+		double[] inHigh = new double[1] ;
+		double[] inLow = new double[1] ;
+		double[] inClose = new double[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlLongLeggedDoji(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+
+	@Test
+	public void testcdlLongLeggedDojifloat() {
+float[] inOpen = new float[] { 4 };
+		
+		float[] inHigh = new float[1] ;
+		float[] inLow = new float[1] ;
+		float[] inClose = new float[1] ;
+		MInteger outBegIdx = new MInteger();
+		MInteger outNBElement = new MInteger();
+		int[] outInteger = new int[1];
+		double[] expecteds = new double[]{1.2};
+		double[] actuals = new double[]{1.2};
+		core.cdlLongLeggedDoji(0, lookback, inOpen, inHigh, inLow, inClose, outBegIdx, outNBElement, outInteger);
+		assertArrayEquals(expecteds, actuals, 0);
+	}
+
+
 
 }
