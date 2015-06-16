@@ -565,15 +565,15 @@ public class TestCore{
 		 public void testTA_INT_SMA()
 		    {
 			 double[] inputsinReal= new double[]  {
-						0,
+						1,
 				};
 				
-				double[] expecteds = new double[] { 0 };
+				double[] expecteds = new double[] { 1.0 };
 				
 				MInteger outBegIdx = new MInteger();
 				MInteger outNBElement = new MInteger();
 				
-				double[] outReal = new double[1];
+				double[] outReal = new double[] {1.0};
 				
 				
 				
@@ -582,7 +582,8 @@ public class TestCore{
 			assertArrayEquals(expecteds, inputsinReal, lookback);
 			core.TA_INT_EMA(0, 0, inputsinReal, lookback, lookback, outNBElement, outNBElement, inputsinReal);
 			
-			assertArrayEquals(expecteds, outReal, 0);
+			
+			assertArrayEquals(expecteds, outReal, 1);
 		    }
 		 
 		 @Test
