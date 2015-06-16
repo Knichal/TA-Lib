@@ -53,9 +53,12 @@ import java.lang.reflect.Method;
 import com.tictactec.ta.lib.Core;
 import com.tictactec.ta.lib.MInteger;
 import com.tictactec.ta.lib.RetCode;
-
 /**
- * @deprecated in favor of CoreMetaData class
+ * Klasa ta jest przestarza³a na rzecz klasy CoreMetaData.
+ * Wiêkszoœc funkcji z tej klasy jest zaimplementowana w klasie CoreMetaData.
+ * @deprecated
+ * @author Komentarz - Maciej Knichal
+ *
  */
 public class TaFuncMetaInfo extends TaFuncSignature
 {
@@ -68,7 +71,6 @@ public class TaFuncMetaInfo extends TaFuncSignature
    static final int TOTAL_FIX_PARAMETERS = 4;
    static final int INPUT_FIX_PARAMETERS = 2;
    static final int OUTPUT_FIX_PARAMETERS = 2;
-   
    public TaFuncMetaInfo(String name, Method method, Method lookbackMethod)
    {
       this.name = name;
@@ -82,17 +84,14 @@ public class TaFuncMetaInfo extends TaFuncSignature
 
       createVarTypes(ins, outs);
    }
-
    int getNumberOfInputParameters()
    {
       return getFirstMInteger() - optionTypes.length - INPUT_FIX_PARAMETERS;
    }
-
    int getNumberOfOutputParameters()
    {
       return parameterTypes.length - getFirstMInteger() - OUTPUT_FIX_PARAMETERS;
    }
-
    int getFirstMInteger()
    {
       for (int i = 0; i < parameterTypes.length; i++)

@@ -9,11 +9,14 @@ import junit.framework.TestSuite;
 public class MIntegerTest
   extends TestCase
 {
+ /**
+  * Funkcja przekazuje parametr do konstruktora klasy TestCase
+  * @param testName
+  */
   public MIntegerTest(String testName)
   {
     super(testName);
   }
-  
   protected void setUp()
     throws Exception
   {}
@@ -21,14 +24,19 @@ public class MIntegerTest
   protected void tearDown()
     throws Exception
   {}
-  
+  /**
+   * Funkcja tworzy obiekt typu TestSuite w parametrze dla konstruktora podaje plik binarny MIntegerTest.class
+   * @returnobiekt typu TestSuite
+   */
   public static Test suite()
   {
     TestSuite suite = new TestSuite(MIntegerTest.class);
     
     return suite;
   }
-  
+  /**
+   * Funkcja sprawdza dwukrotnie za pomoca asercji czy udalo sie przypisac wartosc calkowita dla obiektu typu MInteger.
+   */
   public void testMutable()
   {
     MInteger i = new MInteger();

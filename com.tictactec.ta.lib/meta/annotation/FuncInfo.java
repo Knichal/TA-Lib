@@ -50,18 +50,51 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-
+/**
+ * Jest to interfejs wykorzystywany w klasie CoreAnnotated.
+ * Za jego pomoc¹ okreœlane s¹: nazwa funkcji, grupa do jakiej nale¿y, flaga funkcji, iloœæ wejœæ, iloœæ opcjonalnych wejœæ, ilosc wyjœæ
+ * @author Komentarz - Maciej Knichal
+ *
+ */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface FuncInfo {
+    /**
+     * Ustawia nazwe funkcji
+     *
+     */
     String      name();
+
+    /**
+     * Ustawia grupe funkcji
+     *
+     */
     String      group();
 
     String hint() default "";
     String helpFile() default "";
+
+    /**
+     * Ustawia flage funkcji
+     *
+     */
     int flags();
 
+    /**
+     * Ustawia ilosc wejsc
+     *
+     */
     int nbInput();
+
+    /**
+     * Ustawia ilosc opcjonalnych wejsc
+     *
+     */
     int nbOptInput();
+
+    /**
+     * Ustawia ilosc wyjsc
+     *
+     */
     int nbOutput();
 }

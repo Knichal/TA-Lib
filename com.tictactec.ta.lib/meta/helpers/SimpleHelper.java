@@ -61,37 +61,33 @@ import com.tictactec.ta.lib.meta.annotation.OutputParameterInfo;
 import com.tictactec.ta.lib.meta.annotation.OutputParameterType;
 import com.tictactec.ta.lib.meta.annotation.RealList;
 import com.tictactec.ta.lib.meta.annotation.RealRange;
-
-
 /**
- * This is a simple API level helper class based on CoreMetaData.
- * 
- * <p>This class provides the very simple functionality of calling dinamically a TA function once you already know beforehand:
- * 
- * <li>the TA function name;
- * <li>its input argument types;
- * <li>its output argument types;
- * <li>its optional input arguments types and domain values;
- * 
- * It means this class is mostly intended for test purposes and provided as example of how to obtain RTTI
- * (run time type information) from CoreMetaData.
- *  
+ * SimpleHelper jest klasa prosta - pomocnicza bazujaca na CoreMetaData
+ *
+ * Klasa ta zapewnia bardzo prosta funkcjonalnosc wywo³ywania dynamicznego metod gdy znasz wczeœniej:
+ * <li> nazwe funkcji
+ * <li> typy argumentów wejœciowych
+ * <li> typy argumentów wyjœciowych
+ * <li> typy opcjonalnych argumentów wejœciowych i wartoœci.
+ *
+ * Klasa stosowana jest g³ównie do celów testowych i pokazuje na jakiej zasadzie dziala RTTI z CoreMetaData
+ *
  * @see com.tictactec.ta.lib.meta.CoreMetaData
- * 
- * @author Richard Gomes
+ *
+ * @author Komentarz - Maciej Knichal
+ *
  */
 public class SimpleHelper {
     
     private String   func = null;
     private String[] args = null;
     private CoreMetaData calc = null;
-    
     /**
-     * Constructs a SimpleHelper class providing the TA function name and a list of optional parameters.
-     * 
-     * @see SimpleHelper#calculate(int, int, Object[], Object[], MInteger, MInteger)
-     * @param func is the TA function name
-     * @param args is a list of optional input arguments
+     * Konstruktor tej klasy przyjmuje nazwe funkcji oraz liste parametrow pomocniczych.
+     *
+     * @param func Nazwa funkcji.
+     * @param args Lista opcjonalnych argumentów wejsciowych.
+     * @throws NullPointerException Jeœli nie podamy nazwy funkcji.
      */
     public SimpleHelper(final String func, final List<String> args) {
         if (func==null || func.length()==0) throw new NullPointerException(); //TODO: message
@@ -101,13 +97,11 @@ public class SimpleHelper {
             for (int i=0; i<this.args.length; i++) { this.args[i] = this.args[i].toUpperCase(); }
         }
     }
-
     /**
-     * This method returns the underlying CoreMetaData class.
-     * 
-     * @return the underlying CoreMetaData class
+     * Metoda ta zwraca bazow¹ klasê CoreMetaData
+     * @return bazowa klasa CoreMetaData
      * @throws NoSuchMethodException
-     * @throws IllegalArgumentException
+     * @throws IllegalArgumentException Jeœli lista argumentów opcjonalnych jest d³u¿sza ni¿ pozwala na to funkcja
      */
     public CoreMetaData getMetaData() throws NoSuchMethodException, IllegalArgumentException {
         if (this.calc!=null) return this.calc;
@@ -126,15 +120,12 @@ public class SimpleHelper {
         }
         return this.calc;
     }
-
     /**
-     * Returns the lookback.
-     * 
-     * <p> Lookback is the number of input data points to be consumed in order to calculate the first output data point. This value
-     * is affected by the optional input arguments passed to this TA function.
-     *  
-     * @return the lookback number of input points to be consumed before the first output data point is produced.
-     * 
+     * Metoda ta zwraca LookBack.
+     *
+     * Lookback jest liczb¹ punktów danych wejœciowych, mo¿e byc u¿yty w celu wyliczenia pierwszego punktu danych wyjœciowych.
+     * Wartoœc ta zale¿y od wejœciowych argumentów opcjonalnych przekazanych do funkcji.
+     * @return LookBack
      * @throws NoSuchMethodException
      * @throws IllegalAccessException
      * @throws InvocationTargetException
@@ -142,13 +133,12 @@ public class SimpleHelper {
     public int getLookback() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         return getMetaData().getLookback();
     }
-    
     /**
-     * Executes the calculations defined by this TA function.
-     * 
-     * <p>You need to provide input arguments where this TA function will obtain data from and output arguments where this
-     * TA function will write output data to. Optionally you can change default parameters used by this TA function in order
-     * to execute the calculations. The typical use case would be:
+     * Metoda ta wykonuje obliczenia zdefiniowane przez funkcje.
+     *
+     * Na wstepie nalezy podac argumenty wejsciowe, z ktorych funkcja bedzie pobierala dane, a takze argumenty wyjsciowe, do ktorych zostana zapisane obliczenia.
+     *
+     * Przyk³ad u¿ycia:
      * <pre>
      *       func = "MAMA";
      *       params.clear();
@@ -162,14 +152,15 @@ public class SimpleHelper {
      *           System.out.println("output1["+i+"]="+output1[i]+"     "+"output2["+i+"]="+output2[i]);
      *       }
      * </pre>
-     * 
-     * @param startIndex is the initial position of input data to be considered for TA function calculations
-     * @param endIndex is the final position of input data to be considered for TA function calculations
-     * @param inputs is an array of input arguments
-     * @param outputs is an array of output arguments
-     * @param outBegIdx is returned by this method and represents the initial position of output data returned by this TA function
-     * @param outNbElement is returned by this method and represents the quantity of output data returned by this TA function
-     * @throws IllegalArgumentException
+     *
+     *
+     * @param startIndex to po³o¿enie pocz¹tkowe danych wejœciowych, które nale¿y uwzglêdnic w obliczeniach funkcji.
+     * @param endIndex to po³o¿enie ostatnich danych wejœciowych, które nale¿y uwzglêdnic w obliczeniach funkcji.
+     * @param inputs to tablica argumentow wejsciowych
+     * @param outputs to tablica argumentow wyjsciowych
+     * @param outBegIdx indeks wyjsciowy jest zwracany przez metode i reprezentuje pocz¹tkow¹ pozycjê danych wyjœciowych zwracan¹ przez funkcjê.
+     * @param outNbElement  jest zwracany przez metode i reprezentuje iloœc danych wyjœciowych zwróconych przez funkcjê.
+     * @throws IllegalArgumentException jeœli nie podamy danych wejsciowych lub dane nie zgadzaj¹ siê z liczba wejsc w danej funkcji lub dane wejsciowe nie sa liczba.
      * @throws NoSuchMethodException
      * @throws IllegalAccessException
      * @throws InvocationTargetException

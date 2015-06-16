@@ -53,27 +53,26 @@ import com.tictactec.ta.lib.meta.annotation.FuncInfo;
 import com.tictactec.ta.lib.meta.annotation.InputParameterInfo;
 import com.tictactec.ta.lib.meta.annotation.OptInputParameterInfo;
 import com.tictactec.ta.lib.meta.annotation.OutputParameterInfo;
-
 /**
- * This class is intended to application developers willing to translate "C" application code
- * which makes use of <i>ta_abstract.h</i>.
- * 
- * In Java, applications and API make a wide use of exceptions whilst in "C" code the common approach is returning status
- * codes. This class adds a layer over class CoreMetaData which handles and consumes exceptions and, instead of exceptions,
- * returns status codes. 
- * 
- * <p><b>IMPORTANT:</b> This class is provided as it is by the author as a starting point for "C" application code translators.
- * Use this class on your own risk as this class was not tested by the author.
- * 
- * <p><b>IMPORTANT:</b> Some methods from <i>ta_abstract.h</i> where not implemented. The author do not intend to
- * provide these methods as there's low or even no interest on this kind of compatibility mode. As already said, this is
- * only a starting point for applications translators which could be interested to further improve this class. 
- * 
- * @author Richard Gomes
+ *  Klasa ta przeznaczona jest dla developerów, którzy chc¹ przet³umaczyæ kod Ÿród³owy z "C" oraz korzystali z `ta_abstract.h`
+ *
+ * W Javie mamy mo¿liwoœæ wykorzystania wiele klas zg³aszaj¹cych wyj¹tki. W "C" natomiast musimy pos³ugiwac siê kodami statusów by ustalic jaki doskwiera nam b³¹d.
+ * Klasa ta tworzy dodatkow¹ warstwê opakowuj¹c¹ CoreMetaData i zamiast zg³aszania mo¿liwych wyst¹pieñ wyj¹tków zg³asza ona kod statusu jak w jêzyku "C".
+ *
+ * WA¯NE: Klasa ta nie zosta³a przetestowana przez autora biblioteki. U¿ywasz jej na w³asne ryzyko.
+ *
+ * WA¯NE: Klasa ta w ca³oœci nie implementuje metod z <i>ta_abstract.h</i>
+ *
+ * @author Komentarz - Maciej Knicha³
  *
  */
 public class CoreMetaDataCompatibility extends CoreMetaData {
-
+    /**
+     * Metoda ta zwraca uchwyt do funkcji.
+     * @param name Nazwa funkcji.
+     * @param retHandle Obiekt CoreMetaData do którego zostanie utworzony uchwyt.
+     * @return Kod statusu (RetCode).
+     */
     static RetCode taGetFuncHandle(final String name, CoreMetaData retHandle) {
         try {
             retHandle = getFuncHandle(name);
@@ -82,8 +81,11 @@ public class CoreMetaDataCompatibility extends CoreMetaData {
             return RetCode.BadParam;
         }
     }
-    
-
+    /**
+     * Metoda ta zwraca informacje na temat funkcji.
+     * @param retFuncInfo Intefejs do którego zostan¹ zapisane informacje o funkcjach.
+     * @return Kod statusu (RetCode).
+     */
     RetCode taGetFuncInfo(FuncInfo retFuncInfo) {
         try {
             retFuncInfo = super.getFuncInfo();
@@ -92,8 +94,12 @@ public class CoreMetaDataCompatibility extends CoreMetaData {
             return RetCode.InternalError;
         }
     }
-    
-
+    /**
+     * Metoda Ta zwraca informacje na temat n-tego parametru wejœciowego.
+     * @param paramIndex Indeks parametru n-tego.
+     * @param retInputParameterInfo Interfejs do którego zostanie zapisana informacja o n-tym parametrze.
+     * @return Kod statusu (RetCode).
+     */
     RetCode taGetInputParameterInfo(final int paramIndex, InputParameterInfo retInputParameterInfo) {
         try {
             retInputParameterInfo = super.getInputParameterInfo(paramIndex);
@@ -102,8 +108,12 @@ public class CoreMetaDataCompatibility extends CoreMetaData {
             return RetCode.BadParam;
         }
     }
-
-
+    /**
+     * Metoda ta zwraca informacje na temat n-tego opcjonalnego parametru wejœciowego.
+     * @param paramIndex Indeks n-tego parametru.
+     * @param retOptInputParameterInfo Interfejs do którego zostanie zapisana informacja o n-tym parametrze.
+     * @return KodStatusu (RetCode).
+     */
     RetCode taGetInputParameterInfo(final int paramIndex, OptInputParameterInfo retOptInputParameterInfo) {
         try {
             retOptInputParameterInfo = super.getOptInputParameterInfo(paramIndex);
@@ -112,8 +122,12 @@ public class CoreMetaDataCompatibility extends CoreMetaData {
             return RetCode.BadParam;
         }
     }
-
-
+    /**
+     * Metoda ta zwraca informacje na temat n-tego parametru wyjœciowego.
+     * @param paramIndex Indeks n-tego parametru.
+     * @param retOutputParameterInfo Interfejs do którego zostanie zapisana informacja o n-tym parametrze.
+     * @return
+     */
     RetCode taGetOutputParameterInfo(final int paramIndex, OutputParameterInfo retOutputParameterInfo) {
         try {
             retOutputParameterInfo = super.getOutputParameterInfo(paramIndex);
@@ -122,8 +136,12 @@ public class CoreMetaDataCompatibility extends CoreMetaData {
             return RetCode.BadParam;
         }
     }
-
-
+    /**
+     * Metoda ta ustawia n-ty parametr wejœciowy typu Integer.
+     * @param paramIndex Indeks n-tego parametru.
+     * @param value tablica z wartoœciami typu Integer.
+     * @return Kod statusu.
+     */
     RetCode taSetInputParamIntegerPtr(final int paramIndex, final int[] value ) {
         try {
             super.setInputParamInteger(paramIndex, value);
@@ -132,8 +150,12 @@ public class CoreMetaDataCompatibility extends CoreMetaData {
             return RetCode.BadParam;
         }
     }
-
-    
+    /**
+     * Metoda ta ustawia n-ty parametr wejœciowy typu Real.
+     * @param paramIndex Indeks n-tego parametru.
+     * @param value tablica z wartoœciami typu Real.
+     * @return Kod statusu.
+     */
     RetCode taSetInputParamRealPtr(final int paramIndex, final double[] value ) {
         try {
             super.setInputParamReal(paramIndex, value);
@@ -142,8 +164,17 @@ public class CoreMetaDataCompatibility extends CoreMetaData {
             return RetCode.BadParam;
         }
     }
-
-    
+    /**
+     * Metoda ta ustawia n-ty parametr typu Price.
+     * @param paramIndex Indeks n-tego parametru.
+     * @param open Reprezentacja Open Prices w postaci double[]
+     * @param high Reprezentacja High Prices w postaci double[]
+     * @param low Reprezentacja Low Prices w postaci double[]
+     * @param close Reprezentacja Close Prices w postaci double[]
+     * @param volume Reprezentacje volume w postaci double[]
+     * @param openInterest Reprezentacja OpenInterest w postaci double[]
+     * @return Kod statusu.
+     */
     RetCode taSetInputParamPricePtr(final int paramIndex,
             final double[] open,
             final double[] high,
@@ -158,8 +189,12 @@ public class CoreMetaDataCompatibility extends CoreMetaData {
             return RetCode.BadParam;
         }
     }
-    
-    
+    /**
+     * Metoda ta ustawia n-ty opcjonalny parametr typu Integer.
+     * @param paramIndex Indeks parametru n-tego.
+     * @param optInValue Nowa wartoœc n-tego parametru.
+     * @return Kod Statusu.
+     */
     RetCode taSetOptInputParamInteger(final int paramIndex, final int optInValue) {
         try {
             setOptInputParamInteger(paramIndex, optInValue);
@@ -168,8 +203,12 @@ public class CoreMetaDataCompatibility extends CoreMetaData {
             return RetCode.BadParam;
         }
     }
-        
-    
+    /**
+     * Metoda ta ustawia n-ty opcjonalny parametr typu Real.
+     * @param paramIndex Indeks parametru n-tego.
+     * @param optInValue Nowa wartoœc n-tego parametru.
+     * @return Kod statusu.
+     */
     RetCode taSetOptInputParamReal(final int paramIndex, final double optInValue) {
         try {
             setOptInputParamReal(paramIndex, optInValue);
@@ -178,8 +217,12 @@ public class CoreMetaDataCompatibility extends CoreMetaData {
             return RetCode.BadParam;
         }
     }
-    
-   
+    /**
+     * Metoda ta ustawia n-ty parametr wyjœciowy typu Integer.
+     * @param paramIndex Indeks n-tego parametru.
+     * @param outArray Tablica wartoœci int[].
+     * @return Kod statusu.
+     */
     RetCode taSetOutputParamIntegerPtr(final int paramIndex, int[] outArray) {
         if (outArray == null) return RetCode.BadParam;
         try {
@@ -189,8 +232,12 @@ public class CoreMetaDataCompatibility extends CoreMetaData {
             return RetCode.BadParam;
         }
     }
-
-    
+    /**
+     * Metoda ta ustawia n-ty parametr wyjœciowy typu Real.
+     * @param paramIndex Indekst n-tego parametru.
+     * @param outArray Tablica wartoœci double[].
+     * @return Kod statusu.
+     */
     RetCode taSetOutputParamRealPtr(final int paramIndex, double[] outArray) {
         if (outArray == null) return RetCode.BadParam;
         try {

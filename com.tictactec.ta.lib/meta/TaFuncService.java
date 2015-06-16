@@ -45,7 +45,11 @@
  */
 
 package com.tictactec.ta.lib.meta;
-
+/**
+ * Interfejs ten jest wykorzystywany w metodzie forEachFunc z klasy CoreMetaData.
+ * @author Komentarz - Maciej Knichal
+ *
+ */
 public interface TaFuncService {
     public void execute(CoreMetaData mi) throws Exception;
 }

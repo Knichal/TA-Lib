@@ -20,7 +20,12 @@ public class TestAbstractClosure
   List<InputData> testData;
   Core taCore;
   InputData curInputData;
-  
+  /** 
+   * Konstruktor 2-argumentowy
+   * do listy testData dodaje elementy listy z listy data
+   * @param taCore obiekt typu Core 
+   * @param data lista obiektow InputData kopiowana do testData
+   */
   public TestAbstractClosure(Core taCore, List<InputData> data)
   {
     this.taCore = taCore;
@@ -30,7 +35,11 @@ public class TestAbstractClosure
       this.testData.add(new InputData(id));
     }
   }
-  
+  /**
+   * Funkcja wykonuje metode execute(TaFuncMetaInfo,InputData,InputData) dla elementow list testData oraz orginalData
+   * @param mi obiekt typu TaFuncMetaInfo przekazywany do metody rekurencyjnej execute(TaFuncMetaInfo,InputData,InputData)
+   * @throws Exception
+   */
   public void execute(TaFuncMetaInfo mi)
     throws Exception
   {
@@ -39,7 +48,13 @@ public class TestAbstractClosure
       execute(mi, (InputData)this.testData.get(i), (InputData)this.originalData.get(i));
     }
   }
-  
+  /**
+   * Funkcja wykonuje metode execute(TaFuncMetaInfo,InputData,InputData,Object[],Object[]) dla obiektow z parametrow
+   * @param mi
+   * @param inputData
+   * @param originalInputData
+   * @throws Exception
+   */
   void execute(TaFuncMetaInfo mi, InputData inputData, InputData originalInputData)
     throws Exception
   {
@@ -54,7 +69,15 @@ public class TestAbstractClosure
       execute(mi, inputData, originalInputData, inArs, ops);
     }
   }
-  
+  /**
+   * 
+   * @param mi
+   * @param inputData
+   * @param originalInputData
+   * @param inArs
+   * @param options
+   * @throws Exception
+   */
   void execute(TaFuncMetaInfo mi, InputData inputData, InputData originalInputData, Object[] inArs, Object[] options)
     throws Exception
   {
@@ -89,7 +112,12 @@ public class TestAbstractClosure
     assertEquals(retCode, RetCode.Success);
     assertEquals(outBegIdx.value, 0);
   }
-  
+  /**
+   * Funkcja zwraca tablice obiektow, dla kazdego elementu przypisuje element o tym samym indeksie z obiektu mi
+   * @param mi
+   * @param inputData
+   * @return Object[]
+   */
   Object[] getInputParamters(TaFuncMetaInfo mi, InputData inputData)
   {
     Class[] inVarTypes = mi.getInVarTypes();
@@ -107,7 +135,13 @@ public class TestAbstractClosure
     }
     return ret;
   }
-  
+  /**
+   * Funkcja tworzy tablice obiektow typu Object o rozmiarze rablicy m
+   * @param mi
+   * @param inSize
+   * @param lookback
+   * @return Object[]
+   */
   Object[] getOutputParameters(TaFuncMetaInfo mi, int inSize, int lookback)
   {
     int outSize = inSize;
@@ -136,7 +170,13 @@ public class TestAbstractClosure
     }
     return ret;
   }
-  
+  /**
+   * Funkcja tworzy obiekt typu Object[], dla kazdego elementu przypisuje wartosc typu(int/double/float) w zaleznosci od typu wartosci o tym samym indeksie z obiektu z parametru
+   * @param mi
+   * @return Object[]
+   * @throws IllegalArgumentException
+   * @throws IllegalAccessException
+   */
   Object[] getDefaultOptions(TaFuncMetaInfo mi)
     throws IllegalArgumentException, IllegalAccessException
   {
@@ -157,7 +197,13 @@ public class TestAbstractClosure
     }
     return ret;
   }
-  
+  /**
+   * 
+   * @param clazz
+   * @return obiekt typu Enum[]
+   * @throws IllegalArgumentException
+   * @throws IllegalAccessException
+   */
   Enum[] getAllEnumMembers(Class clazz)
     throws IllegalArgumentException, IllegalAccessException
   {
@@ -168,7 +214,12 @@ public class TestAbstractClosure
     }
     return ret;
   }
-  
+  /**
+   * 
+   * @param mi
+   * @param outArs
+   * @return
+   */
   boolean verifyOutputData(TaFuncMetaInfo mi, Object[] outArs)
   {
     Class[] outVarTypes = mi.getOutVarTypes();
@@ -194,7 +245,12 @@ public class TestAbstractClosure
     }
     return true;
   }
-  
+  /**
+   * Funkcja sprawdza czy obiekty podane w parametrach funkcji sa takie same(test dla typu Double, Float i Integer)
+   * @param inputData typu InputData
+   * @param originalInputData typu InputData
+   * @return zwraca <b>true</b> dla identycznych obiektow i <b>false</b> dla roznych obiektow
+   */
   boolean verifyInputData(InputData inputData, InputData originalInputData)
   {
     return (Arrays.equals(inputData.getDoubleData(), originalInputData.getDoubleData())) && (Arrays.equals(inputData.getFloatData(), originalInputData.getFloatData())) && (Arrays.equals(inputData.getIntData(), originalInputData.getIntData()));

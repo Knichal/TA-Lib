@@ -47,7 +47,11 @@
 package com.tictactec.ta.lib.meta;
 
 import java.util.Set;
-
+/**
+ * Interfejs ten jest wykorzystywany w metodzie forEachGrp z klasy CoreMetaData.
+ * @author Komentarz - Maciej Knichal
+ *
+ */
 public interface TaGrpService {
     public void execute(String group, Set<CoreMetaData> set) throws Exception;
 }
