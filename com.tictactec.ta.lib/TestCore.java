@@ -3180,6 +3180,8 @@ public class TestCore{
 	
 		double[] inReal = new double [1];
 		core.tema(0, lookback, inReal , optInTimePeriod, outBegIdx, outNBElement, outReal);
+		assertArrayEquals(expecteds, actuals, 0);
+
 	}
 
 }
