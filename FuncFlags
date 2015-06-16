@@ -1,0 +1,54 @@
+package gryglik.maciej;
+
+import static org.junit.Assert.*;
+
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import com.tictactec.ta.lib.meta.annotation.FuncFlags;
+
+public class TestFuncFlags{
+
+	static FuncFlags funcflag;
+	
+	@BeforeClass
+    static public void BeforeClass(){
+		
+		funcflag = new FuncFlags();
+	}
+	@Test
+	public void test() {
+		Object obj = null;
+		funcflag.equals(obj);
+	
+		String obj1 = "hello";
+		  boolean expected = false;
+		  boolean actual = equals("hello");
+		  assertEquals(obj1, expected, actual);
+	}
+
+
+     @Test
+     public void test1() {
+    	 funcflag.hashCode();
+    	 
+    	 String x = "hello";
+    	  String y = "hello";
+    	     assertTrue(x.hashCode() == y.hashCode());
+    	 }
+     
+    	 
+     @Test
+     public void test2() {
+    	funcflag.toString();
+    	assertNotNull(funcflag.toString());
+     }
+    	
+     @Test
+     public void test3(){
+    	  funcflag.getClass(); 
+          Class<? extends FuncFlags> name = funcflag.getClass(); 
+     }
+     
+}
+
